@@ -1,0 +1,119 @@
+/* =========================================
+   Typography System — Pretendard
+   ========================================= */
+
+/* title */
+.title_xxlarge {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 130px;
+  line-height: 116%;
+}
+
+.title_xlarge {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 84px;
+  line-height: 120%;
+}
+
+.title_large {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 72px;
+  line-height: 130%;
+}
+
+.title_medium {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 56px;
+  line-height: 140%;
+}
+
+.title_small {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 34px;
+  line-height: 116%;
+}
+
+.title_xsmall {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 26px;
+  line-height: 160%;
+}
+
+.title_xxsmall {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 20px;
+  line-height: 140%;
+}
+
+/* article */
+.article_xlarge {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 28px;
+  line-height: 160%;
+}
+
+.article_large {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 20px;
+  line-height: 160%;
+}
+
+.article_medium_m {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 18px;
+  line-height: 160%;
+}
+
+.article_medium_r {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 18px;
+  line-height: 160%;
+}
+
+.article_small {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 16px;
+  line-height: 160%;
+}
+
+.article_xsmall {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 14px;
+  line-height: 160%;
+}
+
+/* button */
+.button_large {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 24px;
+  line-height: 160%;
+}
+
+.button_small {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 24px;
+  line-height: 160%;
+}
+
+/* gnb */
+.gnb {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 18px;
+  line-height: auto;
+}
