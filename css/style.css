@@ -19,13 +19,28 @@
 
 
 
+/* LAYOUT */
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 140px;
+}
+
+
+
 /* GNB */
 .gnb {
-    position: absolute; top: 0; left: 0; right: 0;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 90px; padding: 0 140px;
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: 90px;
     background: rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.gnb_inner {
+    position: relative;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 100%;
 }
 
 .gnb_nav {

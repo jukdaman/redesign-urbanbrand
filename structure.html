@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html 구조도</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f0f0f0;
+            padding: 40px 60px;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        /* ── 공통 블록 ── */
+        .block {
+            background: #fff;
+            border: 1.5px solid #d8d8d8;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            overflow: hidden;
+        }
+
+        .block-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eee;
+            cursor: default;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 3px;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-header  { background: #ffe0b2; color: #bf360c; }
+        .tag-section { background: #e3f2fd; color: #0d47a1; }
+        .tag-footer  { background: #f3e5f5; color: #6a1b9a; }
+        .tag-div     { background: #e8f5e9; color: #1b5e20; }
+        .tag-nav     { background: #fce4ec; color: #880e4f; }
+        .tag-element { background: #f5f5f5; color: #555; }
+
+        /* ── children 영역 ── */
+        .children {
+            padding: 8px 12px 10px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        /* ── 가로 나열 row ── */
+        .row {
+            display: flex;
+            gap: 6px;
+            align-items: stretch;
+        }
+
+        .row > .block {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        /* ── 색상 accent per section ── */
+        .gnb       > .block-label { border-left: 4px solid #ff7043; }
+        .hero      > .block-label { border-left: 4px solid #42a5f5; }
+        .solution  > .block-label { border-left: 4px solid #66bb6a; }
+        .services  > .block-label { border-left: 4px solid #ab47bc; }
+        .portfolio > .block-label { border-left: 4px solid #ffa726; }
+        .font-try  > .block-label { border-left: 4px solid #26c6da; }
+        .ceo       > .block-label { border-left: 4px solid #ec407a; }
+        .article-sc > .block-label{ border-left: 4px solid #8d6e63; }
+        .history   > .block-label { border-left: 4px solid #78909c; }
+        .contact   > .block-label { border-left: 4px solid #ef5350; }
+        .footer    > .block-label { border-left: 4px solid #7e57c2; }
+
+        /* ── 내부 leaf 요소 ── */
+        .leaf {
+            display: flex;
+            align-items: baseline;
+            gap: 7px;
+            font-size: 10.5px;
+            color: #444;
+            padding: 3px 0;
+        }
+        .leaf .cls {
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            color: #888;
+        }
+        .leaf .content {
+            font-style: italic;
+            color: #aaa;
+            font-size: 10px;
+        }
+
+        /* ── 구분선 ── */
+        .section-gap {
+            height: 18px;
+        }
+
+        /* ── 전체 컬럼 ── */
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* note */
+        .note {
+            font-size: 10px;
+            color: #aaa;
+            margin-top: 3px;
+            padding-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>index.html — 섹션별 DOM 구조도</h1>
+
+    <!-- ═══════════════════ GNB ═══════════════════ -->
+    <div class="block gnb">
+        <div class="block-label">
+            <span class="tag tag-header">&lt;header&gt;</span>
+            .gnb
+        </div>
+        <div class="children">
+            <div class="block">
+                <div class="block-label">
+                    <span class="tag tag-div">&lt;div&gt;</span>
+                    .container .gnb_inner
+                </div>
+                <div class="children">
+                    <div class="row">
+                        <div class="block">
+                            <div class="block-label">
+                                <span class="tag tag-nav">&lt;nav&gt;</span>
+                                .gnb_nav .gnb_nav_left
+                            </div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">a</span> ABOUT / WORK / SERVICE</div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="block-label">
+                                <span class="tag tag-element">&lt;a&gt;</span>
+                                .gnb_logo
+                            </div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">img</span> <span class="cls">logo_urbanbrand_white.svg</span></div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="block-label">
+                                <span class="tag tag-nav">&lt;nav&gt;</span>
+                                .gnb_nav .gnb_nav_right
+                            </div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">a</span> ARTICLE / CONTACT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <div class="block hero">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .hero
+        </div>
+        <div class="children">
+            <div class="block">
+                <div class="block-label">
+                    <span class="tag tag-div">&lt;div&gt;</span>
+                    .container .hero_inner
+                </div>
+                <div class="children">
+                    <div class="leaf">
+                        <span class="tag tag-element">p</span>
+                        .hero_copy
+                        <span class="content">도시마다 / 고유한 / 정체성을 / 만들어 갑니다</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ SOLUTION ═══════════════════ -->
+    <div class="block solution">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .solution
+        </div>
+        <div class="children">
+            <div class="block">
+                <div class="block-label">
+                    <span class="tag tag-div">&lt;div&gt;</span>
+                    .solution_top
+                </div>
+                <div class="children">
+                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">× 2줄 텍스트</span></div>
+                    <div class="block">
+                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_row</div>
+                        <div class="children">
+                            <div class="row">
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_word</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">p</span> .solution_yeongwol <span class="content">그 도시만의 결</span></div>
+                                        <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">이</span></div>
+                                    </div>
+                                </div>
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-element">div</span> .solution_line</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">살아 숨쉬도록</span></div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="block-label">
+                    <span class="tag tag-div">&lt;div&gt;</span>
+                    .solution_bottom
+                </div>
+                <div class="children">
+                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">손끝으로</span></div>
+                    <div class="block">
+                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_row</div>
+                        <div class="children">
+                            <div class="row">
+                                <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .solution_line</div></div>
+                                <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .solution_dot</div></div>
+                                <div class="block"><div class="block-label"><span class="tag tag-element">p</span> .solution_jeonglimsaji <span class="content">도시의</span></div></div>
+                                <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .solution_img_placeholder</div></div>
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_word</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">p</span> <span class="content">정체성</span></div>
+                                        <div class="leaf"><span class="tag tag-element">p</span> <span class="content">을</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">담아내다</span></div>
+                    <div class="leaf"><span class="tag tag-element">div</span> .solution_desc <span class="content">3줄 설명 텍스트</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ SERVICES ═══════════════════ -->
+    <div class="block services">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .services
+        </div>
+        <div class="children">
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_header</div>
+                <div class="children">
+                    <div class="row">
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_logo_wrap</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">img</span> logo_urbanbrand_black.svg</div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_org_name <span class="content">도시 / 브랜드 / 연구소</span></div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-element">p</span> .services_desc</div>
+                            <div class="children"><div class="leaf note">서비스 소개 문구</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaf" style="padding-left:4px"><span class="tag tag-element">div</span> .services_divider</div>
+
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .container .services_cards</div>
+                <div class="children">
+                    <div class="row">
+                        <!-- card 1 -->
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_card</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_icon</div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_title <span class="content">LOGO DESIGN</span></div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_body</div>
+                            </div>
+                        </div>
+                        <!-- plus -->
+                        <div class="block" style="flex:0 0 40px">
+                            <div class="block-label" style="justify-content:center"><span class="tag tag-element">div</span> +</div>
+                        </div>
+                        <!-- card 2 -->
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_card</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_icon</div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_title <span class="content">FONT DESIGN</span></div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_body</div>
+                            </div>
+                        </div>
+                        <!-- plus -->
+                        <div class="block" style="flex:0 0 40px">
+                            <div class="block-label" style="justify-content:center"><span class="tag tag-element">div</span> +</div>
+                        </div>
+                        <!-- card 3 -->
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_card</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_icon</div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_title <span class="content">CONSULTING</span></div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .services_card_body</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ PORTFOLIO ═══════════════════ -->
+    <div class="block portfolio">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .portfolio
+        </div>
+        <div class="children">
+            <!-- header -->
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_header</div>
+                <div class="children">
+                    <div class="leaf"><span class="tag tag-element">img</span> portfolio_icon</div>
+                    <div class="leaf"><span class="tag tag-element">p</span> .portfolio_sub</div>
+                    <div class="leaf"><span class="tag tag-element">h2</span> .portfolio_title <span class="content">PROJECTS</span></div>
+                </div>
+            </div>
+
+            <!-- carousel -->
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .carousel</div>
+                <div class="children">
+                    <div class="row">
+                        <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .carousel_bg</div></div>
+                        <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .carousel_slide_img</div></div>
+                        <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .carousel_arrow --prev / --next</div></div>
+                    </div>
+                    <div class="block">
+                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .carousel_info</div>
+                        <div class="children">
+                            <div class="row">
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .carousel_text</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">div</span> .carousel_title_wrap <span class="content">도시명 + 유형</span></div>
+                                        <div class="leaf"><span class="tag tag-element">p</span> .carousel_desc</div>
+                                    </div>
+                                </div>
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .carousel_controls</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">div</span> .carousel_progress (bar + 9× dots)</div>
+                                        <div class="leaf"><span class="tag tag-element">button</span> .carousel_pause</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- typo row -->
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_typo_row</div>
+                <div class="children">
+                    <div class="leaf"><span class="tag tag-element">p × 4</span> <span class="content">타이포 슬로건 행</span></div>
+                </div>
+            </div>
+
+            <!-- grid ×2 -->
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .container .portfolio_grid (×2행)</div>
+                <div class="children">
+                    <div class="row">
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_card</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_img</div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_info</div>
+                                <div class="leaf"><span class="tag tag-element">p</span> .portfolio_card_desc</div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_card</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_img</div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_info</div>
+                                <div class="leaf"><span class="tag tag-element">p</span> .portfolio_card_desc</div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_card</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_img</div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_info</div>
+                                <div class="leaf"><span class="tag tag-element">p</span> .portfolio_card_desc</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="note" style="margin-top:4px">↑ 동일한 3-card 행이 2번 반복</p>
+                </div>
+            </div>
+
+            <div class="leaf" style="padding-left:4px"><span class="tag tag-element">div</span> .portfolio_more_wrap → button .btn_outline</div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ FONT_TRY ═══════════════════ -->
+    <div class="block font-try">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .font_try
+        </div>
+        <div class="children">
+            <div class="row">
+                <!-- left -->
+                <div class="block">
+                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_left</div>
+                    <div class="children">
+                        <div class="leaf"><span class="tag tag-element">p</span> .font_try_yeongwol <span class="content">영월체 소개 문단</span></div>
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_size_indicator</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">p</span> 16px 표시 / dot / line</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- right -->
+                <div class="block">
+                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_right</div>
+                    <div class="children">
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_right_top</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">p</span> .font_try_title</div>
+                                <div class="leaf"><span class="tag tag-element">p</span> .font_try_sub</div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_selector</div>
+                            <div class="children">
+                                <div class="row">
+                                    <div class="block"><div class="block-label"><span class="tag tag-element">button</span> .font_try_arrow ←</div></div>
+                                    <div class="block">
+                                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_tabs</div>
+                                        <div class="children">
+                                            <div class="leaf"><span class="tag tag-element">button × 4</span> <span class="content">영월체 / 감홍사과체 / 정림사지체 / 마포나루체</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="block"><div class="block-label"><span class="tag tag-element">button</span> .font_try_arrow →</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_textarea_wrap</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">textarea</span> .font_try_textarea</div>
+                                <div class="leaf"><span class="tag tag-element">p</span> .font_try_counter <span class="content">(0/100)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ CEO ═══════════════════ -->
+    <div class="block ceo">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .ceo
+        </div>
+        <div class="children">
+            <div class="row">
+                <div class="block">
+                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .ceo_left</div>
+                    <div class="children">
+                        <div class="leaf"><span class="tag tag-element">p</span> .ceo_label <span class="content">도시브랜드연구소를 말하다</span></div>
+                        <div class="leaf"><span class="tag tag-element">h2</span> .ceo_quote</div>
+                        <div class="leaf"><span class="tag tag-element">div</span> .ceo_desc <span class="content">4줄 소개</span></div>
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .ceo_signature_wrap</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">p</span> Founder &amp; CEO.</div>
+                                <div class="leaf"><span class="tag tag-element">img</span> img_ceo_signature.svg</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .ceo_right</div>
+                    <div class="children">
+                        <div class="leaf"><span class="tag tag-element">div</span> .ceo_photo_placeholder</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ ARTICLE_SHORTCUT ═══════════════════ -->
+    <div class="block article-sc">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .article_shortcut
+        </div>
+        <div class="children">
+            <div class="leaf"><span class="tag tag-element">p</span> .article_shortcut_label <span class="content">ARTICLE</span></div>
+            <div class="leaf"><span class="tag tag-element">h2</span> .article_shortcut_title</div>
+            <div class="leaf"><span class="tag tag-element">p</span> .article_shortcut_desc</div>
+            <div class="leaf"><span class="tag tag-element">a</span> .btn_outline_white <span class="content">ARTICLE 바로 가기</span></div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ HISTORY ═══════════════════ -->
+    <div class="block history">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .history
+        </div>
+        <div class="children">
+            <div class="leaf"><span class="tag tag-element">div</span> .history_fade_top</div>
+
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .history_content</div>
+                <div class="children">
+                    <div class="row">
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .history_scroll_col (좌)</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">p × 30</span> <span class="content">연도별 프로젝트 목록</span></div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .history_center</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">div</span> .history_popup <span class="content">105+ 프로젝트 팝업</span></div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .history_photo_wrap → img_history_01.png</div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .history_scroll_col --right (우)</div>
+                            <div class="children">
+                                <div class="leaf"><span class="tag tag-element">p × 29</span> <span class="content">연도별 프로젝트 목록</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaf"><span class="tag tag-element">div</span> .history_stat <span class="content">105+ Projects</span></div>
+            <div class="leaf"><span class="tag tag-element">div</span> .history_fade_bottom</div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ CONTACT ═══════════════════ -->
+    <div class="block contact">
+        <div class="block-label">
+            <span class="tag tag-section">&lt;section&gt;</span>
+            .contact
+        </div>
+        <div class="children">
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .container .contact_inner</div>
+                <div class="children">
+                    <div class="leaf"><span class="tag tag-element">p</span> .contact_sub <span class="content">11년의 노하우가 있는</span></div>
+                    <div class="block">
+                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .contact_bottom</div>
+                        <div class="children">
+                            <div class="row">
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .contact_title</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">p × 2</span> <span class="content">도시브랜드 연구소와 / 지금 함께하세요!</span></div>
+                                    </div>
+                                </div>
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .contact_arrows</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">img × 3</span> <span class="content">icon_contact_arrow_down.svg</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <div class="block footer">
+        <div class="block-label">
+            <span class="tag tag-footer">&lt;footer&gt;</span>
+            .footer
+        </div>
+        <div class="children">
+            <div class="leaf"><span class="tag tag-element">div</span> .footer_divider</div>
+
+            <div class="block">
+                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .container .footer_inner</div>
+                <div class="children">
+                    <div class="row">
+                        <!-- left -->
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .footer_left</div>
+                            <div class="children">
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .footer_brand</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">img</span> logo_urbanbrand_black.svg</div>
+                                        <div class="leaf"><span class="tag tag-element">div</span> .footer_org_name <span class="content">도시 / 브랜드 / 연구소</span></div>
+                                    </div>
+                                </div>
+                                <div class="leaf"><span class="tag tag-element">div</span> .footer_sns_icons <span class="content">Brunch / Naver / Instagram / Facebook</span></div>
+                                <div class="leaf"><span class="tag tag-element">p</span> .footer_institute</div>
+                                <div class="leaf"><span class="tag tag-element">p</span> .footer_since <span class="content">SINCE 20xx</span></div>
+                            </div>
+                        </div>
+
+                        <!-- cta -->
+                        <div class="block">
+                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .footer_cta</div>
+                            <div class="children">
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .footer_buttons</div>
+                                    <div class="children">
+                                        <div class="row">
+                                            <div class="block"><div class="block-label"><span class="tag tag-element">button</span> .btn_outline <span class="content">CONTACT US</span></div></div>
+                                            <div class="block"><div class="block-label"><span class="tag tag-element">button</span> .btn_filled <span class="content">기업 소개서 다운로드</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block">
+                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .footer_info</div>
+                                    <div class="children">
+                                        <div class="leaf"><span class="tag tag-element">p × 5</span> <span class="content">이메일 / 전화 / 주소 / 회사명 / URL</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- page -->
+</body>
+</html>
