@@ -3,28 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-
-        <!-- CDN - Pretendard -->
+        <!-- CDN -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.min.css">
 
 
-        <!-- Plugin - owl carousel -->
+        <!-- OWLCAROUSEL -->
         <link rel="stylesheet" href="css/owl.carousel.min.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
         <script defer src="js/jquery.min.js"></script>
         <script defer src="js/owl.carousel.js"></script>
+        <script defer src="js/carousel.js"></script>
 
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/responsive.css">
         <link rel="stylesheet" href="css/responsive_index.css">
-
-
-        <!-- JS -->
-        <script defer src="js/carousel.js"></script>
 
 
         <title>도시브랜드연구소</title>
@@ -33,12 +29,15 @@
 
 
     <body>
+        <!-- ========== GNB ========== -->
         <header class="gnb">
             <div class="container gnb_inner">
                 <nav class="gnb_nav gnb_nav_left">
-                    <a href="#">ABOUT</a>
-                    <a href="#">WORK</a>
-                    <a href="#">SERVICE</a>
+                    <ul>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">WORK</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                    </ul>
                 </nav><!-- gnb_nav_left -->
 
 
@@ -48,15 +47,17 @@
 
 
                 <nav class="gnb_nav gnb_nav_right">
-                    <a href="#">ARTICLE</a>
-                    <a href="#">CONTACT</a>
+                    <ul>
+                        <li><a href="#">ARTICLE</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
                 </nav><!-- gnb_nav_right -->
             </div><!-- gnb_inner -->
         </header><!-- gnb -->
 
 
 
-        <!-- HERO -->
+        <!-- ========== HERO ========== -->
         <section class="hero">
             <div class="container hero_inner">
                 <p class="hero_copy">
@@ -66,70 +67,43 @@
                     <span>만들어 갑니다</span>
                 </p>
             </div><!-- hero_inner -->
-        </section><!-- HERO -->
+        </section><!-- hero -->
 
 
 
-        <!-- SOLUTION -->
+        <!-- ========== SOLUTION ========== -->
         <section class="solution">
             <div class="solution_top">
-                <p class="title_xxlarge">로고 하나,</p>
+                <p class="title_xxlarge">
+                    로고 하나,<br>
+                    글자 하나에도<br>
+                    <span class="solution_yeongwol">그 도시만의 결</span>이<br>
+                    살아 숨쉬도록
+                </p>
 
-
-                <p class="title_xxlarge">글자 하나에도</p>
-
-
-                <div class="solution_row">
-                    <div class="solution_word">
-                        <p class="solution_yeongwol">그 도시만의 결</p>
-                        
-                        <p class="title_xxlarge">이</p>
-                    </div>
-
-                    <div class="solution_line"></div>
-                </div><!-- solution_row -->
-
-
-                <p class="title_xxlarge">살아 숨쉬도록</p>
+                <span class="solution_line"></span>
             </div><!-- solution_top -->
 
 
-            
+
             <div class="solution_bottom">
-                <p class="title_xxlarge">손끝으로</p>
+                <span class="solution_line"></span>
+                <span class="solution_dot"></span>
+
+                <p class="title_xxlarge">
+                    손끝으로<br>
+                    <span class="solution_jeonglimsaji">도시의</span> <span class="solution_img_placeholder"></span> <span class="solution_jeonglimsaji">정체성</span>을<br>
+                    담아내다
+                </p>
 
 
-                <div class="solution_row">
-                    <div class="solution_line"></div>
-
-                    <div class="solution_dot"></div>
-
-                    <p class="solution_jeonglimsaji">도시의</p>
-
-                    <div class="solution_img_placeholder"></div>
-
-                    <div class="solution_word">
-                        <p class="solution_jeonglimsaji">정체성</p>
-
-                        <p class="title_xxlarge">을</p>
-                    </div>
-                </div><!-- solution_row -->
-
-
-                <p class="title_xxlarge">담아내다</p>
-
-
-                <div class="article_large solution_desc">
-                    <p>지역의 이름에는 수백 년의 시간과 수많은 사람들의 기억이 담겨 있습니다.</p>
-                    <p>도시브랜드연구소는 그 보이지 않는 이야기를 꺼내어</p>
-                    <p>눈에 보이는 형태로 빚어냅니다.</p>
-                </div><!-- solution_desc -->
+                <p class="article_large solution_desc">지역의 이름에는 수백 년의 시간과 수많은 사람들의 기억이 담겨 있습니다.<br>도시브랜드연구소는 그 보이지 않는 이야기를 꺼내어<br>눈에 보이는 형태로 빚어냅니다.</p><!-- solution_desc -->
             </div><!-- solution_bottom -->
-        </section><!-- SOLUTION -->
+        </section><!-- solution -->
 
 
 
-        <!-- SERVICES -->
+        <!-- ========== SERVICES ========== -->
         <section class="services">
             <div class="services_header">
                 <div class="services_logo_wrap">
@@ -147,8 +121,8 @@
 
             <div class="services_divider"></div>
 
-            <div class="container services_cards">
-                <div class="services_card">
+            <ul class="container services_cards">
+                <li class="services_card">
                     <div class="services_card_icon">
                         <img src="images/logo_urbanbrand_black.svg" alt="" />
                     </div>
@@ -162,13 +136,9 @@
                         <p class="article_medium_m">도시의 정체성을 시각적으로 구현하다</p>
                         <p class="article_small services_card_detail">도시의 역사와 지형, 사람들의 이야기를<br>한 장의 그림으로 압축합니다.<br>처음 보는 순간부터 그 도시가 떠오르는,<br>오래 기억되는 얼굴을 만듭니다.</p>
                     </div>
-                </div><!-- services_card -->
+                </li><!-- services_card -->
 
-                <div class="services_plus">
-                    <img src="images/icon_plus.svg" alt="+" />
-                </div>
-
-                <div class="services_card">
+                <li class="services_card">
                     <div class="services_card_icon">
                         <img src="images/logo_urbanbrand_black.svg" alt="" />
                     </div>
@@ -182,13 +152,9 @@
                         <p class="article_medium_m">도시의 이야기와 목소리를 담다</p>
                         <p class="article_small services_card_detail">그 도시에서만 들을 수 있는 목소리를<br>발견하고, 그것을 서체로 옮겨 냅니다.<br>지역의 숨결과 온도를 담아, 어디에서 사용해도<br>그 도시의 자부심을 느끼게 합니다.</p>
                     </div>
-                </div><!-- services_card -->
+                </li><!-- services_card -->
 
-                <div class="services_plus">
-                    <img src="images/icon_plus.svg" alt="+" />
-                </div>
-
-                <div class="services_card">
+                <li class="services_card">
                     <div class="services_card_icon">
                         <img src="images/logo_urbanbrand_black.svg" alt="" />
                     </div>
@@ -202,13 +168,13 @@
                         <p class="article_medium_m">도시의 고유한 가치를 극대화하다</p>
                         <p class="article_small services_card_detail">브랜드는 로고 하나로 완성되지 않습니다.<br>도시의 정체성을 발굴하는 연구부터 고유한 매력을<br>최대로 끌어낼 수 있는 전략 수립까지,<br>모든 과정을 함께합니다.</p>
                     </div>
-                </div><!-- services_card -->
-            </div><!-- services_cards -->
-        </section><!-- SERVICES -->
+                </li><!-- services_card -->
+            </ul><!-- services_cards -->
+        </section><!-- services -->
 
 
 
-        <!-- PORTFOLIO -->
+        <!-- ========== PORTFOLIO ========== -->
         <section class="portfolio">
             <div class="portfolio_header">
                 <img src="images/logo_urbanbrand_black.svg" alt="" class="portfolio_icon" />
@@ -260,79 +226,74 @@
                 </div><!-- carousel_info -->
             </div><!-- carousel -->
 
-            <div class="portfolio_typo_row">
-                <p class="title_small">로고 하나, 글자 하나에도</p>
-                <p class="solution_yeongwol portfolio_yeongwol">그 도시만의 결</p>
-                <p class="title_small">이</p>
-                <p class="title_small">살아 숨쉬도록</p>
-            </div><!-- portfolio_typo_row -->
+            <p class="portfolio_typo_row title_small">로고 하나, 글자 하나에도 <span class="solution_yeongwol portfolio_yeongwol">그 도시만의 결</span>이 살아 숨쉬도록</p><!-- portfolio_typo_row -->
 
-            <div class="container portfolio_grid">
-                <div class="portfolio_card">
+            <ul class="container portfolio_grid">
+                <li class="portfolio_card">
                     <div class="portfolio_card_img"></div>
                     <div class="portfolio_card_info">
                         <p class="title_xsmall">토폴라</p>
                         <p class="article_medium_r portfolio_card_type">LOGO DESIGN</p>
                     </div>
                     <p class="article_medium_r portfolio_card_desc">토폴라의 영문 텍스트와 이진법의 심볼을 레이어드 기법을 적용하여 교육의 본질에 대한 정체성을 나타낼 수 있도록 로고 및 키비주얼을 리뉴얼 하였습니다.</p>
-                </div><!-- portfolio_card -->
+                </li><!-- portfolio_card -->
 
-                <div class="portfolio_card">
+                <li class="portfolio_card">
                     <div class="portfolio_card_img"></div>
                     <div class="portfolio_card_info">
                         <p class="title_xsmall">토폴라</p>
                         <p class="article_medium_r portfolio_card_type">LOGO DESIGN</p>
                     </div>
                     <p class="article_medium_r portfolio_card_desc">토폴라의 영문 텍스트와 이진법의 심볼을 레이어드 기법을 적용하여 교육의 본질에 대한 정체성을 나타낼 수 있도록 로고 및 키비주얼을 리뉴얼 하였습니다.</p>
-                </div><!-- portfolio_card -->
+                </li><!-- portfolio_card -->
 
-                <div class="portfolio_card">
+                <li class="portfolio_card">
                     <div class="portfolio_card_img"></div>
                     <div class="portfolio_card_info">
                         <p class="title_xsmall">토폴라</p>
                         <p class="article_medium_r portfolio_card_type">LOGO DESIGN</p>
                     </div>
                     <p class="article_medium_r portfolio_card_desc">토폴라의 영문 텍스트와 이진법의 심볼을 레이어드 기법을 적용하여 교육의 본질에 대한 정체성을 나타낼 수 있도록 로고 및 키비주얼을 리뉴얼 하였습니다.</p>
-                </div><!-- portfolio_card -->
-            </div><!-- portfolio_grid -->
+                </li><!-- portfolio_card -->
+            </ul><!-- portfolio_grid -->
 
-            <div class="container portfolio_grid">
-                <div class="portfolio_card">
+            <ul class="container portfolio_grid">
+                <li class="portfolio_card">
                     <div class="portfolio_card_img"></div>
                     <div class="portfolio_card_info">
                         <p class="title_xsmall">토폴라</p>
                         <p class="article_medium_r portfolio_card_type">LOGO DESIGN</p>
                     </div>
                     <p class="article_medium_r portfolio_card_desc">토폴라의 영문 텍스트와 이진법의 심볼을 레이어드 기법을 적용하여 교육의 본질에 대한 정체성을 나타낼 수 있도록 로고 및 키비주얼을 리뉴얼 하였습니다.</p>
-                </div><!-- portfolio_card -->
+                </li><!-- portfolio_card -->
 
-                <div class="portfolio_card">
+                <li class="portfolio_card">
                     <div class="portfolio_card_img"></div>
                     <div class="portfolio_card_info">
                         <p class="title_xsmall">토폴라</p>
                         <p class="article_medium_r portfolio_card_type">LOGO DESIGN</p>
                     </div>
                     <p class="article_medium_r portfolio_card_desc">토폴라의 영문 텍스트와 이진법의 심볼을 레이어드 기법을 적용하여 교육의 본질에 대한 정체성을 나타낼 수 있도록 로고 및 키비주얼을 리뉴얼 하였습니다.</p>
-                </div><!-- portfolio_card -->
+                </li><!-- portfolio_card -->
 
-                <div class="portfolio_card">
+                <li class="portfolio_card">
                     <div class="portfolio_card_img"></div>
                     <div class="portfolio_card_info">
                         <p class="title_xsmall">토폴라</p>
                         <p class="article_medium_r portfolio_card_type">LOGO DESIGN</p>
                     </div>
                     <p class="article_medium_r portfolio_card_desc">토폴라의 영문 텍스트와 이진법의 심볼을 레이어드 기법을 적용하여 교육의 본질에 대한 정체성을 나타낼 수 있도록 로고 및 키비주얼을 리뉴얼 하였습니다.</p>
-                </div><!-- portfolio_card -->
-            </div><!-- portfolio_grid -->
+                </li><!-- portfolio_card -->
+            </ul><!-- portfolio_grid -->
 
             <div class="portfolio_more_wrap">
                 <button class="btn_outline button_small">프로젝트 더보기</button>
             </div>
-        </section><!-- PORTFOLIO -->
+        </section><!-- portfolio -->
 
 
 
-        <!-- FONT_TRY -->
+        <!-- ========== FONT_TRY ========== -->
         <section class="font_try">
             <div class="font_try_left">
                 <p class="font_try_yeongwol">영월체는<br>영월의 아름다운 자연을 글꼴에<br>담아 제작하였습니다.<br>부드러운 곡선은 동강과 서강,<br>요선암에 흐르는 물길을 닮았고,<br>단단한 직선은 석회암 절벽 선돌처럼<br>우뚝 선 바위를 떠올리게 합니다.</p>
@@ -355,12 +316,12 @@
                         <img src="images/icon_font_prev.svg" alt="이전" />
                     </button>
 
-                    <div class="font_try_tabs">
-                        <button class="font_try_tab font_try_tab--inactive button_small">영월체</button>
-                        <button class="font_try_tab button_small">감홍 사과체</button>
-                        <button class="font_try_tab font_try_tab--inactive button_small">정림사지체</button>
-                        <button class="font_try_tab font_try_tab--inactive button_small">마포나루체</button>
-                    </div><!-- font_try_tabs -->
+                    <ul class="font_try_tabs">
+                        <li><button class="font_try_tab font_try_tab--inactive button_small">영월체</button></li>
+                        <li><button class="font_try_tab button_small">감홍 사과체</button></li>
+                        <li><button class="font_try_tab font_try_tab--inactive button_small">정림사지체</button></li>
+                        <li><button class="font_try_tab font_try_tab--inactive button_small">마포나루체</button></li>
+                    </ul><!-- font_try_tabs -->
 
                     <button class="font_try_arrow">
                         <img src="images/icon_font_next.svg" alt="다음" />
@@ -372,22 +333,17 @@
                     <p class="article_small font_try_counter">(0/100)</p>
                 </div><!-- font_try_textarea_wrap -->
             </div><!-- font_try_right -->
-        </section><!-- FONT_TRY -->
+        </section><!-- font_try -->
 
 
 
-        <!-- CEO -->
+        <!-- ========== CEO ========== -->
         <section class="ceo">
             <div class="ceo_left">
                 <p class="article_medium_m ceo_label">도시브랜드연구소를 말하다</p>
                 <h2 class="title_medium ceo_quote">도시의 고유성을 드러내고<br>지역의 매력을 빛내는 일은<br>저에게 매우 의미있는<br>일입니다</h2>
 
-                <div class="article_large ceo_desc">
-                    <p>도시브랜드연구소는 단순한 디자인을 넘어,</p>
-                    <p>지역 고유의 이야기와 가치를 담아 브랜드를 창조합니다.</p>
-                    <p>이를 통해 브랜드 이미지 강화와 지역 주민과 방문객 모두가</p>
-                    <p>사랑하는 공간을 만들어 갑니다.</p>
-                </div><!-- ceo_desc -->
+                <p class="article_large ceo_desc">도시브랜드연구소는 단순한 디자인을 넘어,<br>지역 고유의 이야기와 가치를 담아 브랜드를 창조합니다.<br>이를 통해 브랜드 이미지 강화와 지역 주민과 방문객 모두가<br>사랑하는 공간을 만들어 갑니다.</p><!-- ceo_desc -->
 
                 <div class="ceo_signature_wrap">
                     <p class="title_xsmall">Founder &amp; CEO.</p>
@@ -398,57 +354,57 @@
             <div class="ceo_right">
                 <div class="ceo_photo_placeholder"></div>
             </div><!-- ceo_right -->
-        </section><!-- CEO -->
+        </section><!-- ceo -->
 
 
 
-        <!-- ARTICLE_SHORTCUT -->
+        <!-- ========== ARTICLE_SHORTCUT ========== -->
         <section class="article_shortcut">
             <p class="article_large article_shortcut_label">ARTICLE</p>
             <h2 class="title_large article_shortcut_title">강병호 디자이너와 도시브랜드연구소의<br>이야기가 궁금하신가요?</h2>
             <p class="article_large article_shortcut_desc">도시브랜드연구소의 다양한 활동들을 글과 영상으로 만나보세요.</p>
             <a href="article.html" class="btn_outline_white button_small">ARTICLE 바로 가기</a>
-        </section><!-- ARTICLE_SHORTCUT -->
+        </section><!-- article_shortcut -->
 
 
 
-        <!-- HISTORY -->
+        <!-- ========== HISTORY ========== -->
         <section class="history">
             <div class="history_fade_top"></div>
 
             <div class="history_content">
-                <div class="history_scroll_col article_small">
-                    <p>경북 문경시 | 문경 브랜드 서체 개발 (2023년)</p>
-                    <p>모자이크컴퍼니 | 모자이크컴퍼니 브랜드 명함, 템플릿 (2023년)</p>
-                    <p>브랜드날다 | 함께일하는재단 함성소리 아카데미 브랜드 (2023년)</p>
-                    <p>오컴스 | 내변산양조장 내변산막걸리 글자 개발 (2023년)</p>
-                    <p>서울 마포구 | 서울 마포구 홍대 브랜드 레드로드 개발 (2023년)</p>
-                    <p>서울 마포구 | 서울 마포구 로고 한글 글자 개발 (2023년)</p>
-                    <p>한국표준협회 | 경북 경주 마을 브랜드 로고 개발 (2023년)</p>
-                    <p>지음 | 충남 부여 브랜드 서체 정착 및 확산 사업 (2023년)</p>
-                    <p>강원 영월군 | 강원 영월 소식지 '살기좋은 영월' 글자 개발 (2023년)</p>
-                    <p>파이플랜즈 | 피아니스트 손열음 공연 제목 글자 개발 (2023년)</p>
-                    <p>SVU | 서울벤처대학원대학교(SVU) 한글, 영문 글자 개발 (2023년)</p>
-                    <p>문경청년연합 | 경북 문경 신현리 마을 브랜드 로고 개발 (2023년)</p>
-                    <p>지음 | 부여군 공동체활성화재단 충남 부여군 브랜드 서체 (2022년)</p>
-                    <p>책공장 | 한국출판문화산업진흥원 서울 금천구 브랜드 서체 (2022년)</p>
-                    <p>브랜드날다 | 오래오랩 패키지 디자인 (2022년)</p>
-                    <p>한국표준협회 | 경북 문경 문경읍 마을 브랜드 (2022년)</p>
-                    <p>한국표준협회 | 경남 창원 진해구 경화동 마을 브랜드 (2022년)</p>
-                    <p>한국표준협회 | 전북 무주 안성면 마을 브랜드 (2022년)</p>
-                    <p>글로벌오픈파트너스 | 환경부 미래비전 인포그래픽 (2022년)</p>
-                    <p>큐스컴 | 한화그룹 우주의 조약돌 레터링 (2022년)</p>
-                    <p>해담영농조합법인 | 경남 통영 해담 브랜드 (2022년)</p>
-                    <p>고자미영농조합법인 | 경남 고성 고자미 브랜드 (2022년)</p>
-                    <p>토바기협동조합법인 | 경남 거제 도랑사구 브랜드 (2022년)</p>
-                    <p>한국표준협회 | 충남 논산 해월마을 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 충남 논산 강경마을 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 전북 무주 연모당 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 경남 창원 회성마을 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 경남 창원 어울림소계 브랜드 (2021년)</p>
-                    <p>한국표준협회 | KT ESG 보고서 표지 및 커버 스토리 디자인 (2021년)</p>
-                    <p>한국표준협회 | 한국공항공사 미디어 소리 브랜드 (2021년)</p>
-                </div><!-- history_scroll_col -->
+                <ul class="history_scroll_col article_small">
+                    <li>경북 문경시 | 문경 브랜드 서체 개발 (2023년)</li>
+                    <li>모자이크컴퍼니 | 모자이크컴퍼니 브랜드 명함, 템플릿 (2023년)</li>
+                    <li>브랜드날다 | 함께일하는재단 함성소리 아카데미 브랜드 (2023년)</li>
+                    <li>오컴스 | 내변산양조장 내변산막걸리 글자 개발 (2023년)</li>
+                    <li>서울 마포구 | 서울 마포구 홍대 브랜드 레드로드 개발 (2023년)</li>
+                    <li>서울 마포구 | 서울 마포구 로고 한글 글자 개발 (2023년)</li>
+                    <li>한국표준협회 | 경북 경주 마을 브랜드 로고 개발 (2023년)</li>
+                    <li>지음 | 충남 부여 브랜드 서체 정착 및 확산 사업 (2023년)</li>
+                    <li>강원 영월군 | 강원 영월 소식지 '살기좋은 영월' 글자 개발 (2023년)</li>
+                    <li>파이플랜즈 | 피아니스트 손열음 공연 제목 글자 개발 (2023년)</li>
+                    <li>SVU | 서울벤처대학원대학교(SVU) 한글, 영문 글자 개발 (2023년)</li>
+                    <li>문경청년연합 | 경북 문경 신현리 마을 브랜드 로고 개발 (2023년)</li>
+                    <li>지음 | 부여군 공동체활성화재단 충남 부여군 브랜드 서체 (2022년)</li>
+                    <li>책공장 | 한국출판문화산업진흥원 서울 금천구 브랜드 서체 (2022년)</li>
+                    <li>브랜드날다 | 오래오랩 패키지 디자인 (2022년)</li>
+                    <li>한국표준협회 | 경북 문경 문경읍 마을 브랜드 (2022년)</li>
+                    <li>한국표준협회 | 경남 창원 진해구 경화동 마을 브랜드 (2022년)</li>
+                    <li>한국표준협회 | 전북 무주 안성면 마을 브랜드 (2022년)</li>
+                    <li>글로벌오픈파트너스 | 환경부 미래비전 인포그래픽 (2022년)</li>
+                    <li>큐스컴 | 한화그룹 우주의 조약돌 레터링 (2022년)</li>
+                    <li>해담영농조합법인 | 경남 통영 해담 브랜드 (2022년)</li>
+                    <li>고자미영농조합법인 | 경남 고성 고자미 브랜드 (2022년)</li>
+                    <li>토바기협동조합법인 | 경남 거제 도랑사구 브랜드 (2022년)</li>
+                    <li>한국표준협회 | 충남 논산 해월마을 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 충남 논산 강경마을 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 전북 무주 연모당 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 경남 창원 회성마을 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 경남 창원 어울림소계 브랜드 (2021년)</li>
+                    <li>한국표준협회 | KT ESG 보고서 표지 및 커버 스토리 디자인 (2021년)</li>
+                    <li>한국표준협회 | 한국공항공사 미디어 소리 브랜드 (2021년)</li>
+                </ul><!-- history_scroll_col -->
 
                 <div class="history_center">
                     <div class="history_popup">
@@ -460,37 +416,37 @@
                     </div>
                 </div><!-- history_center -->
 
-                <div class="history_scroll_col history_scroll_col--right article_small">
-                    <p>고자미영농조합법인 | 경남 고성 고자미 브랜드 (2022년)</p>
-                    <p>토바기협동조합법인 | 경남 거제 도랑사구 브랜드 (2022년)</p>
-                    <p>한국표준협회 | 충남 논산 해월마을 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 충남 논산 강경마을 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 전북 무주 연모당 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 경남 창원 회성마을 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 경남 창원 어울림소계 브랜드 (2021년)</p>
-                    <p>한국표준협회 | KT ESG 보고서 표지 및 커버 스토리 디자인 (2021년)</p>
-                    <p>한국표준협회 | 한국공항공사 미디어 소리 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 전북 군산 도시재생사업 RCin 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 국토교통부 도시재생 전문가양성교육 교재 (2021년)</p>
-                    <p>한국표준협회 | 국토교통부 도시재생뉴딜 기본역량교육 교재 (2021년)</p>
-                    <p>한국표준협회 | 국토교통부 도시재생뉴딜 활동자료집 디자인 (2021년)</p>
-                    <p>한국표준협회 | 전남 강진 도시재생사업 달무릇 마을 브랜드 (2021년)</p>
-                    <p>더웰컴 | 행정안전부 2021 실패박람회 응원날개 캘리그래피 (2021년)</p>
-                    <p>지앤지 | 국토교통부 도시재생사업 영주 남선마을 브랜드 (2021년)</p>
-                    <p>네모디자인 | 굿모닝 영주 관광안내서 (2021년)</p>
-                    <p>주는나무커뮤니티 | 스튜디오 나무 브랜드 (2021년)</p>
-                    <p>보성디자인 | 강원 영월 무릉도원 캘리그래피 (2021년)</p>
-                    <p>청구건축사사무소 | 홍보 브로슈어 디자인 제작 (2021년)</p>
-                    <p>횡성도시재생센터 | 강원 횡성 도시재생사업 청비 드론 브랜드 (2021년)</p>
-                    <p>브랜드날다 | 인천 백령 연화고구마 브랜드 (2021년)</p>
-                    <p>브랜드날다 | 제주 대월상회 브랜드 (2021년)</p>
-                    <p>한국표준협회 | 대한민국 지속가능경영 포럼 브랜드 (2020년)</p>
-                    <p>한국표준협회 | 지속가능도시추진단 브랜드 (2020년)</p>
-                    <p>한국표준협회 | 전북 정읍 도시재생사업 슈퍼푸드 브랜드 (2020년)</p>
-                    <p>한국표준협회 | 전북 정읍 도시재생사업 고향이그리워 브랜드 (2020년)</p>
-                    <p>한국표준협회 | 전북 정읍 도시재생사업 정읍며느리 브랜드 (2020년)</p>
-                    <p>한국표준협회 | 경남 창원 도시재생사업 행복의창 브랜드 (2020년)</p>
-                </div><!-- history_scroll_col -->
+                <ul class="history_scroll_col history_scroll_col--right article_small">
+                    <li>고자미영농조합법인 | 경남 고성 고자미 브랜드 (2022년)</li>
+                    <li>토바기협동조합법인 | 경남 거제 도랑사구 브랜드 (2022년)</li>
+                    <li>한국표준협회 | 충남 논산 해월마을 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 충남 논산 강경마을 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 전북 무주 연모당 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 경남 창원 회성마을 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 경남 창원 어울림소계 브랜드 (2021년)</li>
+                    <li>한국표준협회 | KT ESG 보고서 표지 및 커버 스토리 디자인 (2021년)</li>
+                    <li>한국표준협회 | 한국공항공사 미디어 소리 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 전북 군산 도시재생사업 RCin 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 국토교통부 도시재생 전문가양성교육 교재 (2021년)</li>
+                    <li>한국표준협회 | 국토교통부 도시재생뉴딜 기본역량교육 교재 (2021년)</li>
+                    <li>한국표준협회 | 국토교통부 도시재생뉴딜 활동자료집 디자인 (2021년)</li>
+                    <li>한국표준협회 | 전남 강진 도시재생사업 달무릇 마을 브랜드 (2021년)</li>
+                    <li>더웰컴 | 행정안전부 2021 실패박람회 응원날개 캘리그래피 (2021년)</li>
+                    <li>지앤지 | 국토교통부 도시재생사업 영주 남선마을 브랜드 (2021년)</li>
+                    <li>네모디자인 | 굿모닝 영주 관광안내서 (2021년)</li>
+                    <li>주는나무커뮤니티 | 스튜디오 나무 브랜드 (2021년)</li>
+                    <li>보성디자인 | 강원 영월 무릉도원 캘리그래피 (2021년)</li>
+                    <li>청구건축사사무소 | 홍보 브로슈어 디자인 제작 (2021년)</li>
+                    <li>횡성도시재생센터 | 강원 횡성 도시재생사업 청비 드론 브랜드 (2021년)</li>
+                    <li>브랜드날다 | 인천 백령 연화고구마 브랜드 (2021년)</li>
+                    <li>브랜드날다 | 제주 대월상회 브랜드 (2021년)</li>
+                    <li>한국표준협회 | 대한민국 지속가능경영 포럼 브랜드 (2020년)</li>
+                    <li>한국표준협회 | 지속가능도시추진단 브랜드 (2020년)</li>
+                    <li>한국표준협회 | 전북 정읍 도시재생사업 슈퍼푸드 브랜드 (2020년)</li>
+                    <li>한국표준협회 | 전북 정읍 도시재생사업 고향이그리워 브랜드 (2020년)</li>
+                    <li>한국표준협회 | 전북 정읍 도시재생사업 정읍며느리 브랜드 (2020년)</li>
+                    <li>한국표준협회 | 경남 창원 도시재생사업 행복의창 브랜드 (2020년)</li>
+                </ul><!-- history_scroll_col -->
             </div><!-- history_content -->
 
             <div class="history_stat">
@@ -499,11 +455,11 @@
             </div><!-- history_stat -->
 
             <div class="history_fade_bottom"></div>
-        </section><!-- HISTORY -->
+        </section><!-- history -->
 
 
 
-        <!-- CONTACT -->
+        <!-- ========== CONTACT ========== -->
         <section class="contact">
             <div class="container contact_inner">
                 <p class="article_medium_m contact_sub">11년의 노하우가 있는</p>
@@ -521,11 +477,11 @@
                     </div><!-- contact_arrows -->
                 </div><!-- contact_bottom -->
             </div><!-- contact_inner -->
-        </section><!-- CONTACT -->
+        </section><!-- contact -->
 
 
 
-        <!-- FOOTER -->
+        <!-- ========== FOOTER ========== -->
         <footer class="footer">
             <div class="footer_divider"></div>
 
@@ -541,12 +497,12 @@
                         </div>
                     </div><!-- footer_brand -->
 
-                    <div class="footer_sns_icons">
-                        <img src="images/logo_sns_brunch.svg" alt="Brunch" />
-                        <img src="images/logo_sns_naver.svg" alt="Naver" />
-                        <img src="images/logo_sns_instagram.svg" alt="Instagram" />
-                        <img src="images/logo_sns_facebook.svg" alt="Facebook" />
-                    </div><!-- footer_sns_icons -->
+                    <ul class="footer_sns_icons">
+                        <li><img src="images/logo_sns_brunch.svg" alt="Brunch" /></li>
+                        <li><img src="images/logo_sns_naver.svg" alt="Naver" /></li>
+                        <li><img src="images/logo_sns_instagram.svg" alt="Instagram" /></li>
+                        <li><img src="images/logo_sns_facebook.svg" alt="Facebook" /></li>
+                    </ul><!-- footer_sns_icons -->
 
                     <p class="article_medium_m footer_institute">THE URBAN BRAND RESEARCH INSTITUTE</p>
                     <p class="article_xsmall footer_since">SINCE 20xx</p>
@@ -558,15 +514,15 @@
                         <button class="btn_filled button_large">기업 소개서 다운로드</button>
                     </div><!-- footer_buttons -->
 
-                    <div class="footer_info article_xsmall">
-                        <p>ho@urbanbrand.co.kr</p>
-                        <p>010-6791-0150</p>
-                        <p>03995 서울시 마포구 양화로 161, 케이스퀘어 813호</p>
-                        <p>주식회사 도시브랜드연구소</p>
-                        <p>www.urbanbrand.co.kr</p>
-                    </div><!-- footer_info -->
+                    <ul class="footer_info article_xsmall">
+                        <li>ho@urbanbrand.co.kr</li>
+                        <li>010-6791-0150</li>
+                        <li>03995 서울시 마포구 양화로 161, 케이스퀘어 813호</li>
+                        <li>주식회사 도시브랜드연구소</li>
+                        <li>www.urbanbrand.co.kr</li>
+                    </ul><!-- footer_info -->
                 </div><!-- footer_cta -->
             </div><!-- footer_inner -->
-        </footer><!-- FOOTER -->
+        </footer><!-- footer -->
     </body>
 </html>

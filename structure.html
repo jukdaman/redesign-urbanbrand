@@ -159,7 +159,7 @@
                                 .gnb_nav .gnb_nav_left
                             </div>
                             <div class="children">
-                                <div class="leaf"><span class="tag tag-element">a</span> ABOUT / WORK / SERVICE</div>
+                                <div class="leaf"><span class="tag tag-element">ul</span> li &gt; a <span class="content">ABOUT / WORK / SERVICE</span></div>
                             </div>
                         </div>
 
@@ -179,7 +179,7 @@
                                 .gnb_nav .gnb_nav_right
                             </div>
                             <div class="children">
-                                <div class="leaf"><span class="tag tag-element">a</span> ARTICLE / CONTACT</div>
+                                <div class="leaf"><span class="tag tag-element">ul</span> li &gt; a <span class="content">ARTICLE / CONTACT</span></div>
                             </div>
                         </div>
                     </div>
@@ -228,25 +228,8 @@
                     .solution_top
                 </div>
                 <div class="children">
-                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">× 2줄 텍스트</span></div>
-                    <div class="block">
-                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_row</div>
-                        <div class="children">
-                            <div class="row">
-                                <div class="block">
-                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_word</div>
-                                    <div class="children">
-                                        <div class="leaf"><span class="tag tag-element">p</span> .solution_yeongwol <span class="content">그 도시만의 결</span></div>
-                                        <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">이</span></div>
-                                    </div>
-                                </div>
-                                <div class="block">
-                                    <div class="block-label"><span class="tag tag-element">div</span> .solution_line</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">살아 숨쉬도록</span></div>
+                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">br 줄바꿈 + solution_yeongwol</span></div>
+                    <div class="leaf"><span class="tag tag-element">span</span> .solution_line</div>
                 </div>
             </div>
 
@@ -256,27 +239,10 @@
                     .solution_bottom
                 </div>
                 <div class="children">
-                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">손끝으로</span></div>
-                    <div class="block">
-                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_row</div>
-                        <div class="children">
-                            <div class="row">
-                                <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .solution_line</div></div>
-                                <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .solution_dot</div></div>
-                                <div class="block"><div class="block-label"><span class="tag tag-element">p</span> .solution_jeonglimsaji <span class="content">도시의</span></div></div>
-                                <div class="block"><div class="block-label"><span class="tag tag-element">div</span> .solution_img_placeholder</div></div>
-                                <div class="block">
-                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .solution_word</div>
-                                    <div class="children">
-                                        <div class="leaf"><span class="tag tag-element">p</span> <span class="content">정체성</span></div>
-                                        <div class="leaf"><span class="tag tag-element">p</span> <span class="content">을</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">담아내다</span></div>
-                    <div class="leaf"><span class="tag tag-element">div</span> .solution_desc <span class="content">3줄 설명 텍스트</span></div>
+                    <div class="leaf"><span class="tag tag-element">span</span> .solution_line</div>
+                    <div class="leaf"><span class="tag tag-element">span</span> .solution_dot</div>
+                    <div class="leaf"><span class="tag tag-element">p</span> .title_xxlarge <span class="content">br 줄바꿈 + solution_jeonglimsaji</span></div>
+                    <div class="leaf"><span class="tag tag-element">p</span> .solution_desc <span class="content">br 줄바꿈 설명 텍스트</span></div>
                 </div>
             </div>
         </div>
@@ -313,38 +279,30 @@
             <div class="leaf" style="padding-left:4px"><span class="tag tag-element">div</span> .services_divider</div>
 
             <div class="block">
-                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .container .services_cards</div>
+                <div class="block-label"><span class="tag tag-element">&lt;ul&gt;</span> .container .services_cards</div>
                 <div class="children">
                     <div class="row">
                         <!-- card 1 -->
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_card</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;li&gt;</span> .services_card</div>
                             <div class="children">
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_icon</div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_title <span class="content">LOGO DESIGN</span></div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_body</div>
                             </div>
                         </div>
-                        <!-- plus -->
-                        <div class="block" style="flex:0 0 40px">
-                            <div class="block-label" style="justify-content:center"><span class="tag tag-element">div</span> +</div>
-                        </div>
                         <!-- card 2 -->
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_card</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;li&gt;</span> .services_card</div>
                             <div class="children">
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_icon</div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_title <span class="content">FONT DESIGN</span></div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_body</div>
                             </div>
                         </div>
-                        <!-- plus -->
-                        <div class="block" style="flex:0 0 40px">
-                            <div class="block-label" style="justify-content:center"><span class="tag tag-element">div</span> +</div>
-                        </div>
                         <!-- card 3 -->
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .services_card</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;li&gt;</span> .services_card</div>
                             <div class="children">
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_icon</div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .services_card_title <span class="content">CONSULTING</span></div>
@@ -411,19 +369,19 @@
 
             <!-- typo row -->
             <div class="block">
-                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_typo_row</div>
+                <div class="block-label"><span class="tag tag-element">&lt;p&gt;</span> .portfolio_typo_row</div>
                 <div class="children">
-                    <div class="leaf"><span class="tag tag-element">p × 4</span> <span class="content">타이포 슬로건 행</span></div>
+                    <div class="leaf"><span class="tag tag-element">text + span</span> <span class="content">타이포 슬로건 행</span></div>
                 </div>
             </div>
 
             <!-- grid ×2 -->
             <div class="block">
-                <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .container .portfolio_grid (×2행)</div>
+                <div class="block-label"><span class="tag tag-element">&lt;ul&gt;</span> .container .portfolio_grid (×2행)</div>
                 <div class="children">
                     <div class="row">
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_card</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;li&gt;</span> .portfolio_card</div>
                             <div class="children">
                                 <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_img</div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_info</div>
@@ -431,7 +389,7 @@
                             </div>
                         </div>
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_card</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;li&gt;</span> .portfolio_card</div>
                             <div class="children">
                                 <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_img</div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_info</div>
@@ -439,7 +397,7 @@
                             </div>
                         </div>
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .portfolio_card</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;li&gt;</span> .portfolio_card</div>
                             <div class="children">
                                 <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_img</div>
                                 <div class="leaf"><span class="tag tag-element">div</span> .portfolio_card_info</div>
@@ -496,9 +454,9 @@
                                 <div class="row">
                                     <div class="block"><div class="block-label"><span class="tag tag-element">button</span> .font_try_arrow ←</div></div>
                                     <div class="block">
-                                        <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .font_try_tabs</div>
+                                        <div class="block-label"><span class="tag tag-element">&lt;ul&gt;</span> .font_try_tabs</div>
                                         <div class="children">
-                                            <div class="leaf"><span class="tag tag-element">button × 4</span> <span class="content">영월체 / 감홍사과체 / 정림사지체 / 마포나루체</span></div>
+                                            <div class="leaf"><span class="tag tag-element">li &gt; button × 4</span> <span class="content">영월체 / 감홍사과체 / 정림사지체 / 마포나루체</span></div>
                                         </div>
                                     </div>
                                     <div class="block"><div class="block-label"><span class="tag tag-element">button</span> .font_try_arrow →</div></div>
@@ -533,7 +491,7 @@
                     <div class="children">
                         <div class="leaf"><span class="tag tag-element">p</span> .ceo_label <span class="content">도시브랜드연구소를 말하다</span></div>
                         <div class="leaf"><span class="tag tag-element">h2</span> .ceo_quote</div>
-                        <div class="leaf"><span class="tag tag-element">div</span> .ceo_desc <span class="content">4줄 소개</span></div>
+                        <div class="leaf"><span class="tag tag-element">p</span> .ceo_desc <span class="content">br 줄바꿈 4줄 소개</span></div>
                         <div class="block">
                             <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .ceo_signature_wrap</div>
                             <div class="children">
@@ -585,9 +543,9 @@
                 <div class="children">
                     <div class="row">
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .history_scroll_col (좌)</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;ul&gt;</span> .history_scroll_col (좌)</div>
                             <div class="children">
-                                <div class="leaf"><span class="tag tag-element">p × 30</span> <span class="content">연도별 프로젝트 목록</span></div>
+                                <div class="leaf"><span class="tag tag-element">li × 30</span> <span class="content">연도별 프로젝트 목록</span></div>
                             </div>
                         </div>
 
@@ -600,9 +558,9 @@
                         </div>
 
                         <div class="block">
-                            <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .history_scroll_col --right (우)</div>
+                            <div class="block-label"><span class="tag tag-element">&lt;ul&gt;</span> .history_scroll_col --right (우)</div>
                             <div class="children">
-                                <div class="leaf"><span class="tag tag-element">p × 29</span> <span class="content">연도별 프로젝트 목록</span></div>
+                                <div class="leaf"><span class="tag tag-element">li × 29</span> <span class="content">연도별 프로젝트 목록</span></div>
                             </div>
                         </div>
                     </div>
@@ -677,7 +635,7 @@
                                         <div class="leaf"><span class="tag tag-element">div</span> .footer_org_name <span class="content">도시 / 브랜드 / 연구소</span></div>
                                     </div>
                                 </div>
-                                <div class="leaf"><span class="tag tag-element">div</span> .footer_sns_icons <span class="content">Brunch / Naver / Instagram / Facebook</span></div>
+                                <div class="leaf"><span class="tag tag-element">ul</span> .footer_sns_icons &gt; li <span class="content">Brunch / Naver / Instagram / Facebook</span></div>
                                 <div class="leaf"><span class="tag tag-element">p</span> .footer_institute</div>
                                 <div class="leaf"><span class="tag tag-element">p</span> .footer_since <span class="content">SINCE 20xx</span></div>
                             </div>
@@ -697,9 +655,9 @@
                                     </div>
                                 </div>
                                 <div class="block">
-                                    <div class="block-label"><span class="tag tag-div">&lt;div&gt;</span> .footer_info</div>
+                                    <div class="block-label"><span class="tag tag-element">&lt;ul&gt;</span> .footer_info</div>
                                     <div class="children">
-                                        <div class="leaf"><span class="tag tag-element">p × 5</span> <span class="content">이메일 / 전화 / 주소 / 회사명 / URL</span></div>
+                                        <div class="leaf"><span class="tag tag-element">li × 5</span> <span class="content">이메일 / 전화 / 주소 / 회사명 / URL</span></div>
                                     </div>
                                 </div>
                             </div>

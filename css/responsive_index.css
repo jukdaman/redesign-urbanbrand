@@ -1,30 +1,25 @@
-/* 1920px 초과 뷰포트에서 절대좌표/분할 섹션의 위치 보정 */
-/* (.container를 도입할 수 없는 섹션에만 한시적으로 적용) */
+/* index.html의 반응형 css(Media Queries 등)는 이 문서(responsive_index)에 입력. 공통 반응형 css는 responsive.css에 입력. */
 @media (min-width: 1921px) {
-    /* SOLUTION — line은 viewport 끝까지 bleed되어야 하므로 container 미사용 */
+    /* solution */
     .solution_top {
         padding-left: calc((100vw - 1920px) / 2 + 140px);
     }
-    .solution_bottom > p,
-    .solution_bottom > .solution_desc {
-        margin-right: calc((100vw - 1920px) / 2 + 140px);
-    }
-    .solution_bottom > .solution_row {
+    .solution_bottom {
         padding-right: calc((100vw - 1920px) / 2 + 140px);
     }
 
-    /* PORTFOLIO carousel — 화살표 (절대좌표) */
+    /* carousel */
     .carousel_arrow--prev { left:  calc((100vw - 1920px) / 2 + 140px); }
     .carousel_arrow--next { right: calc((100vw - 1920px) / 2 + 140px); }
 
-    /* FONT TRY — 50/50 분할, 좌우 80px padding */
+    /* font_try */
     .font_try_left  { padding-left:  calc((100vw - 1920px) / 2 + 80px); }
     .font_try_right { padding-right: calc((100vw - 1920px) / 2 + 80px); }
 
-    /* CEO — 50/50 분할, 좌측 140px padding */
+    /* ceo */
     .ceo_left { padding-left: calc((100vw - 1920px) / 2 + 140px); }
 
-    /* HISTORY — 절대좌표 요소 */
+    /* history */
     .history_scroll_col        { left: calc((100vw - 1920px) / 2 + 260px); }
     .history_scroll_col--right { left: calc((100vw - 1920px) / 2 + 986px); }
     .history_center            { left: calc((100vw - 1920px) / 2 + 690px); }

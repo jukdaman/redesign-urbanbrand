@@ -19,7 +19,7 @@
 
 
 
-/* LAYOUT */
+/* BOX */
 .container {
     max-width: 1920px;
     margin: 0 auto;
@@ -43,7 +43,7 @@
     height: 100%;
 }
 
-.gnb_nav {
+.gnb_nav ul {
     display: flex; gap: 86px;
     font-family: "Pretendard", sans-serif; font-weight: 500; font-size: 18px; letter-spacing: -0.25px;
     color: #fff;
