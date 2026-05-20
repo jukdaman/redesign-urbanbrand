@@ -1,21 +1,50 @@
+/* @FONT-FACE */
+@font-face {
+    font-family: 'Yeongwol';
+    src: url('../fonts/YeongwolTTF.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Jeonglimsaji';
+    src: url('../fonts/Jeongnimsaji-B.ttf') format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Jeonglimsaji';
+    src: url('../fonts/Jeongnimsaji-M.ttf') format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Jeonglimsaji';
+    src: url('../fonts/Jeongnimsaji-L.ttf') format('truetype');
+    font-weight: 300;
+}
+
+
+
 /* FONT */
-.title_xxlarge {font-family: "Pretendard", sans-serif; font-weight: 500; font-size: 130px; line-height: 116%;}
-.title_xlarge  {font-family: "Pretendard", sans-serif; font-weight: 700; font-size: 84px;  line-height: 120%;}
-.title_large   {font-family: "Pretendard", sans-serif; font-weight: 600; font-size: 72px;  line-height: 130%;}
-.title_medium  {font-family: "Pretendard", sans-serif; font-weight: 600; font-size: 56px;  line-height: 140%;}
-.title_small   {font-family: "Pretendard", sans-serif; font-weight: 600; font-size: 34px;  line-height: 116%;}
-.title_xsmall  {font-family: "Pretendard", sans-serif; font-weight: 500; font-size: 26px;  line-height: 160%;}
-.title_xxsmall {font-family: "Pretendard", sans-serif; font-weight: 700; font-size: 20px;  line-height: 140%;}
+.title_xxlarge {font-weight: 500; font-size: 130px; line-height: 116%; letter-spacing: -0.6px;}
+.title_xlarge  {font-weight: 700; font-size: 84px;  line-height: 120%;}
+.title_large   {font-weight: 600; font-size: 72px;  line-height: 130%; letter-spacing: -3px;}
+.title_medium  {font-weight: 600; font-size: 56px;  line-height: 140%; letter-spacing: -3px;}
+.title_small   {font-weight: 600; font-size: 34px;  line-height: 116%; letter-spacing: -0.5px;}
+.title_xsmall  {font-weight: 500; font-size: 26px;  line-height: 160%;}
+.title_xxsmall {font-weight: 700; font-size: 20px;  line-height: 140%; letter-spacing: -0.5px;}
 
-.article_xlarge   {font-family: "Pretendard", sans-serif; font-weight: 300; font-size: 28px; line-height: 160%;}
-.article_large    {font-family: "Pretendard", sans-serif; font-weight: 300; font-size: 20px; line-height: 160%;}
-.article_medium_m {font-family: "Pretendard", sans-serif; font-weight: 500; font-size: 18px; line-height: 160%;}
-.article_medium_r {font-family: "Pretendard", sans-serif; font-weight: 400; font-size: 18px; line-height: 160%;}
-.article_small    {font-family: "Pretendard", sans-serif; font-weight: 300; font-size: 16px; line-height: 160%;}
-.article_xsmall   {font-family: "Pretendard", sans-serif; font-weight: 500; font-size: 14px; line-height: 160%;}
+.article_xlarge   {font-weight: 300; font-size: 28px; line-height: 160%; letter-spacing: -0.7px;}
+.article_large    {font-weight: 300; font-size: 20px; line-height: 160%;}
+.article_medium_m {font-weight: 500; font-size: 18px; line-height: 160%; letter-spacing: -0.5px;}
+.article_medium_r {font-weight: 400; font-size: 18px; line-height: 160%; letter-spacing: -0.5px;}
+.article_small    {font-weight: 300; font-size: 16px; line-height: 160%; letter-spacing: -0.5px;}
+.article_xsmall   {font-weight: 500; font-size: 14px; line-height: 160%;}
 
-.button_large {font-family: "Pretendard", sans-serif; font-weight: 700; font-size: 24px; line-height: 160%;}
-.button_small {font-family: "Pretendard", sans-serif; font-weight: 400; font-size: 24px; line-height: 160%;}
+/* button */
+.button_large {font-weight: 700; font-size: 24px; line-height: 160%;}
+.button_small {font-weight: 400; font-size: 24px; line-height: 160%;}
+
+/* rich text */
+.rich_yeongwol    {font-family: 'Yeongwol', serif;}
+.rich_jeonglimsaji {font-family: 'Jeonglimsaji', serif;}
 
 
 
@@ -32,34 +61,39 @@
 .gnb {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
     height: 90px;
+    padding: 0 140px;
     background: rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    transition: background .3s, border-color .3s;
 }
-
-.gnb_inner {
-    position: relative;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 100%;
+.gnb.is-solid {
+    background: #fff;
+    border-bottom-color: #ddd;
 }
 
 .gnb_nav ul {
     display: flex; gap: 86px;
-    font-family: "Pretendard", sans-serif; font-weight: 500; font-size: 18px; letter-spacing: -0.25px;
+    font-weight: 500; font-size: 18px; letter-spacing: -0.25px;
     color: #fff;
 }
-.gnb_nav a {color: #fff;}
+.gnb_nav a {color: #fff; opacity: 0.7; transition: opacity .3s, color .3s;}
+.gnb_nav a:hover {opacity: 1;}
+.gnb.is-solid .gnb_nav a {color: #000;}
+.gnb.is-solid .gnb_nav ul {color: #000;}
 
-.gnb_logo {
+/* SVG logo base — color drives fill via currentColor */
+.logo_urbanbrand { display: inline-block; width: 100%; height: 100%; }
+
+.gnb > a {
     position: absolute; left: 50%; top: 21px; transform: translateX(-50%);
     width: 48px; height: 48px;
 }
-
-/* SVG logo base — color drives fill via currentColor */
-.logo { display: inline-block; width: 100%; height: 100%; }
-
-.gnb_logo .logo { color: #fff; transition: color .2s; }
-.gnb_logo:hover .logo { color: #ddd; }
+.gnb_logo { color: #fff; transition: color .3s; }
+.gnb.is-solid .gnb_logo { color: #000; }
+.gnb > a { opacity: 0.7; transition: opacity .3s; }
+.gnb > a:hover { opacity: 1; }
 
 
 

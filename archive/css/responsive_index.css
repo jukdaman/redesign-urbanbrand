@@ -1,0 +1,27 @@
+/* index.html의 반응형 css(Media Queries 등)는 이 문서(responsive_index)에 입력. 공통 반응형 css는 responsive.css에 입력. */
+@media (min-width: 1921px) {
+    /* solution */
+    .solution_top {
+        padding-left: calc((100vw - 1920px) / 2 + 140px);
+    }
+    .solution_bottom {
+        padding-right: calc((100vw - 1920px) / 2 + 140px);
+    }
+
+    /* carousel */
+    .carousel_arrow--prev { left:  calc((100vw - 1920px) / 2 + 140px); }
+    .carousel_arrow--next { right: calc((100vw - 1920px) / 2 + 140px); }
+
+    /* font_try */
+    .font_try_left  { padding-left:  calc((100vw - 1920px) / 2 + 80px); }
+    .font_try_right { padding-right: calc((100vw - 1920px) / 2 + 80px); }
+
+    /* ceo */
+    .ceo_left { padding-left: calc((100vw - 1920px) / 2 + 140px); }
+
+    /* history */
+    .history_scroll_col        { left: calc((100vw - 1920px) / 2 + 260px); }
+    .history_scroll_col--right { left: calc((100vw - 1920px) / 2 + 986px); }
+    .history_center            { left: calc((100vw - 1920px) / 2 + 690px); }
+    .history_stat              { left: calc((100vw - 1920px) / 2 + 257px); }
+}
