@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>logo animation test</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .logo_anim_wrap {
+            width: 120px;
+            height: 120px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo_anim_wrap">
+        <svg class="logo_urbanbrand logo_anim" viewBox="0 0 240 240" overflow="visible"
+             role="img" aria-label="도시브랜드연구소 로고">
+            <g class="logo_face face_a" stroke-linecap="round" stroke-miterlimit="1.5">
+                <path class="logo_stroke"
+                      d="M80,0 L160,0 L160,80 L80,160 L0,160 L0,80 Z"
+                      fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+            </g>
+            <g class="logo_face face_b" stroke-linecap="round" stroke-miterlimit="1.5">
+                <path class="logo_stroke"
+                      d="M240,80 L160,160 L80,160"
+                      fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+                <path class="logo_stroke"
+                      d="M160,80 L240,80 L240,160 L160,240 L80,240 L80,160 Z"
+                      fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+            </g>
+            <g class="logo_face face_c" stroke-linecap="round" stroke-miterlimit="1.5">
+                <path class="logo_stroke"
+                      d="M80,240 L80,80 L160,0 L240,0 L240,160 L160,240 Z"
+                      fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+            </g>
+        </svg>
+    </div>
+
+    <script>
+    (function() {
+        var logos = document.querySelectorAll('.logo_anim');
+        if (!logos.length || !Element.prototype.animate) return;
+
+        var activeAnimations = new Map();
+
+        function startDraw(svg) {
+            if (activeAnimations.has(svg)) return;
+            var anims = [];
+            svg.querySelectorAll('.logo_stroke').forEach(function(path) {
+                var len = path.getTotalLength();
+                path.style.strokeDasharray = len;
+                path.style.strokeDashoffset = len;
+                anims.push(path.animate(
+                    [
+                        { strokeDashoffset: len, easing: 'ease-out' },
+                        { strokeDashoffset: 0, offset: 0.7 },
+                        { strokeDashoffset: 0 }
+                    ],
+                    { duration: 2500, iterations: Infinity }
+                ));
+            });
+            activeAnimations.set(svg, anims);
+        }
+
+        function stopDraw(svg) {
+            var anims = activeAnimations.get(svg);
+            if (!anims) return;
+            anims.forEach(function(a) { a.cancel(); });
+            activeAnimations.delete(svg);
+        }
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                entry.isIntersecting ? startDraw(entry.target) : stopDraw(entry.target);
+            });
+        }, { threshold: 0.1 });
+
+        logos.forEach(function(el) { observer.observe(el); });
+    })();
+    </script>
+
+</body>
+</html>
