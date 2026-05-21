@@ -49,4 +49,122 @@ $(function () {
         onResized: syncHeroHeight,      // 윈도우 리사이즈 시 재동기화
     });
 
+
+    // ========== LOGO DRAW-ON ==========
+    // .logo_anim 인라인 SVG의 stroke draw-on 애니메이션.
+    // 화면에 들어오면 시작, 벗어나면 멈춤.
+    // 사이클: 진입 후 0.5s 대기 → draw 2.4s → 2s 유지 → 1s 페이드아웃 → 1s 대기 → 반복.
+
+    var DRAW_DELAY = 500;
+    var DRAW_DURATION = 2400;
+    var HOLD = 2000;
+    var FADE = 1000;
+    var GAP = 1000;
+    var CYCLE = DRAW_DURATION + HOLD + FADE + GAP; // 6400ms — 첫 회 이후 반복 주기
+
+    var logos = document.querySelectorAll('.logo_anim');
+    if (logos.length && Element.prototype.animate) {
+        var activeAnimations = new Map();
+
+        function startDraw(svg) {
+            if (activeAnimations.has(svg)) return;
+            var anims = [];
+
+            var holdEnd  = (DRAW_DURATION + HOLD) / CYCLE;
+            var fadeEnd  = (DRAW_DURATION + HOLD + FADE) / CYCLE;
+            // fadeEnd 직후 dashoffset을 len으로 점프시킬 keyframe 위치 (opacity 0 구간).
+            var resetAt  = Math.min(fadeEnd + 0.0001, 1);
+
+            // face 단위(a,b,c)로 그리되 인접 face가 겹쳐 시작한다.
+            // 전역 시간 0~DRAW_DURATION에 ease-out 곡선 하나를 깔고, 각 face는 자기 시간 구간에서
+            // 그 곡선이 만들어내는 진행률을 따라간다 — 셋이 함께 감속하는 한 줄기의 곡선이 된다.
+            // face_c는 곡선의 가장 감속 심한 후반을 담당, face_a는 곡선 초반의 빠른 구간.
+            var faceDurations = [900,  2200, 1500]; // a, b, c 그리기 시간 (ms)
+            var faceStarts    = [0,    200,  400];  // a, b, c 시작 시점 (ms) — 끝: 900 / 2400 / 1900
+
+            // 전역 곡선: t(0~1) → 진행률(0~1). quartic ease-out — 초반 빠르고 후반 길게 감속.
+            function eased(t) { var u = 1 - t; return 1 - u * u * u * u; }
+
+            var faceGroups = [
+                svg.querySelectorAll('.face_a .logo_stroke'),
+                svg.querySelectorAll('.face_b .logo_stroke'),
+                svg.querySelectorAll('.face_c .logo_stroke')
+            ];
+
+            faceGroups.forEach(function(group, faceIdx) {
+                if (!group.length) return;
+                var faceStartMs = faceStarts[faceIdx];
+                var faceEndMs   = faceStartMs + faceDurations[faceIdx];
+                var faceStartOff = faceStartMs / CYCLE;
+                var faceEndOff   = faceEndMs / CYCLE;
+
+                // 곡선의 자기 구간을 12샘플로 근사. eased()의 face_start~face_end 구간 값을
+                // 0~1로 정규화한 결과를 dashoffset에 매핑. 정규화 때문에 각 face는 자기 path 전체를
+                // 다 그리지만, 곡선의 미분 특성(초반 빠름, 후반 느림)은 그대로 묻어 들어온다.
+                var SAMPLES = 12;
+                var startEased = eased(faceStartMs / DRAW_DURATION);
+                var endEased   = eased(faceEndMs / DRAW_DURATION);
+                var samples = [];
+                for (var s = 0; s <= SAMPLES; s++) {
+                    var localT = s / SAMPLES;
+                    var globalT = (faceStartMs + faceDurations[faceIdx] * localT) / DRAW_DURATION;
+                    samples.push((eased(globalT) - startEased) / (endEased - startEased));
+                }
+
+                group.forEach(function(path) {
+                    var len = path.getTotalLength();
+                    path.style.strokeDasharray = len;
+                    path.style.strokeDashoffset = len;
+
+                    var keyframes = [
+                        { strokeDashoffset: len, offset: 0 },
+                        { strokeDashoffset: len, offset: faceStartOff }
+                    ];
+                    for (var s = 1; s <= SAMPLES; s++) {
+                        var off = faceStartOff + (faceEndOff - faceStartOff) * (s / SAMPLES);
+                        keyframes.push({
+                            strokeDashoffset: len * (1 - samples[s]),
+                            offset: off
+                        });
+                    }
+                    keyframes.push({ strokeDashoffset: 0,   offset: fadeEnd });
+                    keyframes.push({ strokeDashoffset: len, offset: resetAt });
+                    keyframes.push({ strokeDashoffset: len, offset: 1 });
+
+                    anims.push(path.animate(keyframes, {
+                        duration: CYCLE, iterations: Infinity, delay: DRAW_DELAY
+                    }));
+                });
+            });
+
+            // opacity 사이클: draw + 유지 동안 1, 페이드 구간에서 0, 대기 동안 0. CSS의 opacity:0을 덮어쓴다.
+            anims.push(svg.animate(
+                [
+                    { opacity: 1, offset: 0 },
+                    { opacity: 1, offset: holdEnd },
+                    { opacity: 0, easing: 'ease-in-out', offset: fadeEnd },
+                    { opacity: 0, offset: 1 }
+                ],
+                { duration: CYCLE, iterations: Infinity, delay: DRAW_DELAY, fill: 'backwards' }
+            ));
+
+            activeAnimations.set(svg, anims);
+        }
+
+        function stopDraw(svg) {
+            var anims = activeAnimations.get(svg);
+            if (!anims) return;
+            anims.forEach(function(a) { a.cancel(); });
+            activeAnimations.delete(svg);
+        }
+
+        var logoObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                entry.isIntersecting ? startDraw(entry.target) : stopDraw(entry.target);
+            });
+        }, { threshold: 0.1 });
+
+        logos.forEach(function(el) { logoObserver.observe(el); });
+    }
+
 });

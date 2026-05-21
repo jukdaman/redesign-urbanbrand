@@ -63,15 +63,15 @@
 SVG에는 `z-index`가 없습니다. **`<use>` 형제 중 뒤에 쓴 것이 위에 그려집니다** (painter's algorithm). 강조할 면을 가장 위로 올리려면 그 `<use>`를 마지막에 두세요.
 
 ```html
-<!-- face_b를 가장 위로 -->
+<!-- face_c를 가장 위로 -->
 <svg viewBox="0 0 240 240" ...>
     <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
-    <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
     <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
+    <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
 </svg>
 ```
 
-단, `face_b` 내부의 두 path는 symbol 정의에 묶여 있어 외부에서 순서를 못 바꿉니다 — 필요하면 [images/logo_urbanbrand.svg](../images/logo_urbanbrand.svg)를 직접 편집.
+단, `face_c` 내부의 두 path는 symbol 정의에 묶여 있어 외부에서 순서를 못 바꿉니다 — 필요하면 [images/logo_urbanbrand.svg](../images/logo_urbanbrand.svg)를 직접 편집.
 
 ## 새 아이콘을 같은 스프라이트에 추가하기
 
@@ -108,15 +108,15 @@ stroke draw-on 애니메이션이나 WAAPI 제어가 필요하면 경로를 HTML
     </g>
     <g class="logo_face face_b" stroke-linecap="round" stroke-miterlimit="1.5">
         <path class="logo_stroke"
-              d="M240,80 L160,160 L80,160"
-              fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
-        <path class="logo_stroke"
-              d="M160,80 L240,80 L240,160 L160,240 L80,240 L80,160 Z"
+              d="M80,240 L80,80 L160,0 L240,0 L240,160 L160,240 Z"
               fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="logo_face face_c" stroke-linecap="round" stroke-miterlimit="1.5">
         <path class="logo_stroke"
-              d="M80,240 L80,80 L160,0 L240,0 L240,160 L160,240 Z"
+              d="M240,80 L160,160 L80,160"
+              fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+        <path class="logo_stroke"
+              d="M160,80 L240,80 L240,160 L160,240 L80,240 L80,160 Z"
               fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
     </g>
 </svg>

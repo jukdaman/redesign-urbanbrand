@@ -118,12 +118,13 @@
     display: flex; align-items: center; gap: 40px;
 }
 
-.service_logo { width: 244px; height: 244px; }
-.service_logo .logo_face { color: #000; stroke-width: 3; }
+.service_logo { width: 240px; height: 240px; }
+.service_logo .logo_face { color: #000; stroke-width: 2.5; }
 
 .service_wordmark {
-    display: flex; flex-direction: column; gap: 8px;
-    font-weight: 500; font-size: 56px; line-height: 100%; letter-spacing: 24px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    height: 240px;
+    font-weight: 700; font-size: 64px; line-height: 100%; letter-spacing: 24px;
     color: #000;
 }
 
