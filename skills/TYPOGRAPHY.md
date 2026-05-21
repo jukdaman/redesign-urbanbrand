@@ -40,8 +40,8 @@
 |----------------|-----|
 | `type`         | `title`, `article`, `button` 등 |
 | `size`         | `xxlarge`, `xlarge`, `large`, `medium`, `small`, `xsmall`, `xxsmall` |
-| `weight` (선택) | `_m` (medium), `_r` (regular) — 같은 size에서 굵기 분기 필요할 때만 |
+| `weight` (선택) | `_b` (bold), `_m` (medium), `_r` (regular) — 같은 size에서 굵기 분기 필요할 때만 |
 
-예: `.title_xlarge`, `.article_medium_m`, `.article_medium_r`, `.button_large`
+예: `.title_xlarge_b`, `.title_xlarge_m`, `.article_medium_m`, `.article_medium_r`, `.button_large_b`
 
 **새 유틸을 만들기 전 기존 `{type}_{size}` 조합부터 확인.**

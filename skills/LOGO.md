@@ -134,6 +134,17 @@ stroke draw-on 애니메이션이나 WAAPI 제어가 필요하면 경로를 HTML
 
 ## 주의사항
 
+**stroke가 viewBox 경계에서 잘림** — `stroke-width`의 절반이 path 바깥으로 퍼지므로, path 좌표가 viewBox 가장자리에 닿아 있으면 그만큼 선이 잘린다. 파비콘 등 독립 SVG에서 stroke를 쓸 때는 `viewBox`를 `stroke-width / 2`만큼 사방으로 확장한다.
+
+```xml
+<!-- stroke-width="16" → 여백 8 → viewBox "-8 -8 256 256" -->
+<svg viewBox="-8 -8 256 256">
+    <path stroke-width="16" d="M0,0 ..."/>
+</svg>
+```
+
+`<use href="외부.svg#id">` + `vector-effect="non-scaling-stroke"` 조합에서는 stroke가 렌더링 크기 기준으로 퍼지므로 viewBox 확장 대신 `overflow: visible`로 대응한다. 현재 `.logo_urbanbrand`에 CSS로 적용돼 있으며, SVG 속성(`overflow="visible"`)이 아닌 CSS 쪽에서 선언한다.
+
 **로컬 `file://`에서 동작 안 함** — 외부 SVG 참조(`<use href="외부파일#id">`)는 Chrome 등에서 `file://`로 열면 CORS 정책에 막힙니다. 개발 시 로컬 서버로:
 
 ```bash

@@ -97,3 +97,93 @@
     width: 235px; height: 122px; margin: 0 28px;
     background: url(../images/portfolio_lower_box_img_02.jpg) no-repeat 50% 50% / cover;
 }
+
+
+
+
+/* ========== SERVICE ========== */
+.service {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 200px 0;
+    background: #fff;
+}
+
+
+/* service_upper */
+.service_upper {
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.service_title_wrap {
+    display: flex; align-items: center; gap: 40px;
+}
+
+.service_logo { width: 244px; height: 244px; }
+.service_logo .logo_face { color: #000; stroke-width: 3; }
+
+.service_wordmark {
+    display: flex; flex-direction: column; gap: 8px;
+    font-weight: 500; font-size: 56px; line-height: 100%; letter-spacing: 24px;
+    color: #000;
+}
+
+.service_desc {
+    margin-top: 48px;
+    color: #000;
+    text-align: center;
+}
+
+
+/* service_divider */
+.service_divider {
+    width: 40px; height: 0;
+    margin: 120px 0;
+    border: 0; border-top: 1px solid #000;
+}
+
+
+/* service_box_wrap */
+.service_box_wrap {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    width: 100%;
+}
+
+.service_box {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center;
+    flex: 1;
+    text-align: center;
+}
+
+.service_box:not(:last-child)::after {
+    content: '';
+    position: absolute; top: 96px; right: -16px;
+    width: 32px; height: 32px;
+    background: url(../images/icon_plus.svg) no-repeat 50% 50% / contain;
+}
+
+
+/* service_box_title_wrap */
+.service_box_title_wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 32px;
+}
+
+.service_box_logo_icon { width: 64px; height: 64px; }
+.service_box_logo_icon .logo_face { color: #c8c8c8; stroke-width: 2; }
+.service_box_logo .face_a { color: #000; }
+.service_box_font .face_b { color: #000; }
+.service_box_consulting .face_c { color: #000; }
+
+.service_box_title_wrap .title_small {
+    display: flex; flex-direction: column; gap: 12px;
+    color: #000;
+}
+
+
+/* article_wrap */
+.service_box .article_wrap {
+    display: flex; flex-direction: column; gap: 32px;
+    margin-top: 48px;
+}
+.service_box .article_medium_m { color: #000; }
+.service_box .article_small { color: #888; }

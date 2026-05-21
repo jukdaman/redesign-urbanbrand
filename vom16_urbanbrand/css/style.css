@@ -23,24 +23,26 @@
 
 
 /* ========== FONT ========== */
-.title_xxlarge {font-weight: 500; font-size: 130px; line-height: 116%; letter-spacing: -0.6px;}
-.title_xlarge  {font-weight: 700; font-size: 84px;  line-height: 120%;}
-.title_large   {font-weight: 600; font-size: 72px;  line-height: 130%; letter-spacing: -3px;}
-.title_medium  {font-weight: 600; font-size: 56px;  line-height: 140%; letter-spacing: -3px;}
-.title_small   {font-weight: 600; font-size: 34px;  line-height: 116%; letter-spacing: -0.5px;}
-.title_xsmall  {font-weight: 500; font-size: 26px;  line-height: 160%;}
-.title_xxsmall {font-weight: 700; font-size: 20px;  line-height: 140%; letter-spacing: -0.5px;}
+.title_xxlarge  { font-weight: 500; font-size: 130px; letter-spacing: -0.7px; line-height: 116%; }
+.title_xlarge_b { font-weight: 700; font-size: 84px;  line-height: 120%; }
+.title_xlarge_m { font-weight: 500; font-size: 84px;  line-height: 120%; }
+.title_large    { font-weight: 600; font-size: 72px;  letter-spacing: -3px;   line-height: 130%; }
+.title_medium   { font-weight: 600; font-size: 56px;  letter-spacing: -3px;   line-height: 140%; }
+.title_small    { font-weight: 600; font-size: 34px;  letter-spacing: -0.5px; line-height: 116%; }
+.title_xsmall   { font-weight: 500; font-size: 26px;  line-height: 160%; }
+.title_xxsmall  { font-weight: 700; font-size: 20px;  letter-spacing: -0.5px; line-height: 140%; }
 
-.article_xlarge   {font-weight: 300; font-size: 28px; line-height: 160%; letter-spacing: -0.7px;}
-.article_large    {font-weight: 300; font-size: 20px; line-height: 160%;}
-.article_medium_m {font-weight: 500; font-size: 18px; line-height: 160%; letter-spacing: -0.5px;}
-.article_medium_r {font-weight: 400; font-size: 18px; line-height: 160%; letter-spacing: -0.5px;}
-.article_small    {font-weight: 300; font-size: 16px; line-height: 160%; letter-spacing: -0.5px;}
-.article_xsmall   {font-weight: 500; font-size: 14px; line-height: 160%;}
+.article_xxlarge  { font-weight: 300; font-size: 28px; letter-spacing: -0.7px; line-height: 160%; }
+.article_xlarge   { font-weight: 300; font-size: 20px; line-height: 160%; }
+.article_medium_m { font-weight: 500; font-size: 18px; letter-spacing: -0.5px; line-height: 160%; }
+.article_medium_r { font-weight: 400; font-size: 18px; letter-spacing: -0.5px; line-height: 160%; }
+.article_small    { font-weight: 300; font-size: 16px; letter-spacing: -0.5px; line-height: 160%; }
+.article_xsmall   { font-weight: 400; font-size: 14px; line-height: 160%; }
 
 /* button */
-.button_large {font-weight: 700; font-size: 24px; line-height: 160%;}
-.button_small {font-weight: 400; font-size: 24px; line-height: 160%;}
+.button_large_b { font-weight: 700; font-size: 24px; line-height: 160%; }
+.button_large_m { font-weight: 400; font-size: 24px; line-height: 160%; }
+.button_small   { font-weight: 500; font-size: 18px; letter-spacing: -0.3px; }
 
 /* rich text */
 .rich_yeongwol    {font-family: 'Yeongwol', serif;}
@@ -82,7 +84,7 @@
 .gnb_nav ul {
     display: flex; gap: 86px;
     color: #fff;
-    font-weight: 500; font-size: 18px; letter-spacing: -0.25px;
+    font-weight: 500; font-size: 18px; letter-spacing: -0.3px;
 }
 .gnb_nav a {color: #fff; opacity: 0.7; transition: opacity .3s, color .3s;}
 .gnb_nav a:hover {opacity: 1;}
