@@ -33,6 +33,7 @@
 ### 자제
 - CSS Variables (`--*`), `rem`·`em` 단위
 - `::before`/`::after`
+- `translateY(-50%)` / `translateX(-50%)` 등 퍼센트 기반 translate — 플러그인이 `transform`을 덮어쓸 때 충돌 가능. 퍼센트 없이 표현 가능하면 px 직접 계산 또는 `calc()` 사용
 
 ### 허용
 - `display: flex`, `position`, `transition`, `transform`, `calc()`

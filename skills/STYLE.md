@@ -35,6 +35,12 @@ HTML 또는 CSS 코드를 쓸 때마다 적용. 폰트/타이포 유틸은 [TYPO
 .hero_inner { position: absolute; left: 0; right: 0; bottom: 443px; }
 ```
 
+한 줄 규칙에서 중괄호 앞뒤에 **공백 1칸**:
+```css
+.logo_anim { opacity: 0; }
+.gnb_nav a:hover { opacity: 1; }
+```
+
 한 줄이 시각적으로 무거워지면 한 속성 한 줄로 분리:
 ```css
 .gnb {

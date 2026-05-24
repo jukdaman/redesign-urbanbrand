@@ -41,6 +41,21 @@ redesign-urbanbrand/
 
 ---
 
+## 로컬 개발 환경
+
+`<use href="외부.svg#id">` 패턴은 `file://`로 열면 CORS 정책에 막혀 동작하지 않음.
+로컬에서는 반드시 HTTP 서버로 실행:
+
+```bash
+cd redesign-urbanbrand/vom16_urbanbrand
+python -m http.server 8000
+# → http://localhost:8000/
+```
+
+VS Code Live Server 확장도 가능.
+
+---
+
 ## 신규 파일 분기
 
 | 상황                | 위치 / 방법 |

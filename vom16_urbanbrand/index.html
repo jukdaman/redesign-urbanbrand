@@ -30,30 +30,30 @@
     <body>
         <!-- ========== GNB ========== -->
         <header class="gnb">
-                <nav class="gnb_nav gnb_nav_left">
-                    <ul>
-                        <li><a href="#">ABOUT</a></li>
-                        <li><a href="#">WORK</a></li>
-                        <li><a href="#">SERVICE</a></li>
-                    </ul>
-                </nav><!-- gnb_nav_left -->
+            <nav class="gnb_nav gnb_nav_left">
+                <ul>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">WORK</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                </ul>
+            </nav><!-- gnb_nav_left -->
 
 
-                <a href="index.html">
-                    <svg class="logo_urbanbrand gnb_logo" viewBox="0 0 240 240" role="img" aria-label="도시브랜드연구소 로고">
-                        <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
-                        <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
-                        <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
-                    </svg>
-                </a>
+            <a href="index.html" class="gnb_logo_wrap">
+                <svg class="logo_urbanbrand gnb_logo" viewBox="0 0 240 240" role="img" aria-label="도시브랜드연구소 로고">
+                    <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
+                    <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
+                    <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
+                </svg>
+            </a>
 
 
-                <nav class="gnb_nav gnb_nav_right">
-                    <ul>
-                        <li><a href="#">ARTICLE</a></li>
-                        <li><a href="#">CONTACT</a></li>
-                    </ul>
-                </nav><!-- gnb_nav_right -->
+            <nav class="gnb_nav gnb_nav_right">
+                <ul>
+                    <li><a href="#">ARTICLE</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav><!-- gnb_nav_right -->
         </header>
 
 
@@ -131,13 +131,14 @@
                 <div class="service_title_wrap">
                     <svg class="logo_urbanbrand logo_anim service_logo" viewBox="0 0 240 240" overflow="visible"
                          role="img" aria-label="도시브랜드연구소 로고">
+                         <!-- DOM 순서는 painter z-order(뒤가 위). face_b(큰 오각형)가 가장 위로
+                              오도록 c를 b 앞에 둔다. JS 애니메이션은 클래스로 찾으므로 영향 없음. -->
                         <g class="logo_face face_a" stroke-linecap="round" stroke-miterlimit="1.5">
                             <path class="logo_stroke"
                                   d="M80,0 L160,0 L160,80 L80,160 L0,160 L0,80 Z"
                                   fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
                         </g>
-                        <!-- DOM 순서는 painter z-order(뒤가 위). face_b(큰 오각형)가 가장 위로
-                             오도록 c를 b 앞에 둔다. JS 애니메이션은 클래스로 찾으므로 영향 없음. -->
+
                         <g class="logo_face face_c" stroke-linecap="round" stroke-miterlimit="1.5">
                             <path class="logo_stroke"
                                   d="M240,80 L160,160 L80,160"
@@ -146,6 +147,7 @@
                                   d="M160,80 L240,80 L240,160 L160,240 L80,240 L80,160 Z"
                                   fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
                         </g>
+
                         <g class="logo_face face_b" stroke-linecap="round" stroke-miterlimit="1.5">
                             <path class="logo_stroke"
                                   d="M80,240 L80,80 L160,0 L240,0 L240,160 L160,240 Z"
@@ -160,6 +162,7 @@
                     </p>
                 </div><!-- service_title_wrap -->
 
+                
                 <p class="article_xlarge service_desc">
                     지역을 살아가는 사람들의 자부심이 될 수 있는 다양한 맞춤형 도시 브랜드 디자인 서비스를 제공합니다.
                 </p>
@@ -173,9 +176,9 @@
                 <div class="service_box service_box_logo">
                     <div class="service_box_title_wrap">
                         <svg class="logo_urbanbrand service_box_logo_icon" aria-hidden="true" viewBox="0 0 240 240">
-                            <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
                             <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
                             <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
+                            <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
                         </svg>
 
                         <p class="title_small">
@@ -200,8 +203,8 @@
                     <div class="service_box_title_wrap">
                         <svg class="logo_urbanbrand service_box_logo_icon" aria-hidden="true" viewBox="0 0 240 240">
                             <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
-                            <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
                             <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
+                            <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
                         </svg>
 
                         <p class="title_small">
@@ -251,7 +254,194 @@
 
 
         <!-- ========== PORTFOLIO ========== -->
-        <!-- TODO -->
+        <section class="portfolio">
+
+            <!-- portfolio_logo_wrap: 섹션 직계, 독립 콘텐츠. -->
+            <div class="portfolio_logo_wrap">
+                <div class="portfolio_logo">
+                    <svg class="logo_urbanbrand" viewBox="0 0 240 240" role="img" aria-label="도시브랜드연구소 로고">
+                        <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
+                        <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
+                        <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
+                    </svg>
+                </div>
+                <p class="article_xlarge portfolio_logo_desc">각 도시의 이야기를 담은 프로젝트를 진행합니다.</p>
+            </div><!-- portfolio_logo_wrap -->
+
+
+            <!-- portfolio_upper_wrap: carousel 컨테이너. -->
+            <div class="portfolio_upper_wrap">
+
+                <!-- portfolio_upper (owl-carousel, fade 전환).
+                     각 slide의 stage 안에 bg + title + content가 함께 들어감.
+                     bg와 title이 같은 stage stacking context → mix-blend-mode 정상 작동. -->
+                <div class="portfolio_upper owl-carousel owl-theme">
+
+                    <!-- slide 01 -->
+                    <div class="portfolio_upper_slide">
+                        <div class="portfolio_upper_stage">
+                            <div class="portfolio_upper_bg" style="background-image: url('images/hero_01.jpg');"></div>
+                            <p class="portfolio_title">PROJECTS</p>
+
+                            <div class="portfolio_upper_nav">
+                                <div class="nav_btn nav_btn_prev">&#8592;</div>
+                                <div class="nav_btn nav_btn_next">&#8594;</div>
+                            </div><!-- portfolio_upper_nav -->
+
+                            <div class="portfolio_upper_content">
+                                <div class="portfolio_upper_img" style="background-image: url('images/hero_01.jpg');"></div><!-- portfolio_upper_img -->
+
+                                <div class="portfolio_upper_bottom">
+                                    <div class="portfolio_upper_title_wrap">
+                                        <p class="title_small">경남 마을기업<br>지원 기관</p>
+                                        <p class="article_medium_r portfolio_upper_category">FONT · LOGO DESIGN</p>
+                                    </div><!-- portfolio_upper_title_wrap -->
+                                    <p class="article_medium_r portfolio_upper_desc">경남 마을기업 지원기관의 의뢰로, 경남 마을기업들의 공동 브랜드 '마을담아'의 아이덴티티 및 디자인 시스템을 개발했습니다.</p>
+                                </div><!-- portfolio_upper_bottom -->
+                            </div><!-- portfolio_upper_content -->
+                        </div><!-- portfolio_upper_stage -->
+                    </div><!-- portfolio_upper_slide -->
+
+                    <!-- slide 02 -->
+                    <div class="portfolio_upper_slide">
+                        <div class="portfolio_upper_stage">
+                            <div class="portfolio_upper_bg" style="background-image: url('images/hero_02.jpg');"></div>
+                            <p class="portfolio_title">PROJECTS</p>
+
+                            <div class="portfolio_upper_nav">
+                                <div class="nav_btn nav_btn_prev">&#8592;</div>
+                                <div class="nav_btn nav_btn_next">&#8594;</div>
+                            </div><!-- portfolio_upper_nav -->
+
+                            <div class="portfolio_upper_content">
+                                <div class="portfolio_upper_img" style="background-image: url('images/hero_02.jpg');"></div><!-- portfolio_upper_img -->
+
+                                <div class="portfolio_upper_bottom">
+                                    <div class="portfolio_upper_title_wrap">
+                                        <p class="title_small">영월체</p>
+                                        <p class="article_medium_r portfolio_upper_category">FONT DESIGN</p>
+                                    </div><!-- portfolio_upper_title_wrap -->
+                                    <p class="article_medium_r portfolio_upper_desc">영월체 제작 참여를 계기로, 단종문화제에서 손글씨 체험과 영월 지역 굿즈를 선보이며 도시 브랜딩을 실천했습니다.</p>
+                                </div><!-- portfolio_upper_bottom -->
+                            </div><!-- portfolio_upper_content -->
+                        </div><!-- portfolio_upper_stage -->
+                    </div><!-- portfolio_upper_slide -->
+
+                    <!-- slide 03 -->
+                    <div class="portfolio_upper_slide">
+                        <div class="portfolio_upper_stage">
+                            <div class="portfolio_upper_bg" style="background-image: url('images/hero_03.jpg');"></div>
+                            <p class="portfolio_title">PROJECTS</p>
+
+                            <div class="portfolio_upper_nav">
+                                <div class="nav_btn nav_btn_prev">&#8592;</div>
+                                <div class="nav_btn nav_btn_next">&#8594;</div>
+                            </div><!-- portfolio_upper_nav -->
+
+                            <div class="portfolio_upper_content">
+                                <div class="portfolio_upper_img" style="background-image: url('images/hero_03.jpg');"></div><!-- portfolio_upper_img -->
+
+                                <div class="portfolio_upper_bottom">
+                                    <div class="portfolio_upper_title_wrap">
+                                        <p class="title_small">부여 정림사지체</p>
+                                        <p class="article_medium_r portfolio_upper_category">FONT DESIGN</p>
+                                    </div><!-- portfolio_upper_title_wrap -->
+                                    <p class="article_medium_r portfolio_upper_desc">백제 왕도 부여의 중심 사찰 터, 정림사지의 역사적 가치와 건축적 질서를 서체에 담아냈습니다.</p>
+                                </div><!-- portfolio_upper_bottom -->
+                            </div><!-- portfolio_upper_content -->
+                        </div><!-- portfolio_upper_stage -->
+                    </div><!-- portfolio_upper_slide -->
+
+                </div><!-- portfolio_upper -->
+
+            </div><!-- portfolio_upper_wrap -->
+
+
+            <!-- portfolio_lower (일반 컨테이너, 캐러셀 아님) -->
+            <div class="portfolio_lower">
+                <p class="portfolio_lower_headline">로고 하나, 글자 하나에도 <em>도시만의 결</em>이 살아있도록</p>
+                <div class="container portfolio_lower_inner">
+
+                    <div class="portfolio_lower_box_wrap">
+
+                        <div class="portfolio_lower_box">
+                            <div class="portfolio_lower_box_img portfolio_lower_box_img_placeholder"></div>
+                            <div class="portfolio_lower_box_textwrap">
+                                <div class="portfolio_lower_box_title_wrap">
+                                    <p class="title_xsmall">신동엽 손글씨체</p>
+                                    <p class="article_medium_r portfolio_lower_box_category">FONT DESIGN</p>
+                                </div><!-- portfolio_lower_box_title_wrap -->
+                                <p class="article_medium_r portfolio_lower_box_desc">부여의 역사와 사람을 서체에 담아, 세계 3대 디자인 어워드 iF DESIGN AWARD 수상으로 그 가치를 증명했습니다.</p>
+                            </div><!-- portfolio_lower_box_textwrap -->
+                        </div><!-- portfolio_lower_box -->
+
+                        <div class="portfolio_lower_box">
+                            <div class="portfolio_lower_box_img portfolio_lower_box_img_placeholder"></div>
+                            <div class="portfolio_lower_box_textwrap">
+                                <div class="portfolio_lower_box_title_wrap">
+                                    <p class="title_xsmall">영월체</p>
+                                    <p class="article_medium_r portfolio_lower_box_category">FONT DESIGN</p>
+                                </div><!-- portfolio_lower_box_title_wrap -->
+                                <p class="article_medium_r portfolio_lower_box_desc">영월체 제작 참여를 계기로, 단종문화제에서 손글씨 체험과 영월 지역 굿즈를 선보이며 서체·일러스트·상품을 통한 도시 브랜딩을 실천했습니다.</p>
+                            </div><!-- portfolio_lower_box_textwrap -->
+                        </div><!-- portfolio_lower_box -->
+
+                        <div class="portfolio_lower_box">
+                            <div class="portfolio_lower_box_img portfolio_lower_box_img_placeholder"></div>
+                            <div class="portfolio_lower_box_textwrap">
+                                <div class="portfolio_lower_box_title_wrap">
+                                    <p class="title_xsmall">부여 정림사지체</p>
+                                    <p class="article_medium_r portfolio_lower_box_category">FONT DESIGN</p>
+                                </div><!-- portfolio_lower_box_title_wrap -->
+                                <p class="article_medium_r portfolio_lower_box_desc">백제 왕도 부여의 중심 사찰 터로, 유네스코 세계문화유산에 등재된 정림사지의 역사적 가치와 건축적 질서를 서체에 담아냈습니다.</p>
+                            </div><!-- portfolio_lower_box_textwrap -->
+                        </div><!-- portfolio_lower_box -->
+
+                        <div class="portfolio_lower_box">
+                            <div class="portfolio_lower_box_img portfolio_lower_box_img_placeholder"></div>
+                            <div class="portfolio_lower_box_textwrap">
+                                <div class="portfolio_lower_box_title_wrap">
+                                    <p class="title_xsmall">충남 논산 해월마을 브랜드 '슈퍼맘'</p>
+                                    <p class="article_medium_r portfolio_lower_box_category">LOGO DESIGN</p>
+                                </div><!-- portfolio_lower_box_title_wrap -->
+                                <p class="article_medium_r portfolio_lower_box_desc">해월마을 도시재생 사업의 세 브랜드, 한다·슈퍼맘 젤라또·해월봉사단의 아이덴티티를 각각의 사업 성격에 맞게 개발했습니다.</p>
+                            </div><!-- portfolio_lower_box_textwrap -->
+                        </div><!-- portfolio_lower_box -->
+
+                        <div class="portfolio_lower_box">
+                            <div class="portfolio_lower_box_img portfolio_lower_box_img_placeholder"></div>
+                            <div class="portfolio_lower_box_textwrap">
+                                <div class="portfolio_lower_box_title_wrap">
+                                    <p class="title_xsmall">강경마을</p>
+                                    <p class="article_medium_r portfolio_lower_box_category">LOGO DESIGN, CONSULTING</p>
+                                </div><!-- portfolio_lower_box_title_wrap -->
+                                <p class="article_medium_r portfolio_lower_box_desc">강경마을 도시재생 사업화의 브랜드를 만들었습니다. 주민 참여 워크숍을 통해 지역의 핵심 가치를 발굴하고, 세 가지 디자인 방향을 제안한 뒤 최종 로고 시스템으로 완성했습니다.</p>
+                            </div><!-- portfolio_lower_box_textwrap -->
+                        </div><!-- portfolio_lower_box -->
+
+                        <div class="portfolio_lower_box">
+                            <div class="portfolio_lower_box_img portfolio_lower_box_img_placeholder"></div>
+                            <div class="portfolio_lower_box_textwrap">
+                                <div class="portfolio_lower_box_title_wrap">
+                                    <p class="title_xsmall">전북 무주 브랜드 '연모당'</p>
+                                    <p class="article_medium_r portfolio_lower_box_category">LOGO DESIGN</p>
+                                </div><!-- portfolio_lower_box_title_wrap -->
+                                <p class="article_medium_r portfolio_lower_box_desc">다양한 로고 방향을 손스케치로 탐색하고 정제해 최종 로고 시스템을 완성했으며, 쇼핑백·패키지·스티커 등 실제 적용물까지 구현해 브랜드의 완성도를 높였습니다.</p>
+                            </div><!-- portfolio_lower_box_textwrap -->
+                        </div><!-- portfolio_lower_box -->
+
+                    </div><!-- portfolio_lower_box_wrap -->
+
+                </div><!-- portfolio_lower_inner -->
+            </div><!-- portfolio_lower -->
+
+
+            <!-- button -->
+            <div class="button_large">
+                <a href="#">프로젝트 더보기</a>
+            </div>
+
+        </section>
 
 
         <!-- ========== FONT_TRY ========== -->

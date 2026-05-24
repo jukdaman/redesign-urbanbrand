@@ -50,6 +50,33 @@ $(function () {
     });
 
 
+    // ========== PORTFOLIO ==========
+    // portfolio_upper: owl-carousel, fade 전환.
+    // 각 slide의 stage 안에 bg + title + content가 함께 있어 mix-blend-mode 정상 작동.
+    // 페이드 전환 시 슬라이드 전체(bg, title 포함)가 자연스럽게 교차.
+    // portfolio_lower: 일반 컨테이너 — carousel 없음.
+
+    var $portfolioUpper = $('.portfolio_upper');
+
+    $portfolioUpper.owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: false,
+        nav: false,
+        dots: true,
+        smartSpeed: 600,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+    });
+
+    $(document).on('click', '.nav_btn_prev', function () {
+        $portfolioUpper.trigger('prev.owl.carousel');
+    });
+    $(document).on('click', '.nav_btn_next', function () {
+        $portfolioUpper.trigger('next.owl.carousel');
+    });
+
+
     // ========== LOGO DRAW-ON ==========
     // .logo_anim 인라인 SVG의 stroke draw-on 애니메이션.
     // 화면에 들어오면 시작, 벗어나면 멈춤.
@@ -58,9 +85,9 @@ $(function () {
     var DRAW_DELAY = 500;
     var DRAW_DURATION = 2400;
     var HOLD = 2000;
-    var FADE = 1000;
+    var FADE = 2000;
     var GAP = 1000;
-    var CYCLE = DRAW_DURATION + HOLD + FADE + GAP; // 6400ms — 첫 회 이후 반복 주기
+    var CYCLE = DRAW_DURATION + HOLD + FADE + GAP; // 7400ms — 첫 회 이후 반복 주기
 
     var logos = document.querySelectorAll('.logo_anim');
     if (logos.length && Element.prototype.animate) {
