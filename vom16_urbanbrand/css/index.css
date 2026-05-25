@@ -203,7 +203,7 @@
 /* ========== PORTFOLIO ========== */
 .portfolio {
     display: flex; flex-direction: column; align-items: center; gap: 130px;
-    padding: 160px 0 130px;
+    padding: 200px 0;
 }
 
 
@@ -219,9 +219,7 @@
 
 
 /* portfolio_upper (owl-carousel) */
-.portfolio_upper_wrap  { width: 100%; }
-.portfolio_upper       { width: 100%; }
-.portfolio_upper_slide { display: flex; flex-direction: column; }
+.portfolio_upper { width: 100%; }
 
 .portfolio_upper .owl-nav  { display: none; }
 .portfolio_upper .owl-dots {
@@ -240,7 +238,7 @@
 .portfolio_upper .owl-dot.active span { background: #000; }
 
 
-/* portfolio_upper_stage: bg + title + nav + content를 같은 stacking context에 담음 */
+/* portfolio_upper_stage: owl의 직계 자식(=슬라이드). bg + title + nav + content를 같은 stacking context에 담음 */
 .portfolio_upper_stage {
     display: flex; flex-direction: column; align-items: center;
     position: relative;
@@ -301,16 +299,16 @@
 }
 .portfolio_upper_img_placeholder { background: #555; }
 
-/* min-height: 슬라이드별 텍스트 길이 차이로 인한 흔들림 방지 (가장 큰 슬라이드 기준) */
 .portfolio_upper_bottom {
     display: flex; align-items: flex-start; gap: 36px;
     width: 100%;
-    min-height: 116px;
 }
 
+/* min-height: title_small 2줄 보장 → 슬라이드별 title 줄수 차이로 인한 흔들림 방지 */
 .portfolio_upper_title_wrap {
     display: flex; flex-direction: column; gap: 8px;
     width: 260px;
+    min-height: 116px;
     flex-shrink: 0;
 }
 .portfolio_upper_title_wrap .title_small { color: #fff; }
@@ -329,12 +327,10 @@
     width: 100%;
     padding: 80px 0 60px;
     color: #000;
-    font-weight: 400; font-size: 28px; letter-spacing: -0.5px;
     text-align: center;
 }
 .portfolio_lower_headline em { font-weight: 700; font-style: normal; }
 
-.portfolio_lower_inner    { display: flex; flex-direction: column; }
 .portfolio_lower_box_wrap {
     display: flex; flex-wrap: wrap; gap: 32px 20px;
     width: 100%;
@@ -342,7 +338,7 @@
 
 .portfolio_lower_box {
     display: flex; flex-direction: column; gap: 16px;
-    flex: 1 0 0;
+    flex: 0 0 calc(33.33% - 14px);
     min-width: 0;
 }
 

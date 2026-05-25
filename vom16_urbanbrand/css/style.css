@@ -32,7 +32,8 @@
 .title_xsmall   { font-weight: 500; font-size: 26px;  line-height: 160%; }
 .title_xxsmall  { font-weight: 700; font-size: 20px;  letter-spacing: -0.5px; line-height: 140%; }
 
-.article_xxlarge  { font-weight: 300; font-size: 28px; letter-spacing: -0.7px; line-height: 160%; }
+.article_xxlarge   { font-weight: 300; font-size: 28px; letter-spacing: -0.7px; line-height: 160%; }
+.article_xxlarge_r { font-weight: 400; font-size: 28px; letter-spacing: -0.5px; line-height: 160%; }
 .article_xlarge   { font-weight: 300; font-size: 20px; line-height: 160%; }
 .article_medium_m { font-weight: 500; font-size: 18px; letter-spacing: -0.5px; line-height: 160%; }
 .article_medium_r { font-weight: 400; font-size: 18px; letter-spacing: -0.5px; line-height: 160%; }
