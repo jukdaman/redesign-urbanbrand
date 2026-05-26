@@ -8,10 +8,8 @@
 }
 
 .hero_slides { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.hero_slides .owl-stage-outer { height: 100%; }
-.hero_slides .owl-stage         { height: 100%; }
-.hero_slides .owl-item          { height: 100%; }
-.hero_slides .owl-nav           { display: none; }
+.hero_slides .swiper-wrapper { height: 100%; }
+.hero_slides .swiper-slide   { height: 100%; }
 
 .hero_slide {
     height: 100%;
@@ -218,27 +216,30 @@
 .portfolio_logo_desc { color: #000; text-align: center; }
 
 
-/* portfolio_upper (owl-carousel) */
+/* portfolio_upper (swiper) */
 .portfolio_upper { width: 100%; }
 
-.portfolio_upper .owl-nav  { display: none; }
-.portfolio_upper .owl-dots {
+/* swiper-pagination: 기본 absolute 배치를 풀고 슬라이드 아래로 흐름 배치 */
+.portfolio_upper .swiper-pagination {
     display: flex; justify-content: center; gap: 8px;
+    position: relative;
     margin: 0;
     padding-top: 20px;
     background: #fff;
 }
-.portfolio_upper .owl-dot span {
+.portfolio_upper .swiper-pagination-bullet {
     display: block;
     width: 30px; height: 3px;
     margin: 0;
+    border-radius: 0;
+    opacity: 1;
     background: rgba(0, 0, 0, 0.2);
     transition: background .3s;
 }
-.portfolio_upper .owl-dot.active span { background: #000; }
+.portfolio_upper .swiper-pagination-bullet-active { background: #000; }
 
 
-/* portfolio_upper_stage: owl의 직계 자식(=슬라이드). bg + title + nav + content를 같은 stacking context에 담음 */
+/* portfolio_upper_stage: swiper-slide. bg + title + nav + content를 같은 stacking context에 담음 */
 .portfolio_upper_stage {
     display: flex; flex-direction: column; align-items: center;
     position: relative;

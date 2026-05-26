@@ -6,8 +6,7 @@
 
 ## 현재
 
-- **jQuery** (owl-carousel 의존)
-- **Owl Carousel 2.3.4** (CSS + JS, 자체 호스팅)
+- **Swiper 11.2.10** (bundle CSS + JS, 자체 호스팅)
 - **Pretendard Variable** (jsDelivr CDN)
 - **로컬 TTF**: 정림사지, 영월, 창원단감, 신동엽손글씨
 
@@ -15,7 +14,7 @@
 
 ## 플러그인 정책
 
-- **허용**: `owl-carousel`만 (현재 유일)
+- **허용**: `swiper`만 (현재 유일)
 - **제안 가능 후보** (2020년 전후 한국 로우엔드 프론트엔드에서 통용된 것): AOS, lightGallery, GLightbox, Micromodal 등
 - **금지**: 모던 ESM 전용 라이브러리, 빌드 도구 필요 라이브러리
 
