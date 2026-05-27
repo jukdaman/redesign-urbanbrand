@@ -1,12 +1,12 @@
 // ========== GNB ==========
-// 스크롤 위치에 따라 GNB 배경/색상을 전환한다.
-// hero 섹션을 벗어나면 .is-solid 클래스를 추가 → CSS에서 흰 배경·검정 글자로 전환.
+// 스크롤이 hero 섹션을 벗어나면 GNB 배경이 흰색으로 바뀝니다.
+// 건드릴 것 없음.
 
 var gnb  = document.querySelector('.gnb');
 var hero = document.querySelector('.hero');
 
 function updateGnb() {
-    var heroBottom = hero.getBoundingClientRect().bottom; // 뷰포트 기준 hero 하단
+    var heroBottom = hero.getBoundingClientRect().bottom;
     var gnbHeight  = gnb.offsetHeight;
 
     if (heroBottom <= gnbHeight) {
@@ -17,12 +17,13 @@ function updateGnb() {
 }
 
 window.addEventListener('scroll', updateGnb);
-updateGnb(); // 페이지 첫 진입 시에도 즉시 판단
+updateGnb();
 
 
 // ========== HERO ==========
-// hero 배경 이미지를 자동으로 슬라이드한다.
-// 이미지 추가/제거는 index.html의 .hero_slide(.swiper-slide) 요소만 수정하면 된다.
+// hero 배경 이미지 자동 슬라이드.
+// 이미지 추가/제거: index.html의 hero_slide 요소를 추가하거나 지우면 됩니다.
+// 속도 조절: speed(전환 속도 ms), autoplay.delay(머무는 시간 ms)
 
 new Swiper('.hero_slides', {
     loop: true,
@@ -30,23 +31,29 @@ new Swiper('.hero_slides', {
     fadeEffect: { crossFade: true },
     speed: 800,
     autoplay: { delay: 5000, disableOnInteraction: false },
-    allowTouchMove: false, // hero는 자동 재생만, 드래그 비활성
+    allowTouchMove: false,
 });
 
 
 
 
 // ========== LOGO DRAW-ON ==========
-// .logo_anim 인라인 SVG의 stroke draw-on 애니메이션.
-// 화면에 들어오면 시작, 벗어나면 멈춤.
-// 사이클: 진입 후 0.5s 대기 → draw 2.4s → 2s 유지 → 1s 페이드아웃 → 1s 대기 → 반복.
+// .logo_anim 클래스가 붙은 인라인 SVG 로고를 선이 그려지는 애니메이션으로 재생합니다.
+// 화면에 들어오면 자동 시작, 벗어나면 멈춥니다.
+//
+// 타이밍 조절:
+//   DRAW_DELAY   : 화면 진입 후 애니메이션 시작까지 대기 시간 (ms)
+//   DRAW_DURATION: 선이 그려지는 데 걸리는 시간 (ms)
+//   HOLD         : 다 그려진 후 유지 시간 (ms)
+//   FADE         : 서서히 사라지는 시간 (ms)
+//   GAP          : 사라진 후 다음 회 시작까지 대기 시간 (ms)
 
 var DRAW_DELAY = 500;
 var DRAW_DURATION = 2400;
 var HOLD = 2000;
 var FADE = 2000;
 var GAP = 1000;
-var CYCLE = DRAW_DURATION + HOLD + FADE + GAP; // 7400ms — 첫 회 이후 반복 주기
+var CYCLE = DRAW_DURATION + HOLD + FADE + GAP;
 
 var logos = document.querySelectorAll('.logo_anim');
 if (logos.length && Element.prototype.animate) {
@@ -58,17 +65,11 @@ if (logos.length && Element.prototype.animate) {
 
         var holdEnd  = (DRAW_DURATION + HOLD) / CYCLE;
         var fadeEnd  = (DRAW_DURATION + HOLD + FADE) / CYCLE;
-        // fadeEnd 직후 dashoffset을 len으로 점프시킬 keyframe 위치 (opacity 0 구간).
         var resetAt  = Math.min(fadeEnd + 0.0001, 1);
 
-        // face 단위(a,b,c)로 그리되 인접 face가 겹쳐 시작한다.
-        // 전역 시간 0~DRAW_DURATION에 ease-out 곡선 하나를 깔고, 각 face는 자기 시간 구간에서
-        // 그 곡선이 만들어내는 진행률을 따라간다 — 셋이 함께 감속하는 한 줄기의 곡선이 된다.
-        // face_c는 곡선의 가장 감속 심한 후반을 담당, face_a는 곡선 초반의 빠른 구간.
-        var faceDurations = [900,  2200, 1500]; // a, b, c 그리기 시간 (ms)
-        var faceStarts    = [0,    200,  400];  // a, b, c 시작 시점 (ms) — 끝: 900 / 2400 / 1900
+        var faceDurations = [900,  2200, 1500];
+        var faceStarts    = [0,    200,  400];
 
-        // 전역 곡선: t(0~1) → 진행률(0~1). quartic ease-out — 초반 빠르고 후반 길게 감속.
         function eased(t) { var u = 1 - t; return 1 - u * u * u * u; }
 
         var faceGroups = [
@@ -84,9 +85,6 @@ if (logos.length && Element.prototype.animate) {
             var faceStartOff = faceStartMs / CYCLE;
             var faceEndOff   = faceEndMs / CYCLE;
 
-            // 곡선의 자기 구간을 12샘플로 근사. eased()의 face_start~face_end 구간 값을
-            // 0~1로 정규화한 결과를 dashoffset에 매핑. 정규화 때문에 각 face는 자기 path 전체를
-            // 다 그리지만, 곡선의 미분 특성(초반 빠름, 후반 느림)은 그대로 묻어 들어온다.
             var SAMPLES = 12;
             var startEased = eased(faceStartMs / DRAW_DURATION);
             var endEased   = eased(faceEndMs / DRAW_DURATION);
@@ -123,7 +121,6 @@ if (logos.length && Element.prototype.animate) {
             });
         });
 
-        // opacity 사이클: draw + 유지 동안 1, 페이드 구간에서 0, 대기 동안 0. CSS의 opacity:0을 덮어쓴다.
         anims.push(svg.animate(
             [
                 { opacity: 1, offset: 0 },
@@ -157,32 +154,27 @@ if (logos.length && Element.prototype.animate) {
 
 
 // ========== PORTFOLIO ==========
-// portfolio_upper: swiper (콘텐츠 담당) + 공유 배경 레이어 (JS crossfade 담당).
-// 배경은 swiper 밖 .portfolio_upper_bg에서 JS로 교체 — Swiper crossFade 버그 우회.
-// portfolio_lower: 일반 컨테이너 — carousel 없음.
+// portfolio_upper 슬라이드. 슬라이드 전환 시 배경 이미지도 함께 crossfade합니다.
+// 슬라이드 추가/제거: index.html의 swiper-slide 요소와 data-bg 이미지 경로를 수정하면 됩니다.
+// 속도 조절: speed(전환 속도 ms), autoplay.delay(머무는 시간 ms)
 
-// 배경 crossfade: 레이어 A/B를 교대로 사용. 새 이미지를 뒤에 깔고 앞 레이어를 fade out.
 var bgWrap = document.querySelector('.portfolio_upper');
 var bgLayer = bgWrap.querySelector('.portfolio_upper_bg');
 
-// 레이어 B를 동적으로 생성 (A 뒤에 깔릴 복사본)
 var bgLayerB = bgLayer.cloneNode(false);
-bgWrap.insertBefore(bgLayerB, bgLayer);  // B가 뒤(z-index 낮음), A가 앞
+bgWrap.insertBefore(bgLayerB, bgLayer);
 
 var slides = document.querySelectorAll('.portfolio_upper .swiper-slide[data-bg]');
 
 function setBg(index) {
-    // loop 복제 슬라이드 제외하고 실제 슬라이드 수 기준으로 인덱스 정규화
     var realCount = slides.length;
     var realIndex = ((index % realCount) + realCount) % realCount;
     var url = "url('" + slides[realIndex].dataset.bg + "')";
 
-    // B에 새 이미지 세팅 후, A를 fade out → B가 드러남
     bgLayerB.style.backgroundImage = url;
     bgLayer.style.opacity = '0';
 
     setTimeout(function () {
-        // 전환 완료 후 A를 B와 같은 이미지로 동기화하고 즉시 불투명하게 복원
         bgLayer.style.transition = 'none';
         bgLayer.style.backgroundImage = url;
         bgLayer.style.opacity = '1';
@@ -192,7 +184,6 @@ function setBg(index) {
     }, 600);
 }
 
-// 초기 배경 설정 (transition 없이)
 bgLayer.style.transition = 'none';
 bgLayer.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
 bgLayerB.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
@@ -213,7 +204,6 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
         slideChange: function () {
             setBg(this.realIndex);
 
-            // active bullet의 ::after 애니메이션 리셋
             var active = document.querySelector('.portfolio_upper .swiper-pagination-bullet-active');
             if (!active) return;
             active.classList.remove('swiper-pagination-bullet-active');
@@ -227,3 +217,73 @@ document.addEventListener('click', function (e) {
     if (e.target.closest('.nav_btn_prev')) portfolioSwiper.slidePrev();
     if (e.target.closest('.nav_btn_next')) portfolioSwiper.slideNext();
 });
+
+
+
+
+// ========== FONT_TRY ==========
+// 폰트 체험 섹션. 버튼 클릭 → 폰트 변경, 슬라이더 → 크기 변경, 텍스트 입력 → 미리보기 반영.
+//
+// 폰트 추가 시:
+//   1. index.html에 font_try_font_btn 버튼 추가 (data-font, data-preview 속성 필요)
+//   2. style.css에 @font-face 추가
+//   3. 아래 fontFamilyMap에 { '폰트이름': "'폰트이름', serif" } 항목 추가
+
+(function () {
+    var resultText   = document.querySelector('.font_try_result');
+    var sizeLabel    = document.querySelector('.font_try_size_label');
+    var slider       = document.querySelector('.font_try_slider');
+    var inputField   = document.querySelector('.font_try_input_field');
+    var inputCount   = document.querySelector('.font_try_input_count');
+    var fontBtns     = document.querySelectorAll('.font_try_font_btn');
+
+    if (!resultText) return;
+
+    var fontFamilyMap = {
+        'Yeongwol':            "'Yeongwol', serif",
+        'MungyeongGamhong':    "'MungyeongGamhong', serif",
+        'MapoMaponaru':        "'MapoMaponaru', serif",
+        'ShinDongYup':         "'ShinDongYup', serif",
+        'Jeonglimsaji':        "'Jeonglimsaji', serif",
+        'ChangwonDangamRound': "'ChangwonDangamRound', serif",
+        'ChangwonDangamAsac':  "'ChangwonDangamAsac', serif"
+    };
+
+    var activeBtn = document.querySelector('.font_try_font_btn.is-active');
+
+    function getActiveFont()    { return activeBtn ? activeBtn.getAttribute('data-font')    : null; }
+    function getActivePreview() { return activeBtn ? activeBtn.getAttribute('data-preview') : ''; }
+
+    function updatePreview() {
+        var font     = getActiveFont();
+        var userText = inputField.value.trim();
+
+        resultText.style.fontFamily = font ? fontFamilyMap[font] : '';
+        resultText.style.fontSize   = slider.value + 'px';
+        resultText.textContent      = userText ? userText : getActivePreview();
+    }
+
+    fontBtns.forEach(function (btn) {
+        var font = btn.getAttribute('data-font');
+        btn.style.fontFamily = fontFamilyMap[font] || '';
+
+        btn.addEventListener('click', function () {
+            if (activeBtn) activeBtn.classList.remove('is-active');
+            btn.classList.add('is-active');
+            activeBtn = btn;
+            updatePreview();
+        });
+    });
+
+    slider.addEventListener('input', function () {
+        sizeLabel.textContent = slider.value + 'px';
+        updatePreview();
+    });
+
+    inputField.addEventListener('input', function () {
+        inputCount.textContent = '(' + inputField.value.length + '/100)';
+        updatePreview();
+    });
+
+    updatePreview();
+}());
