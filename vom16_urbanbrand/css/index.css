@@ -379,8 +379,8 @@
 /* button_large */
 .button_large a {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 254px; height: 77px;
-    border: 2px solid #000;
+    width: 254px; padding: 22px;
+    border: 2px solid #000; border-radius: 12px;
     color: #000;
     font-weight: 400; font-size: 24px;
     transition: background .3s, color .3s;
