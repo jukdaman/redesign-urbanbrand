@@ -199,7 +199,7 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
     effect: 'fade',
     fadeEffect: { crossFade: true },
     speed: 600,
-    allowTouchMove: true,
+    allowTouchMove: false,
     autoplay: { delay: 4400, disableOnInteraction: false },
     pagination: {
         el: '.portfolio_upper .swiper-pagination',
@@ -237,6 +237,7 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
     var resultText   = document.querySelector('.font_try_result');
     var sizeLabel    = document.querySelector('.font_try_size_label');
     var slider       = document.querySelector('.font_try_slider');
+    var sliderWrap   = document.querySelector('.font_try_slider_wrap');
     var inputField   = document.querySelector('.font_try_input_field');
     var inputCount   = document.querySelector('.font_try_input_count');
     var fontBtns     = document.querySelectorAll('.font_try_font_btn');
@@ -279,13 +280,28 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
         });
     });
 
+    function updateLabelPosition() {
+        var min     = parseFloat(slider.min);
+        var max     = parseFloat(slider.max);
+        var val     = parseFloat(slider.value);
+        var ratio   = (val - min) / (max - min);
+        var thumbR  = 16.5;
+        var pos     = thumbR + ratio * (slider.offsetWidth - thumbR * 2);
+        var wrapLeft = slider.getBoundingClientRect().left - slider.closest('.font_try_size_selector').getBoundingClientRect().left;
+        sizeLabel.style.left = (wrapLeft + pos) + 'px';
+    }
+
     slider.addEventListener('input', function () {
         sizeLabel.textContent = slider.value + 'px';
+        updateLabelPosition();
         updatePreview();
     });
 
+    updateLabelPosition();
+    window.addEventListener('resize', updateLabelPosition);
+
     inputField.addEventListener('input', function () {
-        inputCount.textContent = '(' + inputField.value.length + '/100)';
+        inputCount.textContent = '(' + inputField.value.length + '/1000)';
         updatePreview();
     });
 

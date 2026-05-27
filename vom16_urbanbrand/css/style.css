@@ -1,23 +1,13 @@
 /* ========== @FONT-FACE ========== */
 @font-face {
     font-family: 'Yeongwol';
-    src: url('../fonts/YeongwolTTF.ttf') format('truetype');
+    src: url('../fonts/YeongwolTTF.woff2') format('woff2');
     font-weight: normal;
 }
 @font-face {
     font-family: 'Jeonglimsaji';
-    src: url('../fonts/Jeongnimsaji-B.woff') format('woff');
-    font-weight: 700;
-}
-@font-face {
-    font-family: 'Jeonglimsaji';
-    src: url('../fonts/Jeongnimsaji-M.woff') format('woff');
-    font-weight: 500;
-}
-@font-face {
-    font-family: 'Jeonglimsaji';
-    src: url('../fonts/Jeongnimsaji-L.woff') format('woff');
-    font-weight: 300;
+    src: url('../fonts/Jeongnimsaji-M.woff2') format('woff2');
+    font-weight: normal;
 }
 @font-face {
     font-family: 'MapoMaponaru';
@@ -31,24 +21,20 @@
 }
 @font-face {
     font-family: 'ShinDongYup';
-    src: url('../fonts/ShinDongYupHandwriting-R.woff') format('woff');
-    font-weight: 400;
-}
-@font-face {
-    font-family: 'ShinDongYup';
-    src: url('../fonts/ShinDongYupHandwriting-B.woff') format('woff');
-    font-weight: 700;
+    src: url('../fonts/ShinDongYupHandwriting-L.woff2') format('woff2');
+    font-weight: normal;
 }
 @font-face {
     font-family: 'ChangwonDangamRound';
-    src: url('../fonts/ChangwonDangamRound.ttf') format('truetype');
+    src: url('../fonts/ChangwonDangamRound.woff2') format('woff2');
     font-weight: normal;
 }
 @font-face {
     font-family: 'ChangwonDangamAsac';
-    src: url('../fonts/ChangwonDangamAsac-Bold.ttf') format('truetype');
-    font-weight: 700;
+    src: url('../fonts/ChangwonDangamAsac-Bold.woff2') format('woff2');
+    font-weight: normal;
 }
+
 
 
 
@@ -70,13 +56,25 @@
 .article_small    { font-weight: 300; font-size: 16px; letter-spacing: -0.5px; line-height: 160%; }
 .article_xsmall   { font-weight: 400; font-size: 14px; line-height: 160%; }
 
+
 /* rich text */
 .rich_yeongwol     { font-family: 'Yeongwol', serif; }
 .rich_jeonglimsaji { font-family: 'Jeonglimsaji', serif; }
 
 
 
+
 /* ========== BOX ========== */
+/* button */
+.button_large {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 20px 50px;
+    border: 2px solid #000; border-radius: 12px; color: #000;
+    font-weight: 400; font-size: 24px;
+    transition: background .3s, color .3s;
+}
+.button_large:hover { background: #000; color: #fff; }
+
 
 /* container */
 .container { max-width: 1920px; margin: 0 auto; padding: 0 140px; }
@@ -114,6 +112,7 @@
 .gnb_logo_wrap:hover { opacity: 1; }
 .gnb_logo { color: #fff; transition: color .3s; }
 .gnb.is-solid .gnb_logo { color: #000; }
+
 
 
 
