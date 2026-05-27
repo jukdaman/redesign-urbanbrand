@@ -207,20 +207,17 @@
 
 
 /* portfolio_logo_wrap */
-.portfolio_logo_wrap {
-    display: flex; flex-direction: column; align-items: center; gap: 44px;
-}
+.portfolio_logo_wrap { display: flex; flex-direction: column; align-items: center; gap: 44px; }
 
 .portfolio_logo { width: 88px; height: 88px; }
-
 .portfolio_logo_desc { color: #000; text-align: center; }
 
 
-/* portfolio_upper (swiper) */
+/* PORTFOLIO_UPPER */
 .portfolio_upper { position: relative; width: 100%; isolation: isolate; }
 
-/* 공유 배경 레이어: JS가 슬라이드 전환 시 이미지 교체 + opacity crossfade */
 .portfolio_upper > .portfolio_upper_bg {
+    /* 공유 배경 레이어: JS가 슬라이드 전환 시 이미지 교체 + opacity crossfade */
     position: absolute; inset: 0;
     z-index: 0;
     background-size: cover; background-position: center;
@@ -230,13 +227,13 @@
     overflow: hidden;
 }
 
-/* portfolio_title: portfolio_upper 기준 absolute. mix-blend-mode: screen으로 배경 이미지가 글자에 비침 */
 .portfolio_title {
+    /* PROJECTS 글씨 (screen으로 글씨 바깥만 가림) */
     position: absolute; top: 0; left: 0; right: 0;
     z-index: 10;
     width: 100%;
     background: linear-gradient(#fff 80%, transparent 80%);
-    font-weight: 600; font-size: 268px; line-height: 80%; letter-spacing: -6px;
+    font-weight: 600; font-size: 268px; line-height: 200px; letter-spacing: -6px;
     color: #000;
     text-align: center;
     white-space: nowrap;
@@ -245,61 +242,34 @@
     user-select: none;
 }
 
-/* portfolio_upper_stage: swiper-slide */
-.portfolio_upper_stage {
-    display: flex; flex-direction: column; align-items: center;
-    position: relative;
-}
-
-/* portfolio_upper_content */
-.portfolio_upper_content {
-    display: flex; flex-direction: column; align-items: center; gap: 80px;
+/* portfolio_upper_slide: swiper-slide */
+.portfolio_upper_slide {
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 80px;
     position: relative;
     z-index: 1;
-    width: 976px;
-    padding: 293px 0 100px;
+    padding-top: calc(200px + 160px); padding-bottom: 100px;
 }
 
-/* portfolio_upper_nav: portfolio_upper_content 기준 absolute. 콘텐츠 영역 전체 높이에서 수직 중앙 */
-.portfolio_upper_nav {
-    display: flex; justify-content: space-between; align-items: center;
-    position: absolute; top: 0; right: -140px; bottom: 0; left: -140px;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.nav_btn {
-    display: flex; align-items: center; justify-content: center;
-    width: 48px; height: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 50%;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    pointer-events: auto;
-    transition: background .3s;
-}
-.nav_btn:hover { background: rgba(255, 255, 255, 0.15); }
 
 .portfolio_upper_img {
-    width: 810px; height: 597px;
+    width: 810px; height: 536px;
     background-size: cover; background-position: center;
 }
-.portfolio_upper_img_placeholder { background: #555; }
 
 .portfolio_upper_bottom {
     display: flex; align-items: flex-start; gap: 36px;
-    width: 100%;
+    width: 980px;
 }
 
-/* min-height: title_small 2줄 보장 → 슬라이드별 title 줄수 차이로 인한 흔들림 방지 */
 .portfolio_upper_title_wrap {
     display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
-    width: 260px; min-height: 116px;
+    width: 260px; min-height: 120px;
 }
 .portfolio_upper_title_wrap .title_small { color: #fff; }
 .portfolio_upper_category { color: rgba(255, 255, 255, 0.4); }
 
 .portfolio_upper_desc { flex: 1; color: #fff; }
+
 
 /* swiper-pagination */
 .portfolio_upper .swiper-pagination {
@@ -331,6 +301,13 @@
 @keyframes bullet-progress {
     from { width: 0; }
     to   { width: 100%; }
+}
+
+/* portfolio_upper nav buttons */
+.portfolio_upper .swiper-button-prev,
+.portfolio_upper .swiper-button-next { 
+    --swiper-navigation-color: #fff;
+    width: 48px; height: 48px; margin: 0 140px;
 }
 
 

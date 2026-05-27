@@ -166,6 +166,11 @@ bgWrap.insertBefore(bgLayerB, bgLayer);
 
 var slides = document.querySelectorAll('.portfolio_upper .swiper-slide[data-bg]');
 
+slides.forEach(function (slide) {
+    var img = slide.querySelector('.portfolio_upper_img');
+    if (img) img.style.backgroundImage = "url('" + slide.dataset.bg + "')";
+});
+
 function setBg(index) {
     var realCount = slides.length;
     var realIndex = ((index % realCount) + realCount) % realCount;
@@ -200,6 +205,10 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
         el: '.portfolio_upper .swiper-pagination',
         clickable: true,
     },
+    navigation: {
+        prevEl: '.portfolio_upper .swiper-button-prev',
+        nextEl: '.portfolio_upper .swiper-button-next',
+    },
     on: {
         slideChange: function () {
             setBg(this.realIndex);
@@ -211,11 +220,6 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
             active.classList.add('swiper-pagination-bullet-active');
         },
     },
-});
-
-document.addEventListener('click', function (e) {
-    if (e.target.closest('.nav_btn_prev')) portfolioSwiper.slidePrev();
-    if (e.target.closest('.nav_btn_next')) portfolioSwiper.slideNext();
 });
 
 
