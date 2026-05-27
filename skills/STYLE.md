@@ -35,18 +35,29 @@ HTML 또는 CSS 코드를 쓸 때마다 적용. 폰트/타이포 유틸은 [TYPO
 
 ## CSS 포매팅
 
-의미적으로 묶이는 짧은 속성들은 **한 줄로**:
-```css
-.hero_inner { position: absolute; left: 0; right: 0; bottom: 443px; }
-```
-
 한 줄 규칙에서 중괄호 앞뒤에 **공백 1칸**:
 ```css
 .logo_anim { opacity: 0; }
 .gnb_nav a:hover { opacity: 1; }
 ```
 
-한 줄이 시각적으로 무거워지면 한 속성 한 줄로 분리:
+속성이 여럿이면 **같은 선언 그룹(아래 속성 선언 순서 기준)끼리 한 줄**로 묶는다. 그룹 안에서도 더 세밀하게 짝을 나눌 수 있으면 나눠도 된다(예: 크기는 크기끼리, 간격은 간격끼리). 줄이 시각적으로 아래 주석 길이에 근접하면 그룹을 다음 줄로 분리한다:
+```css
+/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+```
+
+예시 — 크기+간격이 짧으면 한 줄, `min-*`/`max-*`까지 붙어 길어지면 간격을 다음 줄로:
+```css
+width: 30px; height: 3px; margin: 0; padding: 8.5px 0;
+```
+
+예시 — `background` 계열과 `border` 계열은 각각 한 줄로. `box-sizing`은 `border` 그룹:
+```css
+border-radius: 0; box-sizing: content-box;
+background-color: rgba(255, 255, 255, 0.2); background-clip: content-box;
+```
+
+예시 — 속성이 많아 전체적으로 무거워지면 그룹별로 줄 분리:
 ```css
 .gnb {
     position: fixed; top: 0; left: 0; right: 0;
@@ -107,7 +118,7 @@ HTML 또는 CSS 코드를 쓸 때마다 적용. 폰트/타이포 유틸은 [TYPO
 1. display / flex 계열 (`flex-direction`, `justify-content`, `align-items`, `gap`)
 2. position / inset / top·right·bottom·left / z-index
 3. width / height / min-* / margin / padding
-4. border / border-radius
+4. border / border-radius / box-sizing
 5. background / color
 6. font-* / line-height / letter-spacing / text-align / text-decoration / white-space
 7. box-shadow / text-shadow / filter / opacity

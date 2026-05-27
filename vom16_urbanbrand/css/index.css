@@ -2,7 +2,8 @@
 .hero {
     display: flex; align-items: center;
     position: relative;
-    width: 100%; height: 50vw; min-height: 1080px; max-height: 100vh;
+    width: 100%; height: 50vw;
+    min-height: 1080px; max-height: 100vh;
     background-color: #888;
     overflow: hidden;
 }
@@ -61,6 +62,7 @@
 .solution_row { display: flex; align-items: center; gap: 82px; }
 
 
+/* solution_line */
 .solution_line {
     flex: 1;
     position: relative;
@@ -135,8 +137,7 @@
 
 /* service_divider */
 .service_divider {
-    width: 40px; height: 0;
-    margin: 120px 0;
+    width: 40px; height: 0; margin: 120px 0;
     border: 0; border-top: 1px solid #000;
 }
 
@@ -148,8 +149,8 @@
 }
 
 .service_box {
-    position: relative;
     display: flex; flex-direction: column; align-items: center;
+    position: relative;
     flex: 1;
     text-align: center;
 }
@@ -193,14 +194,14 @@
     margin-top: 48px;
 }
 .service_box .article_medium_m { color: #000; }
-.service_box .article_small { color: #888; }
+.service_box .article_small    { color: #888; }
 
 
 
 
 /* ========== PORTFOLIO ========== */
 .portfolio {
-    display: flex; flex-direction: column; align-items: center; gap: 130px;
+    display: flex; flex-direction: column; align-items: center; gap: 80px;
     padding: 200px 0;
 }
 
@@ -211,7 +212,6 @@
 }
 
 .portfolio_logo { width: 88px; height: 88px; }
-.portfolio_logo .logo_face { color: #000; stroke-width: 2; }
 
 .portfolio_logo_desc { color: #000; text-align: center; }
 
@@ -230,55 +230,14 @@
     overflow: hidden;
 }
 
-/* swiper-pagination: 슬라이드 하단 안쪽에 absolute 배치 */
-.portfolio_upper .swiper-pagination {
-    display: flex; justify-content: center; align-items: center; gap: 4px;
-    bottom: 28px;
-}
-.portfolio_upper .swiper-pagination-bullet {
-    display: block;
-    width: 30px; height: 3px;
-    margin: 0;
-    border-radius: 0;
-    opacity: 1;
-    background: rgba(255, 255, 255, 0.2);
-    transition: width .3s, background .3s;
-    flex-shrink: 0;
-}
-.portfolio_upper .swiper-pagination-bullet-active {
-    width: 80px;
-    background: rgba(255, 255, 255, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-.portfolio_upper .swiper-pagination-bullet-active::after {
-    content: '';
-    position: absolute; top: 0; left: 0;
-    height: 100%;
-    width: 0;
-    background: #fff;
-    animation: bullet-progress 5000ms linear forwards;
-}
-@keyframes bullet-progress {
-    from { width: 0; }
-    to   { width: 100%; }
-}
-
-
-/* portfolio_upper_stage: swiper-slide */
-.portfolio_upper_stage {
-    display: flex; flex-direction: column; align-items: center;
-    position: relative;
-}
-
 /* portfolio_title: portfolio_upper 기준 absolute. mix-blend-mode: screen으로 배경 이미지가 글자에 비침 */
 .portfolio_title {
     position: absolute; top: 0; left: 0; right: 0;
     z-index: 10;
     width: 100%;
-    background: linear-gradient(#fff 75%, transparent 75%);
+    background: linear-gradient(#fff 80%, transparent 80%);
+    font-weight: 600; font-size: 268px; line-height: 80%; letter-spacing: -6px;
     color: #000;
-    font-weight: 600; font-size: 268px; letter-spacing: -6px; line-height: 100%;
     text-align: center;
     white-space: nowrap;
     mix-blend-mode: screen;
@@ -286,20 +245,33 @@
     user-select: none;
 }
 
+/* portfolio_upper_stage: swiper-slide */
+.portfolio_upper_stage {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+}
+
+/* portfolio_upper_content */
+.portfolio_upper_content {
+    display: flex; flex-direction: column; align-items: center; gap: 80px;
+    position: relative;
+    z-index: 1;
+    width: 976px;
+    padding: 293px 0 100px;
+}
 
 /* portfolio_upper_nav: portfolio_upper_content 기준 absolute. 콘텐츠 영역 전체 높이에서 수직 중앙 */
-.portfolio_upper_content { position: relative; z-index: 1; }
 .portfolio_upper_nav {
     display: flex; justify-content: space-between; align-items: center;
-    position: absolute; top: 0; bottom: 0; left: -140px; right: -140px;
+    position: absolute; top: 0; right: -140px; bottom: 0; left: -140px;
     z-index: 2;
     pointer-events: none;
 }
+
 .nav_btn {
     display: flex; align-items: center; justify-content: center;
     width: 48px; height: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 50%;
     color: #fff;
     font-size: 24px;
     cursor: pointer;
@@ -307,14 +279,6 @@
     transition: background .3s;
 }
 .nav_btn:hover { background: rgba(255, 255, 255, 0.15); }
-
-
-/* portfolio_upper_content */
-.portfolio_upper_content {
-    display: flex; flex-direction: column; align-items: center; gap: 80px;
-    width: 976px;
-    padding: 293px 0 80px;
-}
 
 .portfolio_upper_img {
     width: 810px; height: 597px;
@@ -329,34 +293,61 @@
 
 /* min-height: title_small 2줄 보장 → 슬라이드별 title 줄수 차이로 인한 흔들림 방지 */
 .portfolio_upper_title_wrap {
-    display: flex; flex-direction: column; gap: 8px;
-    width: 260px;
-    min-height: 116px;
-    flex-shrink: 0;
+    display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    width: 260px; min-height: 116px;
 }
 .portfolio_upper_title_wrap .title_small { color: #fff; }
 .portfolio_upper_category { color: rgba(255, 255, 255, 0.4); }
 
-.portfolio_upper_desc {
-    flex: 1;
-    color: #fff;
+.portfolio_upper_desc { flex: 1; color: #fff; }
+
+/* swiper-pagination */
+.portfolio_upper .swiper-pagination {
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    bottom: 80px;
+}
+.portfolio_upper .swiper-pagination-bullet {
+    display: block;
+    flex-shrink: 0;
+    width: 30px; height: 3px; margin: 0; padding: 8.5px 0;
+    border-radius: 0; box-sizing: content-box;
+    background-color: rgba(255, 255, 255, 0.2); background-clip: content-box;
+    opacity: 1;
+    transition: width .3s, background-color .3s;
+}
+.portfolio_upper .swiper-pagination-bullet-active {
+    position: relative;
+    width: 80px;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+.portfolio_upper .swiper-pagination-bullet-active::after {
+    content: '';
+    position: absolute; top: 8.5px; bottom: 8.5px; left: 0;
+    width: 0;
+    background: #fff;
+    animation: bullet-progress 5000ms linear forwards;
+}
+@keyframes bullet-progress {
+    from { width: 0; }
+    to   { width: 100%; }
 }
 
 
 /* portfolio_lower */
-.portfolio_lower { width: 100%; }
+.portfolio_lower { display: flex; flex-direction: column; align-items: center; gap: 40px; }
 
-.portfolio_lower_headline {
-    width: 100%;
-    padding: 80px 0 60px;
-    color: #000;
-    text-align: center;
+.portfolio_lower .rich_yeongwol {
+    padding: 0 12px;
+    font-size: 90px; font-weight: 400; line-height: 100%; letter-spacing: -8px;
+    transform: translateX(-16px) rotate(-1.14deg);
+    white-space: nowrap;
 }
-.portfolio_lower_headline em { font-weight: 700; font-style: normal; }
 
 .portfolio_lower_box_wrap {
     display: flex; flex-wrap: wrap; gap: 32px 20px;
     width: 100%;
+    list-style: none; padding: 0; margin: 0;
 }
 
 .portfolio_lower_box {
@@ -370,6 +361,12 @@
     background-size: cover; background-position: center;
 }
 .portfolio_lower_box_img_placeholder { background: #ddd; }
+.portfolio_lower_box:nth-child(1) .portfolio_lower_box_img { background-image: url(../images/portfolio_lower_box_img_01.jpg); }
+.portfolio_lower_box:nth-child(2) .portfolio_lower_box_img { background-image: url(../images/portfolio_lower_box_img_02.jpg); }
+.portfolio_lower_box:nth-child(3) .portfolio_lower_box_img { background-image: url(../images/portfolio_lower_box_img_03.jpg); }
+.portfolio_lower_box:nth-child(4) .portfolio_lower_box_img { background-image: url(../images/portfolio_lower_box_img_04.jpg); }
+.portfolio_lower_box:nth-child(5) .portfolio_lower_box_img { background-image: url(../images/portfolio_lower_box_img_05.jpg); }
+.portfolio_lower_box:nth-child(6) .portfolio_lower_box_img { background-image: url(../images/portfolio_lower_box_img_06.jpg); }
 
 .portfolio_lower_box_textwrap   { display: flex; flex-direction: column; gap: 16px; }
 .portfolio_lower_box_title_wrap { display: flex; flex-direction: column; }
