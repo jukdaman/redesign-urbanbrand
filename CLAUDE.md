@@ -60,6 +60,8 @@
 | 메인 로고나 SVG 스프라이트 다룰 때        | [skills/LOGO.md](skills/LOGO.md) |
 | 새 페이지·새 파일 만들 때 (어디 둘지)     | [skills/STRUCTURE.md](skills/STRUCTURE.md) |
 | 새 라이브러리·CDN·웹폰트 도입 검토        | [skills/DEPENDENCIES.md](skills/DEPENDENCIES.md) |
+| portfolio_upper 타이틀 구조·시행착오      | [skills/PORTFOLIO_UPPER_TITLE.md](skills/PORTFOLIO_UPPER_TITLE.md) |
+| 프로젝트 전체 주요 시행착오 모음          | [skills/CONTEXT.md](skills/CONTEXT.md) |
 
 ---
 

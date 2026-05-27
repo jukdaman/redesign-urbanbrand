@@ -217,18 +217,7 @@
 
 
 /* portfolio_upper (swiper) */
-.portfolio_upper { position: relative; width: 100%; isolation: isolate; }
-
-/* 공유 배경 레이어: JS가 슬라이드 전환 시 이미지 교체 + opacity crossfade */
-.portfolio_upper > .portfolio_upper_bg {
-    position: absolute; inset: 0;
-    z-index: 0;
-    background-size: cover; background-position: center;
-    filter: blur(10px) brightness(0.4);
-    transform: scale(1.05);
-    transition: opacity 600ms ease;
-    overflow: hidden;
-}
+.portfolio_upper { width: 100%; }
 
 /* swiper-pagination: 슬라이드 하단 안쪽에 absolute 배치 */
 .portfolio_upper .swiper-pagination {
@@ -265,16 +254,26 @@
 }
 
 
-/* portfolio_upper_stage: swiper-slide */
+/* portfolio_upper_stage: swiper-slide. bg + title + nav + content를 같은 stacking context에 담음 */
 .portfolio_upper_stage {
     display: flex; flex-direction: column; align-items: center;
     position: relative;
+    z-index: 0;
 }
 
-/* portfolio_title: portfolio_upper 기준 absolute. mix-blend-mode: screen으로 배경 이미지가 글자에 비침 */
+.portfolio_upper_bg {
+    position: absolute; inset: 0;
+    z-index: -1;
+    background-size: cover; background-position: center;
+    filter: blur(10px) brightness(0.4);
+    transform: scale(1.05);
+}
+
+
+/* linear-gradient + mix-blend-mode → letters가 bg image를 통과시켜 image-fill 효과 */
+/* position: absolute로 흐름에서 제거 → swiper 높이에 영향 안 줌. portfolio_upper_content의 padding-top으로 시각적 위치 보정 */
 .portfolio_title {
     position: absolute; top: 0; left: 0; right: 0;
-    z-index: 10;
     width: 100%;
     background: linear-gradient(#fff 75%, transparent 75%);
     color: #000;
@@ -287,8 +286,8 @@
 }
 
 
-/* portfolio_upper_nav: portfolio_upper_content 기준 absolute. 콘텐츠 영역 전체 높이에서 수직 중앙 */
-.portfolio_upper_content { position: relative; z-index: 1; }
+/* portfolio_upper_nav: portfolio_upper_content 기준 absolute. title 높이와 무관하게 콘텐츠 영역 안에서 중앙정렬 */
+.portfolio_upper_content { position: relative; }
 .portfolio_upper_nav {
     display: flex; justify-content: space-between; align-items: center;
     position: absolute; top: 0; bottom: 0; left: -140px; right: -140px;
@@ -310,6 +309,7 @@
 
 
 /* portfolio_upper_content */
+/* padding-top: portfolio_title 높이(265px) + 원래 상단 여백(28px) */
 .portfolio_upper_content {
     display: flex; flex-direction: column; align-items: center; gap: 80px;
     width: 976px;

@@ -157,46 +157,10 @@ if (logos.length && Element.prototype.animate) {
 
 
 // ========== PORTFOLIO ==========
-// portfolio_upper: swiper (콘텐츠 담당) + 공유 배경 레이어 (JS crossfade 담당).
-// 배경은 swiper 밖 .portfolio_upper_bg에서 JS로 교체 — Swiper crossFade 버그 우회.
+// portfolio_upper: swiper, fade 전환.
+// 각 slide의 stage 안에 bg + title + content가 함께 있어 mix-blend-mode 정상 작동.
+// 페이드 전환 시 슬라이드 전체(bg, title 포함)가 자연스럽게 교차.
 // portfolio_lower: 일반 컨테이너 — carousel 없음.
-
-// 배경 crossfade: 레이어 A/B를 교대로 사용. 새 이미지를 뒤에 깔고 앞 레이어를 fade out.
-var bgWrap = document.querySelector('.portfolio_upper');
-var bgLayer = bgWrap.querySelector('.portfolio_upper_bg');
-
-// 레이어 B를 동적으로 생성 (A 뒤에 깔릴 복사본)
-var bgLayerB = bgLayer.cloneNode(false);
-bgWrap.insertBefore(bgLayerB, bgLayer);  // B가 뒤(z-index 낮음), A가 앞
-
-var slides = document.querySelectorAll('.portfolio_upper .swiper-slide[data-bg]');
-
-function setBg(index) {
-    // loop 복제 슬라이드 제외하고 실제 슬라이드 수 기준으로 인덱스 정규화
-    var realCount = slides.length;
-    var realIndex = ((index % realCount) + realCount) % realCount;
-    var url = "url('" + slides[realIndex].dataset.bg + "')";
-
-    // B에 새 이미지 세팅 후, A를 fade out → B가 드러남
-    bgLayerB.style.backgroundImage = url;
-    bgLayer.style.opacity = '0';
-
-    setTimeout(function () {
-        // 전환 완료 후 A를 B와 같은 이미지로 동기화하고 즉시 불투명하게 복원
-        bgLayer.style.transition = 'none';
-        bgLayer.style.backgroundImage = url;
-        bgLayer.style.opacity = '1';
-        setTimeout(function () {
-            bgLayer.style.transition = '';
-        }, 20);
-    }, 600);
-}
-
-// 초기 배경 설정 (transition 없이)
-bgLayer.style.transition = 'none';
-bgLayer.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
-bgLayerB.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
-setTimeout(function () { bgLayer.style.transition = ''; }, 20);
 
 var portfolioSwiper = new Swiper('.portfolio_upper', {
     loop: true,
@@ -211,13 +175,11 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
     },
     on: {
         slideChange: function () {
-            setBg(this.realIndex);
-
-            // active bullet의 ::after 애니메이션 리셋
+            // active bullet의 ::after 애니메이션 리셋: 클래스를 잠깐 제거했다 복원
             var active = document.querySelector('.portfolio_upper .swiper-pagination-bullet-active');
             if (!active) return;
             active.classList.remove('swiper-pagination-bullet-active');
-            void active.offsetWidth;
+            void active.offsetWidth; // reflow 강제 → 애니메이션 초기화
             active.classList.add('swiper-pagination-bullet-active');
         },
     },

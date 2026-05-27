@@ -267,81 +267,89 @@
 
 
             <div class="portfolio_upper swiper">
-                <div class="portfolio_upper_bg"></div>
-                <p class="portfolio_title">PROJECTS</p>
-
+                <!-- stage = swiper-slide. bg + title + content가 같은 stacking context → mix-blend-mode 작동. -->
                 <div class="swiper-wrapper">
-                        <div class="portfolio_upper_stage swiper-slide" data-bg="images/portfolio_upper_img_01.jpg"> <!-- slide 01 -->
-                            <div class="portfolio_upper_content">
-                                <div class="portfolio_upper_nav">
-                                    <div class="nav_btn nav_btn_prev">&#8592;</div>
-                                    <div class="nav_btn nav_btn_next">&#8594;</div>
-                                </div><!-- portfolio_upper_nav -->
+                    <div class="portfolio_upper_stage swiper-slide"> <!-- slide 01 -->
+                        <div class="portfolio_upper_bg" style="background-image: url('images/portfolio_upper_img_01.jpg');"></div>
+                        <p class="portfolio_title">PROJECTS</p>
 
-                                <div class="portfolio_upper_img" style="background-image: url('images/portfolio_upper_img_01.jpg');"></div>
+                        <div class="portfolio_upper_content">
+                            <div class="portfolio_upper_nav">
+                                <div class="nav_btn nav_btn_prev">&#8592;</div>
+                                <div class="nav_btn nav_btn_next">&#8594;</div>
+                            </div><!-- portfolio_upper_nav -->
 
-                                <div class="portfolio_upper_bottom">
-                                    <div class="portfolio_upper_title_wrap">
-                                        <p class="title_small">
-                                            경남 마을기업<br>
-                                            지원 기관
-                                        </p>
-                                        <p class="article_medium_r portfolio_upper_category">FONT · LOGO DESIGN</p>
-                                    </div>
+                            <div class="portfolio_upper_img" style="background-image: url('images/portfolio_upper_img_01.jpg');"></div>
 
-                                    <p class="article_medium_r portfolio_upper_desc">
-                                        경남 마을기업 지원기관의 의뢰로, 경남 마을기업들의 공동 브랜드 '마을담아'의 아이덴티티 및 디자인 시스템을 개발했습니다.
+                            <div class="portfolio_upper_bottom">
+                                <div class="portfolio_upper_title_wrap">
+                                    <p class="title_small">
+                                        경남 마을기업<br>
+                                        지원 기관
                                     </p>
+                                    <p class="article_medium_r portfolio_upper_category">FONT · LOGO DESIGN</p>
                                 </div>
-                            </div><!-- portfolio_upper_content -->
-                        </div><!-- portfolio_upper_stage -->
+
+                                <p class="article_medium_r portfolio_upper_desc">
+                                    경남 마을기업 지원기관의 의뢰로, 경남 마을기업들의 공동 브랜드 '마을담아'의 아이덴티티 및 디자인 시스템을 개발했습니다.
+                                </p>
+                            </div>
+                        </div><!-- portfolio_upper_content -->
+                    </div><!-- portfolio_upper_stage -->
 
 
-                        <div class="portfolio_upper_stage swiper-slide" data-bg="images/portfolio_upper_img_02.jpg"> <!-- slide 02 -->
-                            <div class="portfolio_upper_content">
-                                <div class="portfolio_upper_nav">
-                                    <div class="nav_btn nav_btn_prev">&#8592;</div>
-                                    <div class="nav_btn nav_btn_next">&#8594;</div>
-                                </div><!-- portfolio_upper_nav -->
+                    <div class="portfolio_upper_stage swiper-slide"> <!-- slide 02 -->
+                        <div class="portfolio_upper_bg" style="background-image: url('images/portfolio_upper_img_02.jpg');"></div>
+                        <p class="portfolio_title">PROJECTS</p>
 
-                                <div class="portfolio_upper_img" style="background-image: url('images/portfolio_upper_img_02.jpg');"></div>
+                        <div class="portfolio_upper_content">
+                            <div class="portfolio_upper_nav">
+                                <div class="nav_btn nav_btn_prev">&#8592;</div>
+                                <div class="nav_btn nav_btn_next">&#8594;</div>
+                            </div><!-- portfolio_upper_nav -->
 
-                                <div class="portfolio_upper_bottom">
-                                    <div class="portfolio_upper_title_wrap">
-                                        <p class="title_small">영월체</p>
-                                        <p class="article_medium_r portfolio_upper_category">FONT DESIGN</p>
-                                    </div>
+                            <div class="portfolio_upper_img" style="background-image: url('images/portfolio_upper_img_02.jpg');"></div>
 
-                                    <p class="article_medium_r portfolio_upper_desc">
-                                        영월체 제작 참여를 계기로, 단종문화제에서 손글씨 체험과 영월 지역 굿즈를 선보이며 도시 브랜딩을 실천했습니다.
-                                    </p>
+                            <div class="portfolio_upper_bottom">
+                                <div class="portfolio_upper_title_wrap">
+                                    <p class="title_small">영월체</p>
+                                    <p class="article_medium_r portfolio_upper_category">FONT DESIGN</p>
                                 </div>
-                            </div><!-- portfolio_upper_content -->
-                        </div><!-- portfolio_upper_stage -->
+
+                                <p class="article_medium_r portfolio_upper_desc">
+                                    영월체 제작 참여를 계기로, 단종문화제에서 손글씨 체험과 영월 지역 굿즈를 선보이며 도시 브랜딩을 실천했습니다.
+                                </p>
+                            </div>
+                        </div><!-- portfolio_upper_content -->
+                    </div><!-- portfolio_upper_stage -->
 
 
-                        <div class="portfolio_upper_stage swiper-slide" data-bg="images/portfolio_upper_img_03.jpg"> <!-- slide 03 -->
-                            <div class="portfolio_upper_content">
-                                <div class="portfolio_upper_nav">
-                                    <div class="nav_btn nav_btn_prev">&#8592;</div>
-                                    <div class="nav_btn nav_btn_next">&#8594;</div>
-                                </div><!-- portfolio_upper_nav -->
+                    <div class="portfolio_upper_stage swiper-slide"> <!-- slide 03 -->
+                        <div class="portfolio_upper_bg" style="background-image: url('images/portfolio_upper_img_03.jpg');"></div>
+                        <p class="portfolio_title">PROJECTS</p>
 
-                                <div class="portfolio_upper_img" style="background-image: url('images/portfolio_upper_img_03.jpg');"></div>
+                        <div class="portfolio_upper_content">
+                            <div class="portfolio_upper_nav">
+                                <div class="nav_btn nav_btn_prev">&#8592;</div>
+                                <div class="nav_btn nav_btn_next">&#8594;</div>
+                            </div><!-- portfolio_upper_nav -->
 
-                                <div class="portfolio_upper_bottom">
-                                    <div class="portfolio_upper_title_wrap">
-                                        <p class="title_small">부여 정림사지체</p>
-                                        <p class="article_medium_r portfolio_upper_category">FONT DESIGN</p>
-                                    </div>
+                            <div class="portfolio_upper_img" style="background-image: url('images/portfolio_upper_img_03.jpg');"></div>
 
-                                    <p class="article_medium_r portfolio_upper_desc">
-                                        백제 왕도 부여의 중심 사찰 터, 정림사지의 역사적 가치와 건축적 질서를 서체에 담아냈습니다.
-                                    </p>
+                            <div class="portfolio_upper_bottom">
+                                <div class="portfolio_upper_title_wrap">
+                                    <p class="title_small">부여 정림사지체</p>
+                                    <p class="article_medium_r portfolio_upper_category">FONT DESIGN</p>
                                 </div>
-                            </div><!-- portfolio_upper_content -->
-                        </div><!-- portfolio_upper_stage -->
+
+                                <p class="article_medium_r portfolio_upper_desc">
+                                    백제 왕도 부여의 중심 사찰 터, 정림사지의 역사적 가치와 건축적 질서를 서체에 담아냈습니다.
+                                </p>
+                            </div>
+                        </div><!-- portfolio_upper_content -->
+                    </div><!-- portfolio_upper_stage -->
                 </div><!-- swiper-wrapper -->
+
 
                 <div class="swiper-pagination"></div>
             </div><!-- portfolio_upper -->
