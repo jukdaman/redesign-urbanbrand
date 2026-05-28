@@ -225,6 +225,48 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
 
 
 
+// ========== HISTORY ==========
+// left/right 각각 독립 루프. 첫 번째 ul 높이를 측정해서 그만큼 translateY 이동 후 순간 리셋.
+// 속도 조절: HISTORY_DURATION (ms, 한 세트 이동에 걸리는 시간)
+
+(function () {
+    var DURATION = 18000;
+    var GAP      = 600;
+    var OFFSET   = 800;
+
+    function startLoop(col, offsetPx) {
+        var firstUl = col.querySelector('ul');
+        if (!firstUl) return;
+
+        var unitH = firstUl.offsetHeight + GAP;
+        if (unitH <= GAP) return;
+
+        var pos  = offsetPx ? unitH - offsetPx : 0;
+        var last = null;
+
+        function tick(now) {
+            if (last === null) last = now;
+            // 백그라운드 탭에서 복귀 시 dt가 수십초로 튀어 순간이동처럼 보이는 것을 방지
+            var dt = Math.min(now - last, 100);
+            last = now;
+
+            pos += unitH * (dt / DURATION);
+            if (pos >= unitH) pos -= unitH;
+
+            col.style.transform = 'translateY(-' + pos + 'px)';
+            requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+    }
+
+    var left  = document.querySelector('.history_track_left');
+    var right = document.querySelector('.history_track_right');
+    if (left)  startLoop(left, 0);
+    if (right) startLoop(right, OFFSET);
+}());
+
+
 // ========== FONT_TRY ==========
 // 폰트 체험 섹션. 버튼 클릭 → 폰트 변경, 슬라이더 → 크기 변경, 텍스트 입력 → 미리보기 반영.
 //
