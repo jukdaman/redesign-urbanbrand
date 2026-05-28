@@ -14,8 +14,8 @@
 
 | 종류        | 패턴                              | 예시 |
 |------------|-----------------------------------|------|
-| 아이콘      | `icon_{name}[_{variant}].svg`     | `icon_plus.svg`, `icon_carousel_next.svg`, `icon_contact_arrow_down.svg` |
-| 일반 이미지 | `img_{name}[_{nn}].{ext}`         | `img_ceo.png`, `img_ceo_signature.png`, `img_history_01.png` |
+| 아이콘      | `icon_{name}[_{variant}].svg`     | `icon_plus.svg`, `icon_carousel_next.svg`, `icon_favicon_dark.svg` |
+| 일반 이미지 | `img_{name}[_{nn}].{ext}`         | `img_ceo.png`, `img_hero_01.jpg`, `img_history.png` |
 | 메인 로고   | `logo_urbanbrand[_{variant}].svg` | `logo_urbanbrand.svg`, `logo_urbanbrand_white.svg`, `logo_urbanbrand_black.svg` |
 | SNS 로고    | `logo_sns_{name}.svg`             | `logo_sns_instagram.svg`, `logo_sns_brunch.svg`, `logo_sns_naver.svg` |
 
