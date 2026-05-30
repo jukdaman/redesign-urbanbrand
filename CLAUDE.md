@@ -1,6 +1,6 @@
 # redesign-urbanbrand
 
-도시브랜드연구소 공식 사이트 리디자인 코딩. **데스크탑 전용** — 반응형은 추후 작업이며 `responsive*.css`는 빈 파일로 유지한다.
+도시브랜드연구소 공식 사이트 리디자인 코딩. **데스크탑 전용** — 반응형은 섹션 완성 후 순차 추가. 반응형 규칙은 베이스 CSS가 아닌 `responsive*.css`에 작성한다.
 
 - **원본 사이트**: https://www.urbanbrand.co.kr/
 - **배포 주소**: https://jukdaman.github.io/redesign-urbanbrand/vom16_urbanbrand/

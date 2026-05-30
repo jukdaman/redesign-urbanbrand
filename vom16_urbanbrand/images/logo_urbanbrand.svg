@@ -3,7 +3,7 @@
         <path d="M80,0 L160,0 L160,80 L80,160 L0,160 L0,80 Z"
               fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
     </symbol>
-    
+
     <symbol id="face_b" viewBox="0 0 240 240" overflow="visible" stroke-linecap="round" stroke-miterlimit="1.5">
         <path d="M80,240 L80,80 L160,0 L240,0 L240,160 L160,240 Z"
               fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>

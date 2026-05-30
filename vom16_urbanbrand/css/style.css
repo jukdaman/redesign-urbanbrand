@@ -1,3 +1,11 @@
+/* ========== VARIABLES ========== */
+:root {
+    --container-pad: clamp(20px, 7.895vw - 11.58px, 140px);
+}
+
+
+
+
 /* ========== @FONT-FACE ========== */
 @font-face {
     font-family: 'Yeongwol';
@@ -64,6 +72,16 @@
 
 
 
+/* ========== LOGO ========== */
+.logo_urbanbrand { display: inline-block; width: 100%; height: 100%; overflow: visible; }
+.logo_face { stroke-width: 2; }
+
+/* 인라인 애니메이션 로고는 JS가 사이클을 잡기 전까지 보이지 않게. */
+.logo_anim { opacity: 0; }
+
+
+
+
 /* ========== BOX ========== */
 /* button */
 .button_large {
@@ -77,15 +95,31 @@
 
 
 /* container */
-.container { max-width: 1920px; margin: 0 auto; padding: 0 140px; }
+.container { max-width: 1920px; margin: 0 auto; padding-left: var(--container-pad); padding-right: var(--container-pad); }
 
 
-/* gnb */
+/* breakpoint_overlay */
+.breakpoint_overlay {
+    position: fixed; inset: 0;
+    z-index: 99;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s ease-out;
+}
+.breakpoint_overlay.is-visible {
+    opacity: 1;
+    pointer-events: none;
+}
+
+
+
+/* ========== GNB ========== */
 .gnb {
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    height: 90px; padding: 0 140px;
+    height: 90px; padding: 0 var(--container-pad);
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.05);
     transition: background .3s, border-color .3s;
@@ -96,7 +130,7 @@
 }
 
 .gnb_nav ul {
-    display: flex; gap: 86px;
+    display: flex; gap: clamp(40px, 5.13vw - 12.5px, 86px);
     font-weight: 500; font-size: 18px; letter-spacing: -0.3px;
 }
 .gnb_nav a { color: #fff; opacity: 0.5; transition: opacity .3s, color .3s; }
@@ -116,9 +150,57 @@
 
 
 
-/* ========== LOGO ========== */
-.logo_urbanbrand { display: inline-block; width: 100%; height: 100%; overflow: visible; }
-.logo_face { stroke-width: 2; }
+/* ========== FOOTER ========== */
+.footer { padding-top: 60px; padding-bottom: 100px; border: 0; border-top: 1px solid #000; }
+.footer > .container { display: flex; flex-direction: column; gap: 48px; }
 
-/* 인라인 애니메이션 로고는 JS가 사이클을 잡기 전까지 보이지 않게. */
-.logo_anim { opacity: 0; }
+/* footer_upper */
+.footer_upper {
+    display: flex; flex-direction: row; justify-content: space-between;
+    width: 100%;
+}
+
+.footer_button_wrap { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 16px; width: 43%; max-width: 672px; }
+
+.footer_button_wrap .footer_button {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: relative;
+    width: 100%; padding: 10px 32px;
+    border: 1px solid #000; border-radius: 50px; color: #000;
+    font-size: 24px; font-weight: 700;
+    transition: background .3s, color .3s;
+}
+.footer_button_wrap .footer_button:hover { background: #000; color: #fff; }
+.footer_button_wrap .footer_button:last-child { background: #000; color: #fff; }
+.footer_button_wrap .footer_button:last-child::after {
+    content: '';
+    position: absolute;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at 50% 200%, rgba(255,255,255,0.7) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+}
+.footer_button_wrap .footer_button:last-child:hover::after { opacity: 1; }
+
+
+.footer_logo { width: auto; height: 150px; }
+
+
+/* footer_sns */
+.footer_sns     { display: flex; gap: 24px; }
+.footer_sns a   { display: inline-block; }
+.footer_sns img { width: 28px; height: 28px; }
+
+
+/* footer_lower */
+.footer_lower { display: flex; justify-content: space-between; gap: 32px; }
+
+
+/* footer_lower_left */
+.footer_lower_left { display: flex; flex-direction: column; gap: 32px; }
+
+.footer_since      { display: flex; flex-direction: column; gap: 4px; }
+.footer_since span { color: #888; }
+
+.footer_address { width: 43%; max-width: 672px; }

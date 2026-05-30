@@ -1,3 +1,39 @@
+// ========== BREAKPOINT OVERLAY ==========
+// 1500px 경계를 넘을 때 화면을 흰색으로 순간 덮었다가 페이드아웃합니다.
+// GNB는 overlay 아래에 있지 않으므로 영향 없습니다(z-index 차이).
+// FADE_OUT: 페이드아웃에 걸리는 시간(ms). CSS transition과 맞춰야 합니다.
+
+(function () {
+    var BREAKPOINT = 1500;
+    var FADE_OUT   = 500;   /* style.css .breakpoint_overlay transition과 동일하게 */
+
+    var overlay    = document.querySelector('.breakpoint_overlay');
+    var prevWidth  = window.innerWidth;
+
+    window.addEventListener('resize', function () {
+        var w = window.innerWidth;
+        var crossed = (prevWidth > BREAKPOINT && w <= BREAKPOINT) ||
+                      (prevWidth <= BREAKPOINT && w > BREAKPOINT);
+        prevWidth = w;
+
+        if (!crossed) return;
+
+        overlay.style.transition = 'none';
+        overlay.classList.add('is-visible');
+
+        /* 다음 프레임에서 transition 복원 후 페이드아웃 */
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+                overlay.style.transition = '';
+                overlay.classList.remove('is-visible');
+            });
+        });
+    });
+}());
+
+
+
+
 // ========== GNB ==========
 // 스크롤이 hero 섹션을 벗어나면 GNB 배경이 흰색으로 바뀝니다.
 // 건드릴 것 없음.
@@ -18,6 +54,8 @@ function updateGnb() {
 
 window.addEventListener('scroll', updateGnb);
 updateGnb();
+
+
 
 
 // ========== HERO ==========
@@ -225,48 +263,6 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
 
 
 
-// ========== HISTORY ==========
-// left/right 각각 독립 루프. 첫 번째 ul 높이를 측정해서 그만큼 translateY 이동 후 순간 리셋.
-// 속도 조절: HISTORY_DURATION (ms, 한 세트 이동에 걸리는 시간)
-
-(function () {
-    var DURATION = 18000;
-    var GAP      = 600;
-    var OFFSET   = 800;
-
-    function startLoop(col, offsetPx) {
-        var firstUl = col.querySelector('ul');
-        if (!firstUl) return;
-
-        var unitH = firstUl.offsetHeight + GAP;
-        if (unitH <= GAP) return;
-
-        var pos  = offsetPx ? unitH - offsetPx : 0;
-        var last = null;
-
-        function tick(now) {
-            if (last === null) last = now;
-            // 백그라운드 탭에서 복귀 시 dt가 수십초로 튀어 순간이동처럼 보이는 것을 방지
-            var dt = Math.min(now - last, 100);
-            last = now;
-
-            pos += unitH * (dt / DURATION);
-            if (pos >= unitH) pos -= unitH;
-
-            col.style.transform = 'translateY(-' + pos + 'px)';
-            requestAnimationFrame(tick);
-        }
-
-        requestAnimationFrame(tick);
-    }
-
-    var left  = document.querySelector('.history_track_left');
-    var right = document.querySelector('.history_track_right');
-    if (left)  startLoop(left, 0);
-    if (right) startLoop(right, OFFSET);
-}());
-
-
 // ========== FONT_TRY ==========
 // 폰트 체험 섹션. 버튼 클릭 → 폰트 변경, 슬라이더 → 크기 변경, 텍스트 입력 → 미리보기 반영.
 //
@@ -304,9 +300,23 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
     function updatePreview() {
         var font     = getActiveFont();
         var userText = inputField.value.trim();
+        var size     = parseFloat(slider.value);
+        var min      = parseFloat(slider.min);
+        var max      = parseFloat(slider.max);
+        var previewW = resultText.parentElement.offsetWidth;
+        var t    = (size - min) / (max - min);  /* 0(최소 크기) ~ 1(최대 크기) */
 
-        resultText.style.fontFamily = font ? fontFamilyMap[font] : '';
-        resultText.style.fontSize   = slider.value + 'px';
+        /* 가로 padding: 폰트 작을 때 PAD_MAX, 클 때 PAD_MIN (px)
+         * 슬라이더 양 끝에서의 값을 아래 두 변수로 조절하세요. */
+        var PAD_MIN = 0;   /* 폰트 최대(120px)일 때 좌우 padding */
+        var PAD_MAX = 120;  /* 폰트 최소(8px)일 때 좌우 padding  */
+        var padX = Math.round(PAD_MIN + (1 - t) * (PAD_MAX - PAD_MIN));
+
+        resultText.style.fontFamily   = font ? fontFamilyMap[font] : '';
+        resultText.style.fontSize     = size + 'px';
+        resultText.style.width        = Math.max(previewW, size * 10) + 'px';
+        resultText.style.paddingLeft  = padX + 'px';
+        resultText.style.paddingRight = padX + 'px';
         resultText.textContent      = userText ? userText : getActivePreview();
     }
 
@@ -340,7 +350,10 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
     });
 
     updateLabelPosition();
-    window.addEventListener('resize', updateLabelPosition);
+    window.addEventListener('resize', function () {
+        updateLabelPosition();
+        updatePreview();
+    });
 
     inputField.addEventListener('input', function () {
         inputCount.textContent = '(' + inputField.value.length + '/1000)';
@@ -348,4 +361,48 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
     });
 
     updatePreview();
+}());
+
+
+
+
+// ========== HISTORY ==========
+// left/right 각각 독립 루프. 첫 번째 ul 높이를 측정해서 그만큼 translateY 이동 후 순간 리셋.
+// 속도 조절: HISTORY_DURATION (ms, 한 세트 이동에 걸리는 시간)
+
+(function () {
+    var DURATION = 50000;
+    var GAP      = 600;
+    var OFFSET   = 800;
+
+    function startLoop(col, offsetPx) {
+        var firstUl = col.querySelector('ul');
+        if (!firstUl) return;
+
+        var unitH = firstUl.offsetHeight + GAP;
+        if (unitH <= GAP) return;
+
+        var pos  = offsetPx ? unitH - offsetPx : 0;
+        var last = null;
+
+        function tick(now) {
+            if (last === null) last = now;
+            // 백그라운드 탭에서 복귀 시 dt가 수십초로 튀어 순간이동처럼 보이는 것을 방지
+            var dt = Math.min(now - last, 100);
+            last = now;
+
+            pos += unitH * (dt / DURATION);
+            if (pos >= unitH) pos -= unitH;
+
+            col.style.transform = 'translateY(-' + pos + 'px)';
+            requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+    }
+
+    var left  = document.querySelector('.history_track_left');
+    var right = document.querySelector('.history_track_right');
+    if (left)  startLoop(left, 0);
+    if (right) startLoop(right, OFFSET);
 }());

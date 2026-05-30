@@ -26,6 +26,8 @@
 
 
     <body>
+        <div class="breakpoint_overlay" aria-hidden="true"></div>
+
         <!-- ========== GNB ========== -->
         <header class="gnb">
             <nav class="gnb_nav gnb_nav_left">
@@ -174,6 +176,7 @@
                         <svg class="logo_urbanbrand service_box_icon" aria-hidden="true" viewBox="0 0 240 240">
                             <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
                             <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
+                            <path class="icon_fill" d="M80,0 L160,0 L160,80 L80,160 L0,160 L0,80 Z" fill="#000"/>
                             <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
                         </svg>
 
@@ -201,6 +204,7 @@
                         <svg class="logo_urbanbrand service_box_icon" aria-hidden="true" viewBox="0 0 240 240">
                             <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
                             <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
+                            <path class="icon_fill" d="M80,240 L80,80 L160,0 L240,0 L240,160 L160,240 Z" fill="#000"/>
                             <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
                         </svg>
 
@@ -228,6 +232,7 @@
                         <svg class="logo_urbanbrand service_box_icon" aria-hidden="true" viewBox="0 0 240 240">
                             <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
                             <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
+                            <path class="icon_fill" d="M160,80 L240,80 L240,160 L160,240 L80,240 L80,160 Z" fill="#000"/>
                             <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
                         </svg>
 
@@ -332,7 +337,7 @@
             <!-- PORTFOLIO_LOWER -->
             <div class="container portfolio_lower">
                 <p class="title_small">
-                    로고 하나, 글자 하나에도 <span class="rich_yeongwol">그 도시만의 결</span>이 살아 숨쉬도록
+                    <span>로고 하나, 글자 하나에도 <span><br><span class="rich_yeongwol">그 도시만의 결</span>이 살아 숨쉬도록
                 </p>
                 
                 <ul class="portfolio_lower_box_wrap">
@@ -437,30 +442,20 @@
 
         <!-- ========== FONT_TRY ========== -->
         <section class="font_try">
-            <div class="font_try_preview">
-                <div class="font_try_result"></div>
-
-                <div class="font_try_size_selector">
-                    <p class="article_small font_try_size_label">64px</p>
-                    <div class="font_try_slider_wrap">
-                        <input type="range" class="font_try_slider" min="8" max="120" value="64" aria-label="폰트 크기">
-                    </div>
-                </div>
-            </div><!-- font_try_preview -->
-
             <div class="font_try_sidebar">
-                <div class="font_try_title_wrap">
+                <div class="container font_try_title_wrap">
                     <svg class="logo_urbanbrand font_try_icon" viewBox="0 0 240 240" aria-hidden="true">
                         <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
                         <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
                         <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
                     </svg>
-                    
-                    <p class="title_medium">도시브랜드연구소가 만든<br>서체를 체험해 보세요</p>
-                    <p class="article_xlarge">지역 고유의 특색을 담아낸 도시브랜드 연구소의 서체 작업물을 직접 확인해 보세요.</p>
-                </div>
 
-                <div class="font_try_selector_wrap">
+                    <p class="title_medium">도시브랜드연구소가 만든 서체를 체험해 보세요</p>
+                    <p class="article_xlarge">지역 고유의 특색을 담아낸 도시브랜드 연구소의 서체 작업물을 직접 확인해 보세요.</p>
+                </div><!-- font_try_title_wrap -->
+
+
+                <div class="container font_try_selector_wrap">
                     <div class="font_try_selector">
                         <button type="button" class="font_try_font_btn is-active" data-font="Yeongwol" data-preview="영월체는 영월의 아름다운 자연을 글꼴에 담아 제작하였습니다. 부드러운 곡선은 동강과 서강, 요선암에 흐르는 물길을 닮았고, 단단한 직선은 석회암 절벽 선돌처럼 우뚝 선 바위를 떠올리게 합니다.">강원 영월</button>
 
@@ -478,11 +473,24 @@
                     </div>
 
                     <div class="font_try_input_wrap">
-                        <textarea class="font_try_input_field" maxlength="1000" placeholder="좋아하는 문구를 적어보세요" aria-label="미리보기 텍스트 입력"></textarea>
+                        <textarea class="article_xlarge font_try_input_field" maxlength="1000" placeholder="좋아하는 문구를 적어보세요" aria-label="미리보기 텍스트 입력"></textarea>
                         <span class="article_xsmall font_try_input_count">(0/1000)</span>
                     </div>
                 </div><!-- font_try_selector_wrap -->
             </div><!-- font_try_sidebar -->
+
+
+            <div class="font_try_preview">
+                <div class="font_try_result"></div>
+                <div class="font_try_vignette" aria-hidden="true"></div>
+
+                <div class="font_try_size_selector">
+                    <p class="article_small font_try_size_label">64px</p>
+                    <div class="font_try_slider_wrap">
+                        <input type="range" class="font_try_slider" min="8" max="120" value="64" aria-label="폰트 크기">
+                    </div>
+                </div>
+            </div><!-- font_try_preview -->
         </section>
 
 
@@ -490,7 +498,7 @@
 
         <!-- ========== CEO ========== -->
         <section class="ceo">
-            <div class="ceo_content">
+            <div class="container ceo_content">
                 <div class="ceo_logo_wrap">
                     <svg class="logo_urbanbrand ceo_logo" viewBox="0 0 240 240" aria-hidden="true">
                         <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
@@ -503,13 +511,13 @@
 
                 <div class="ceo_title_wrap">
                     <p class="title_medium">
-                        도시의 고유성을 드러내고 
-                        지역의 매력을 빛내는 일은 
+                        도시의 고유성을 드러내고 <br>
+                        지역의 매력을 빛내는 일은 <br>
                         저에게 매우 의미있는 
                         일입니다.
                     </p>
 
-                    <div class="ceo_service_box_article_wrap">
+                    <div class="ceo_article_wrap">
                         <p class="article_xlarge">
                             도시브랜드연구소는 단순한 디자인을 넘어, <br>
                             지역 고유의 이야기와 가치를 담아 브랜드를 창조합니다. <br>
@@ -525,7 +533,8 @@
                 </div><!-- ceo_title_wrap -->
             </div><!-- ceo_content -->
 
-            <div class="ceo_img"></div><!-- ceo_img -->
+            <div class="ceo_bg"></div><!-- ceo_bg -->
+            <img class="ceo_subject" src="images/img_ceo_subject.png" alt="강병호 대표 사진">
         </section>
 
 
@@ -559,6 +568,7 @@
                     <li class="cta_article_card cta_article_card_06"></li>
                     <li class="cta_article_card cta_article_card_07"></li>
                     <li class="cta_article_card cta_article_card_08"></li>
+                    <!-- 순환용 CLONE -->
                     <li class="cta_article_card cta_article_card_01"></li>
                     <li class="cta_article_card cta_article_card_02"></li>
                     <li class="cta_article_card cta_article_card_03"></li>
@@ -575,10 +585,11 @@
 
 
         <!-- ========== HISTORY ========== -->
-        <section class="container history">
+        <section class="history">
             <div class="history_marquee">
                 <div class="history_track">
                     <div class="history_track_left">
+                        <!-- 프로젝트 목록 수정시 두 ul.article_small 동일하게 (순환용 CLONE) -->
                         <ul class="article_small">
                             <li>경북 문경시 | 문경 브랜드 서체 개발 (2023년)</li>
                             <li>모자이크컴퍼니 | 모자이크컴퍼니 브랜드 명함, 템플릿 (2023년)</li>
@@ -611,6 +622,7 @@
                             <li>한국표준협회 | KT ESG 보고서 표지 및 커버 스토리 디자인 (2021년)</li>
                             <li>한국표준협회 | 한국공항공사 미디어 소리 브랜드 (2021년)</li>
                         </ul>
+
                         <ul class="article_small" aria-hidden="true">
                             <li>경북 문경시 | 문경 브랜드 서체 개발 (2023년)</li>
                             <li>모자이크컴퍼니 | 모자이크컴퍼니 브랜드 명함, 템플릿 (2023년)</li>
@@ -645,9 +657,10 @@
                         </ul>
                     </div><!-- history_track_left -->
 
-                    <div class="history_track_right">
-                        <ul class="article_small">
 
+                    <div class="history_track_right">
+                        <!-- 프로젝트 목록 수정시 두 ul.article_small 동일하게 (순환용 clone) -->
+                        <ul class="article_small">
                             <li>고자미영농조합법인 | 경남 고성 고자미 브랜드 (2022년)</li>
                             <li>토바기협동조합법인 | 경남 거제 도랑사구 브랜드 (2022년)</li>
                             <li>한국표준협회 | 충남 논산 해월마을 브랜드 (2021년)</li>
@@ -678,8 +691,8 @@
                             <li>한국표준협회 | 전북 정읍 도시재생사업 정읍며느리 브랜드 (2020년)</li>
                             <li>한국표준협회 | 경남 창원 도시재생사업 행복의창 브랜드 (2020년)</li>
                         </ul>
+                        
                         <ul class="article_small" aria-hidden="true">
-
                             <li>고자미영농조합법인 | 경남 고성 고자미 브랜드 (2022년)</li>
                             <li>토바기협동조합법인 | 경남 거제 도랑사구 브랜드 (2022년)</li>
                             <li>한국표준협회 | 충남 논산 해월마을 브랜드 (2021년)</li>
@@ -730,18 +743,65 @@
             </div><!-- history_stat -->
 
 
-            <div class="history_fade_bottom"></div>
         </section>
 
 
 
 
-        <!-- ========== CONTACT ========== -->
-        <!-- TODO -->
+        <!-- ========== CTA_CONTACT ========== -->
+        <section class="container cta_contact">
+            <div class="cta_contact_title_wrap">
+                <p class="title_xsmall">11년의 노하우가 있는</p>
+                <p class="title_xlarge_b">도시브랜드 연구소와<br>지금 함께하세요!</p>
+            </div>
+
+            <div class="cta_contact_arrow_wrap">
+                <img src="images/icon_contact_arrow_down.svg" alt="" aria-hidden="true">
+                <img src="images/icon_contact_arrow_down.svg" alt="" aria-hidden="true">
+                <img src="images/icon_contact_arrow_down.svg" alt="" aria-hidden="true">
+            </div>
+        </section>
 
 
 
 
         <!-- ========== FOOTER ========== -->
-        <!-- TODO -->    </body>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer_upper">
+                    <img class="footer_logo" src="images/logo_urbanbrand_wordmark.svg" alt="도시브랜드연구소">
+
+                    <div class="footer_button_wrap">
+                        <a href="#" class="footer_button">CONTACT US</a>
+                        <a href="#" class="footer_button">기업 소개서 다운로드</a>
+                    </div>
+                </div>
+                
+
+                <div class="footer_lower">
+                    <div class="footer_lower_left">
+                        <ul class="footer_sns">
+                            <li><a href="#" aria-label="브런치"><img src="images/logo_sns_brunch.svg" alt="" aria-hidden="true"></a></li>
+                            <li><a href="#" aria-label="네이버 블로그"><img src="images/logo_sns_naver.svg" alt="" aria-hidden="true"></a></li>
+                            <li><a href="#" aria-label="인스타그램"><img src="images/logo_sns_instagram.svg" alt="" aria-hidden="true"></a></li>
+                            <li><a href="#" aria-label="페이스북"><img src="images/logo_sns_facebook.svg" alt="" aria-hidden="true"></a></li>
+                        </ul>
+
+                        <p class="article_medium_m footer_since">
+                            THE URBAN BRAND RESEARCH INSTITUTE
+                            <span class="article_xsmall">SINCE 2017</span>
+                        </p>
+                    </div>
+
+                    <p class="article_xsmall footer_address">
+                        ho@urbanbrand.co.kr<br>
+                        010-6791-0150<br>
+                        03995 서울시 마포구 양화로 161, 케이스퀘어 813호<br>
+                        주식회사 도시브랜드연구소<br>
+                        www.urbanbrand.co.kr
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>

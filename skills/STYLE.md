@@ -100,7 +100,7 @@ background-color: rgba(255, 255, 255, 0.2); background-clip: content-box;
 ## 색상
 
 - HEX 우선, 투명도/그래디언트는 `rgba()`
-- CSS Variables 도입 금지
+- CSS Variables — 색상 토큰 등 범용 도입 금지. 반복되는 계산값(예: `clamp()` 식)을 한 곳에서 관리할 명확한 이유가 있을 때만 허용. 현재 허용된 변수: `--container-pad` (`style.css` `:root` 정의)
 - 현재 팔레트:
   - `#000`, `#fff`, `#888`, `#ddd`
   - `rgba(255,255,255,0.05)`, `rgba(255,255,255,0.6)`
@@ -123,7 +123,9 @@ background-color: rgba(255, 255, 255, 0.2); background-clip: content-box;
 - `gap`, `justify-content`, `align-items`, `flex-direction`, `flex-wrap` 자유
 - `flex: 1`, `flex-basis`, `flex-grow`, `flex-shrink` OK
   - 예: `.solution_line { flex: 1; }`, `.solution_desc { flex-basis: 100%; }`
-- 컨테이너 표준: `.container { max-width: 1920px; margin: 0 auto; padding: 0 140px; }` (좌우 140px 인셋)
+- 컨테이너 표준: `.container { max-width: 1920px; margin: 0 auto; padding: 0 var(--container-pad); }`
+  - `--container-pad`는 뷰포트 400px→20px, 1920px→140px 선형 보간 `clamp()` 값. `style.css` `:root`에 정의
+  - 한쪽 padding만 필요한 섹션(예: `solution_upper`, `font_try_sidebar`)은 `container` 클래스 없이 해당 방향에 `var(--container-pad)` 직접 참조
 
 ---
 
