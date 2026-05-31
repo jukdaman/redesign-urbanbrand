@@ -1,22 +1,51 @@
 // ========== BREAKPOINT OVERLAY ==========
-// 1500px 경계를 넘을 때 화면을 흰색으로 순간 덮었다가 페이드아웃합니다.
-// GNB는 overlay 아래에 있지 않으므로 영향 없습니다(z-index 차이).
+// 구조 변화가 큰 섹션에서만, 그 섹션이 뷰포트에 보일 때 해당 브레이크포인트를
+// 넘는 순간 화면을 흰색으로 덮었다가 페이드아웃합니다.
+// 섹션마다 발동 기준 너비가 다릅니다(아래 SECTIONS).
 // FADE_OUT: 페이드아웃에 걸리는 시간(ms). CSS transition과 맞춰야 합니다.
 
 (function () {
-    var BREAKPOINT = 1500;
-    var FADE_OUT   = 500;   /* style.css .breakpoint_overlay transition과 동일하게 */
+    /* selector: 감시할 섹션, breakpoints: 그 섹션에서 구조 변화가 일어나는 경계 너비(px) */
+    var SECTIONS = [
+        { selector: '.font_try',     breakpoints: [1500] },
+        { selector: '.ceo',          breakpoints: [1500, 1024] },
+        { selector: '.cta_contact',  breakpoints: [1500] }
+    ];
 
-    var overlay    = document.querySelector('.breakpoint_overlay');
-    var prevWidth  = window.innerWidth;
+    var overlay   = document.querySelector('.breakpoint_overlay');
+    var prevWidth = window.innerWidth;
+
+    var watched = SECTIONS.map(function (s) {
+        return { el: document.querySelector(s.selector), breakpoints: s.breakpoints };
+    }).filter(function (s) { return s.el; });
+
+    function isVisible(el) {
+        var rect = el.getBoundingClientRect();
+        return rect.bottom > 0 && rect.top < window.innerHeight;
+    }
+
+    function crossedBreakpoint(bp, prev, now) {
+        return (prev > bp && now <= bp) || (prev <= bp && now > bp);
+    }
+
+    /* 화면에 보이는 섹션 중 하나라도 자신의 경계를 넘었으면 true */
+    function shouldShowOverlay(prev, now) {
+        for (var i = 0; i < watched.length; i++) {
+            var s = watched[i];
+            if (!isVisible(s.el)) continue;
+            for (var j = 0; j < s.breakpoints.length; j++) {
+                if (crossedBreakpoint(s.breakpoints[j], prev, now)) return true;
+            }
+        }
+        return false;
+    }
 
     window.addEventListener('resize', function () {
-        var w = window.innerWidth;
-        var crossed = (prevWidth > BREAKPOINT && w <= BREAKPOINT) ||
-                      (prevWidth <= BREAKPOINT && w > BREAKPOINT);
+        var w    = window.innerWidth;
+        var prev = prevWidth;
         prevWidth = w;
 
-        if (!crossed) return;
+        if (!shouldShowOverlay(prev, w)) return;
 
         overlay.style.transition = 'none';
         overlay.classList.add('is-visible');
