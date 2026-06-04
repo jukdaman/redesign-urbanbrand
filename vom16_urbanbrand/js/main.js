@@ -396,42 +396,49 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
 
 
 // ========== HISTORY ==========
-// left/right 각각 독립 루프. 첫 번째 ul 높이를 측정해서 그만큼 translateY 이동 후 순간 리셋.
-// 속도 조절: HISTORY_DURATION (ms, 한 세트 이동에 걸리는 시간)
+// left/right를 하나의 rAF 루프(공유 클럭)로 갱신. 컬럼별 pos/offset은 독립.
+// 첫 번째 ul 높이를 측정해서 그만큼 translateY 이동 후 순간 리셋.
+// 속도 조절: DURATION (ms, 한 세트 이동에 걸리는 시간)
 
 (function () {
     var DURATION = 50000;
     var GAP      = 600;
     var OFFSET   = 800;
 
-    function startLoop(col, offsetPx) {
+    function makeCol(col, offsetPx) {
         var firstUl = col.querySelector('ul');
-        if (!firstUl) return;
+        if (!firstUl) return null;
 
         var unitH = firstUl.offsetHeight + GAP;
-        if (unitH <= GAP) return;
+        if (unitH <= GAP) return null;
 
-        var pos  = offsetPx ? unitH - offsetPx : 0;
-        var last = null;
+        return { el: col, unitH: unitH, pos: offsetPx ? unitH - offsetPx : 0 };
+    }
 
-        function tick(now) {
-            if (last === null) last = now;
-            // 백그라운드 탭에서 복귀 시 dt가 수십초로 튀어 순간이동처럼 보이는 것을 방지
-            var dt = Math.min(now - last, 100);
-            last = now;
+    var cols  = [];
+    var left  = document.querySelector('.history_track_left');
+    var right = document.querySelector('.history_track_right');
+    var l = left  && makeCol(left, 0);
+    var r = right && makeCol(right, OFFSET);
+    if (l) cols.push(l);
+    if (r) cols.push(r);
+    if (!cols.length) return;
 
-            pos += unitH * (dt / DURATION);
-            if (pos >= unitH) pos -= unitH;
+    var last = null;
+    function tick(now) {
+        if (last === null) last = now;
+        // 백그라운드 탭에서 복귀 시 dt가 수십초로 튀어 순간이동처럼 보이는 것을 방지
+        var dt = Math.min(now - last, 100);
+        last = now;
 
-            col.style.transform = 'translateY(-' + pos + 'px)';
-            requestAnimationFrame(tick);
+        for (var i = 0; i < cols.length; i++) {
+            var c = cols[i];
+            c.pos += c.unitH * (dt / DURATION);
+            if (c.pos >= c.unitH) c.pos -= c.unitH;
+            c.el.style.transform = 'translateY(-' + c.pos + 'px)';
         }
-
         requestAnimationFrame(tick);
     }
 
-    var left  = document.querySelector('.history_track_left');
-    var right = document.querySelector('.history_track_right');
-    if (left)  startLoop(left, 0);
-    if (right) startLoop(right, OFFSET);
+    requestAnimationFrame(tick);
 }());

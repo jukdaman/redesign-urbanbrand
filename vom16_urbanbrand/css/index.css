@@ -638,8 +638,8 @@
 
 .history_track { display: flex; justify-content: center; gap: 64px; }
 
-.history_track_left  { display: flex; flex-direction: column; gap: 600px; text-align: right; }
-.history_track_right { display: flex; flex-direction: column; gap: 600px; text-align: left; }
+.history_track_left  { display: flex; flex-direction: column; gap: 600px; text-align: right; will-change: transform; }
+.history_track_right { display: flex; flex-direction: column; gap: 600px; text-align: left; will-change: transform; }
 
 .history_track ul {
     display: flex; flex-direction: column; gap: 8px;

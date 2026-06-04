@@ -25,3 +25,16 @@
 **원인**: `mix-blend-mode`는 부모의 stacking context 기준으로 블렌딩. 블렌딩 대상(`portfolio_upper_bg`)과 같은 stacking context 안에 있어야 효과가 작동함. `filter`가 있는 요소는 자체 stacking context를 형성하므로 부모에 `isolation: isolate`를 명시해야 함.
 
 **해결**: `.portfolio_upper`에 `isolation: isolate` 추가.
+
+---
+
+## 3. JS rAF transform 애니메이션의 저사양 비용
+
+**맥락**: history 마퀴를 rAF 루프에서 매 프레임 `style.transform`으로 갱신 (좌우 독립 속도·오프셋 제어 목적으로 CSS→JS 전환).
+
+**문제**: JS 구동 애니메이션은 메인 스레드에서 돌아 다른 스크립트·레이아웃에 영향받고, 레이어 승격 힌트가 없으면 매 프레임 리페인트가 발생해 저사양에서 끊김(throttle)이 생긴다. rAF는 백그라운드 탭·저전력 모드에서 브라우저가 호출 빈도를 강제로 낮추므로 타이밍 기반 속도도 변동한다.
+
+**원칙**:
+- 연속적으로 transform/opacity만 바꾸는 요소는 `will-change: transform`으로 레이어를 승격해 컴포지터에 묶는다 (리페인트 회피).
+- 같은 클럭으로 도는 다중 애니메이션은 rAF 루프를 하나로 합쳐 콜백 오버헤드를 줄인다.
+- rAF 복귀 점프는 `dt` 클램프(`Math.min(dt, n)`)로 막되, 이 경우 throttle 중 속도가 느려지는 트레이드오프가 있음을 인지한다.
