@@ -10,7 +10,7 @@
 .article_section_head h2 { font-weight: 700; font-size: 42px; line-height: 116%; letter-spacing: -1px; }
 .article_section_head p { margin-top: 24px; }
 
-.article_section_head_line {
+.article_section_head--line {
     display: flex; justify-content: space-between; align-items: flex-end;
     padding-bottom: 52px;
     border-bottom: 1px solid #000;
@@ -76,7 +76,7 @@
 
 
 /* ========== YEONGWOL ========== */
-.yeongwol_article { padding-bottom: 170px; }
+.article_yeongwol { padding-bottom: 170px; }
 
 .yeongwol_quote {
     position: relative;
