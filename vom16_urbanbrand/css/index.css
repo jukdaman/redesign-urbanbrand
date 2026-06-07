@@ -95,7 +95,7 @@
 
 .solution_rich_img {
     width: 235px; height: 122px; margin: 0 28px;
-    background: url(../images/img_portfolio_lower_02.jpg) no-repeat 50% 50% / cover;
+    background: url(../images/index/img_portfolio_lower_02.jpg) no-repeat 50% 50% / cover;
 }
 
 
@@ -320,12 +320,12 @@
     background-size: cover; background-position: center;
 }
 
-.portfolio_lower_box:nth-child(1) .portfolio_lower_box_img { background-image: url(../images/img_portfolio_lower_01.jpg); }
-.portfolio_lower_box:nth-child(2) .portfolio_lower_box_img { background-image: url(../images/img_portfolio_lower_02.jpg); }
-.portfolio_lower_box:nth-child(3) .portfolio_lower_box_img { background-image: url(../images/img_portfolio_lower_03.jpg); }
-.portfolio_lower_box:nth-child(4) .portfolio_lower_box_img { background-image: url(../images/img_portfolio_lower_04.jpg); }
-.portfolio_lower_box:nth-child(5) .portfolio_lower_box_img { background-image: url(../images/img_portfolio_lower_05.jpg); }
-.portfolio_lower_box:nth-child(6) .portfolio_lower_box_img { background-image: url(../images/img_portfolio_lower_06.jpg); }
+.portfolio_lower_box:nth-child(1) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_01.jpg); }
+.portfolio_lower_box:nth-child(2) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_02.jpg); }
+.portfolio_lower_box:nth-child(3) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_03.jpg); }
+.portfolio_lower_box:nth-child(4) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_04.jpg); }
+.portfolio_lower_box:nth-child(5) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_05.jpg); }
+.portfolio_lower_box:nth-child(6) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_06.jpg); }
 
 .portfolio_lower_box_textwrap   { display: flex; flex-direction: column; gap: 16px; }
 .portfolio_lower_box_title_wrap { display: flex; flex-direction: column; }
@@ -528,7 +528,7 @@
     flex: 1; min-width: 50%; height: 700px;
     background:
         linear-gradient(to right, transparent 1500px, #fff 2000px),
-        url(../images/img_ceo_bg.jpg) no-repeat 40% 100% / cover;
+        url(../images/index/img_ceo_bg.jpg) no-repeat 40% 100% / cover;
 }
 .ceo_subject {
     position: absolute; left: 50%; bottom: 160px;
@@ -597,15 +597,15 @@
 .cta_article_card_06,
 .cta_article_card_08 { margin-top: 60px; }
 
-.cta_article_card_01 { background-image: url(../images/img_cta_article_01.png); }
-.cta_article_card_02 { background-image: url(../images/img_cta_article_02.png); }
-.cta_article_card_03 { background-image: url(../images/img_cta_article_03.png); }
-.cta_article_card_04 { background-image: url(../images/img_cta_article_04.png); }
-.cta_article_card_05 { background-image: url(../images/img_cta_article_05.png); }
-.cta_article_card_06 { background-image: url(../images/img_cta_article_06.png); }
-.cta_article_card_07 { background-image: url(../images/img_cta_article_07.png); }
-.cta_article_card_08 { background-image: url(../images/img_cta_article_08.png); }
-.cta_article_card_09 { background-image: url(../images/img_cta_article_09.png); }
+.cta_article_card_01 { background-image: url(../images/index/img_cta_article_01.png); }
+.cta_article_card_02 { background-image: url(../images/index/img_cta_article_02.png); }
+.cta_article_card_03 { background-image: url(../images/index/img_cta_article_03.png); }
+.cta_article_card_04 { background-image: url(../images/index/img_cta_article_04.png); }
+.cta_article_card_05 { background-image: url(../images/index/img_cta_article_05.png); }
+.cta_article_card_06 { background-image: url(../images/index/img_cta_article_06.png); }
+.cta_article_card_07 { background-image: url(../images/index/img_cta_article_07.png); }
+.cta_article_card_08 { background-image: url(../images/index/img_cta_article_08.png); }
+.cta_article_card_09 { background-image: url(../images/index/img_cta_article_09.png); }
 
 
 
@@ -706,5 +706,4 @@
     width: 43%; max-width: 672px; /* footer_button_wrap 중심 X 좌표 일치 */
 }
 .cta_contact_arrow_wrap img { width: 96px; height: 124px; }
-
 

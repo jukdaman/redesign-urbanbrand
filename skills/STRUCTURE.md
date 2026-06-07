@@ -31,7 +31,7 @@ redesign-urbanbrand/
 │   ├── owl.carousel.js
 │   └── carousel.js
 ├── fonts/                    # 정림사지·영월·창원단감·신동엽손글씨 TTF
-├── images/                   # 평면 구조 (하위 폴더 금지)
+├── images/                   # 공용 에셋 루트 + 페이지 전용 하위 폴더
 ├── archive/                  # 이전 AI 생성본 (리팩토링 참조용 / 배포 X)
 ├── designs/                  # Figma 원본 디자인 캡쳐 (archive 생성 당시 입력 / 배포 X)
 └── skeleton/                 # 사용자 구조도 캡쳐 (현재 리팩토링 입력 / 배포 X)
@@ -63,6 +63,6 @@ VS Code Live Server 확장도 가능.
 | 새 페이지 CSS       | `css/{page}.css` |
 | 새 페이지 반응형    | `css/responsive_{page}.css` |
 | 새 페이지 JS        | 분리 방식 사용자 확인 (`js/{page}.js` vs 기능별 분리) |
-| 새 이미지           | `images/` 평면 — 하위 폴더 만들지 않음 |
+| 새 이미지           | 공용은 `images/`, 페이지 전용은 `images/{page}/` |
 | 새 `@font-face`     | **무조건** `style.css` 상단에 추가 (페이지 CSS에 분산 금지) |
 | 새 미디어쿼리       | `responsive*.css`로만 — 베이스 CSS에 섞지 않음 |
