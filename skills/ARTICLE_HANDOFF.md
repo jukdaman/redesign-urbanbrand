@@ -11,25 +11,25 @@
 ## 구현된 섹션
 
 섹션 클래스명은 index.html과 동일하게 접두사 없이 콘텐츠 이름 단독 사용.
-(CSS가 파일 단위 분리, `body.article_page`로 스코프 확보 → 접두사 불필요)
+(CSS는 파일 단위 분리로 스코프 확보 → 접두사 불필요. 섹션 머리 래퍼는 `section_title_wrap` 공용 클래스 사용.)
 
-- `GNB` (`.gnb`): index 공통 구조 재사용. GNB 흰 배경 고정은 `article.css`의 `.article_page .gnb`로 처리. `is-solid`를 HTML에 하드코딩하지 않음.
+- `GNB` (`.gnb`): index 공통 구조 재사용. GNB는 style.css가 관리하며, article은 항상 solid이므로 HTML에 `is-solid`를 직접 부여(스크롤 토글 JS 없음).
 - `HERO` (`.hero`): `img_hero_01.png` 사용. 대형 `ARTICLE` 타이틀과 우측 메인 카피 구성.
 - `YEONGWOL` (`.yeongwol`): 인용문, 인물 이미지(`img_yeongwol_02.png`), 기사 대표 이미지(`img_yeongwol_01.jpg`) 구성.
-- `BRUNCH` (`.brunch`): 정적 1번 상태. `brunch_01.png`와 우측 목록 3개 구성.
-- `NEWS` (`.news`): 정적 3개 카드 구성. 현재 `news_01.png`, `news_02.png`, `news_03.png` 사용.
+- `BRUNCH` (`.brunch`): 정적 1번 상태. `img_brunch_01.jpg`와 우측 목록 3개 구성.
+- `NEWS` (`.news`): 정적 3개 카드 구성. `img_news_04.jpg`~`06.jpg` 사용 (디자인 카드 1~3에 해당. 에셋 번호가 카드 표시 순서와 달라 첫 3개 카드 이미지는 04~06).
 - `VIDEOS` (`.videos`): 정적 1번 상태. 현재 `img_video_01.jpg` 사용.
 - `STORIES` (`.stories`): 정적 Instagram 탭 상태. 현재 `img_stories_instagram_01.jpg`~`04.jpg` 사용.
 - `FOOTER` (`.footer`): index 공통 구조 재사용.
 
 ## 중요 결정
 
-- Figma MCP는 `403 Invalid token`으로 접근 실패. 구현은 로컬 `designs/article/` 이미지 기준으로 진행.
-- 전체 캡쳐/섹션 캡쳐 PNG(`article.png`, `hero.png`, `yeongwol.png`, `brunch.png`, `news.png`, `videos.png`, `stories.png`)는 구현용 에셋으로 쓰지 않음.
+- Figma MCP 접근 가능 (fileKey `Apt9K76JOiMZYgJkpr0ra2`, 페이지 node `0:1`). 텍스트 스타일·카드 콘텐츠·이미지-카드 매핑을 MCP로 검증함.
+- 전체 캡쳐/섹션 캡쳐 PNG(`article.png`, `hero.png`, `yeongwol.png`, `brunch.png`, `news.png`, `videos.png`, `stories.png`)는 구현용 에셋으로 쓰지 않음. 캡쳐본은 `designs/article/`에만 두며, `images/article/`에 중복 반입됐던 캡쳐 29개는 제거함(실제 에셋은 `img_*`).
 - 섹션별 레퍼런스는 참고만 하고, 마크업과 클래스 구조는 프로젝트 지침에 맞춰 새로 구성.
 - 슬라이드/탭은 아직 JS 없이 정적 초안만 구현.
-- BEM 변형(`--`) 적용: `section_head--line` (BRUNCH 섹션 헤드에만 적용).
-- 타이포 유틸(`article_small`, `article_medium_r`, `article_medium_m`, `article_xsmall`, `article_xlarge`)은 `style.css` 정의이므로 그대로 유지.
+- BEM 변형(`--`) 적용: `section_title_wrap--line` (BRUNCH 섹션 헤드에만 적용).
+- 타이포: 모든 텍스트는 Figma 텍스트 스타일과 동일한 `style.css` 유틸 클래스를 HTML에 부여한다(제목 h1~h4 포함). 매핑 예: 섹션 제목 h2=`title_small`, 부제=`article_xlarge`, 히어로 카피=`title_xlarge_m`, 뉴스 카드 제목=`article_medium_m`. `article.css`에는 폰트 선언을 두지 않고 레이아웃·여백·색만 둔다(히어로 `ARTICLE` h1, 인용문 등 명명된 스타일이 없는 bespoke 요소만 예외).
 
 ## 다음 작업 후보
 
