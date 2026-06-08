@@ -212,7 +212,7 @@
     overflow: hidden;
 }
 
-.portfolio_title {
+.portfolio_headline {
     /* PROJECTS (캐러셀 상단에서 흰 배경 + screen으로 글씨 바깥만 가림) */
     position: absolute; top: 0; left: 0; right: 0;
     z-index: 10;
