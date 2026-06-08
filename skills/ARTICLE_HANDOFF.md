@@ -10,15 +10,16 @@
 
 ## 구현된 섹션
 
-섹션 클래스명은 모두 `article_` prefix로 통일.
+섹션 클래스명은 index.html과 동일하게 접두사 없이 콘텐츠 이름 단독 사용.
+(CSS가 파일 단위 분리, `body.article_page`로 스코프 확보 → 접두사 불필요)
 
 - `GNB` (`.gnb`): index 공통 구조 재사용. GNB 흰 배경 고정은 `article.css`의 `.article_page .gnb`로 처리. `is-solid`를 HTML에 하드코딩하지 않음.
-- `HERO` (`.article_hero`): `img_hero_01.png` 사용. 대형 `ARTICLE` 타이틀과 우측 메인 카피 구성.
-- `YEONGWOL` (`.article_yeongwol`): 인용문, 인물 이미지(`img_yeongwol_02.png`), 기사 대표 이미지(`img_yeongwol_01.jpg`) 구성.
-- `BRUNCH` (`.article_brunch`): 정적 1번 상태. `brunch_01.png`와 우측 목록 3개 구성.
-- `NEWS` (`.article_news`): 정적 3개 카드 구성. 현재 `news_01.png`, `news_02.png`, `news_03.png` 사용.
-- `VIDEOS` (`.article_videos`): 정적 1번 상태. 현재 `img_video_01.jpg` 사용.
-- `STORIES` (`.article_stories`): 정적 Instagram 탭 상태. 현재 `img_stories_instagram_01.jpg`~`04.jpg` 사용.
+- `HERO` (`.hero`): `img_hero_01.png` 사용. 대형 `ARTICLE` 타이틀과 우측 메인 카피 구성.
+- `YEONGWOL` (`.yeongwol`): 인용문, 인물 이미지(`img_yeongwol_02.png`), 기사 대표 이미지(`img_yeongwol_01.jpg`) 구성.
+- `BRUNCH` (`.brunch`): 정적 1번 상태. `brunch_01.png`와 우측 목록 3개 구성.
+- `NEWS` (`.news`): 정적 3개 카드 구성. 현재 `news_01.png`, `news_02.png`, `news_03.png` 사용.
+- `VIDEOS` (`.videos`): 정적 1번 상태. 현재 `img_video_01.jpg` 사용.
+- `STORIES` (`.stories`): 정적 Instagram 탭 상태. 현재 `img_stories_instagram_01.jpg`~`04.jpg` 사용.
 - `FOOTER` (`.footer`): index 공통 구조 재사용.
 
 ## 중요 결정
@@ -27,7 +28,8 @@
 - 전체 캡쳐/섹션 캡쳐 PNG(`article.png`, `hero.png`, `yeongwol.png`, `brunch.png`, `news.png`, `videos.png`, `stories.png`)는 구현용 에셋으로 쓰지 않음.
 - 섹션별 레퍼런스는 참고만 하고, 마크업과 클래스 구조는 프로젝트 지침에 맞춰 새로 구성.
 - 슬라이드/탭은 아직 JS 없이 정적 초안만 구현.
-- BEM 변형(`--`) 적용: `article_section_head--line` (BRUNCH 섹션 헤드에만 적용).
+- BEM 변형(`--`) 적용: `section_head--line` (BRUNCH 섹션 헤드에만 적용).
+- 타이포 유틸(`article_small`, `article_medium_r`, `article_medium_m`, `article_xsmall`, `article_xlarge`)은 `style.css` 정의이므로 그대로 유지.
 
 ## 다음 작업 후보
 
