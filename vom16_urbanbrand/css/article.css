@@ -125,7 +125,7 @@
     overflow: hidden;
 }
 .brunch_book_cover_bg {
-    /* 표지 이미지의 블러 사본 배경 (portfolio_upper_bg와 같은 기법, 슬라이드별 정적) */
+    /* 표지 이미지의 블러 사본 배경 — URL은 article.js가 인접 표지 img의 src에서 복사 */
     position: absolute; inset: 0;
     background-size: cover; background-position: center;
     filter: blur(10px) brightness(0.4);

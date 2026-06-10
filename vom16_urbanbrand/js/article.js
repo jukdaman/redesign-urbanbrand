@@ -13,6 +13,14 @@
     var root = document.querySelector('.brunch_book');
     if (!root || !window.Swiper) return;
 
+    // 표지 블러 배경: 인접한 표지 img의 src를 복사해 할당.
+    // 이미지 URL은 HTML의 img에만 둔다 — 표지 교체 시 img src 한 곳만 수정 (ASSETS.md).
+    root.querySelectorAll('.brunch_book_cover').forEach(function (cover) {
+        var bg  = cover.querySelector('.brunch_book_cover_bg');
+        var img = cover.querySelector('img');
+        if (bg && img) bg.style.backgroundImage = "url('" + img.getAttribute('src') + "')";
+    });
+
     new Swiper(root, {
         slidesPerView: 1,
         speed: 500,

@@ -14,39 +14,39 @@
 @font-face {
     font-family: 'Yeongwol';
     src: url('../fonts/YeongwolTTF.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal; font-display: swap;
 }
 @font-face {
     font-family: 'Jeonglimsaji';
     src: url('../fonts/Jeongnimsaji-M.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal; font-display: swap;
 }
 
 /* font_try 체험 전용 (index의 font_try 버튼·미리보기에서만 사용 — index.js fontFamilyMap 참조) */
 @font-face {
     font-family: 'MapoMaponaru';
     src: url('../fonts/MapoMaponaru.woff') format('woff');
-    font-weight: normal;
+    font-weight: normal; font-display: swap;
 }
 @font-face {
     font-family: 'MungyeongGamhong';
     src: url('../fonts/Mungyeong-Gamhong-Apple.woff') format('woff');
-    font-weight: normal;
+    font-weight: normal; font-display: swap;
 }
 @font-face {
     font-family: 'ShinDongYup';
     src: url('../fonts/ShinDongYupHandwriting-L.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal; font-display: swap;
 }
 @font-face {
     font-family: 'ChangwonDangamRound';
     src: url('../fonts/ChangwonDangamRound.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal; font-display: swap;
 }
 @font-face {
     font-family: 'ChangwonDangamAsac';
     src: url('../fonts/ChangwonDangamAsac-Bold.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal; font-display: swap;
 }
 
 
