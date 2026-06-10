@@ -4,40 +4,40 @@
 
 ---
 
-## 전체 구조
+## 전체 구조 (2026-06-11 기준)
 
 ```
 redesign-urbanbrand/
-├── index.html
-├── article.html              # 예정 (빈 파일)
-├── structure.html            # index.html 구조도 (개발 참고용, 배포 X)
-├── CLAUDE.md                 # 라우터 (항상 로드)
-├── LOGO.md                   # SVG 스프라이트
-├── STYLE.md                  # HTML + CSS 컨벤션
-├── TYPOGRAPHY.md             # 폰트 + 타이포 유틸
-├── ASSETS.md                 # 에셋 네이밍
-├── STRUCTURE.md              # 이 문서
-├── DEPENDENCIES.md           # 의존성 + 추가 절차
-├── css/
-│   ├── reset.css             # 손대지 않음
-│   ├── style.css             # 공통 (@font-face, 타이포 유틸, 버튼, GNB, 컨테이너)
-│   ├── index.css             # index 전용
-│   ├── responsive.css        # 공통 반응형 (빈 파일)
-│   ├── responsive_index.css  # index 반응형 (빈 파일)
-│   ├── owl.carousel.min.css
-│   └── owl.theme.default.min.css
-├── js/
-│   ├── jquery.min.js
-│   ├── owl.carousel.js
-│   └── carousel.js
-├── fonts/                    # 정림사지·영월·창원단감·신동엽손글씨 TTF
-├── images/                   # 공용 에셋 루트 + 페이지 전용 하위 폴더
-├── archive/                  # 이전 AI 생성본 (리팩토링 참조용 / 배포 X)
-├── designs/                  # Figma 원본 디자인 캡쳐 (archive 생성 당시 입력 / 배포 X)
-└── skeleton/                 # 사용자 구조도 캡쳐 (현재 리팩토링 입력 / 배포 X)
+├── CLAUDE.md                  # 라우터 (항상 로드)
+├── .gitignore                 # .DS_Store, captures/
+├── skills/                    # 작업 맥락별 문서 (CLAUDE.md 참조표에서 연결)
+│   ├── STYLE.md / TYPOGRAPHY.md / ASSETS.md / LOGO.md
+│   ├── STRUCTURE.md / DEPENDENCIES.md
+│   └── CONTEXT.md / PORTFOLIO_UPPER_TITLE.md   # 시행착오·맥락 보관
+├── vom16_urbanbrand/          # 배포 루트 (GitHub Pages가 이 폴더를 서빙)
+│   ├── index.html
+│   ├── article.html
+│   ├── logo_test.html         # 로고 draw-on 실험 파일 (LOGO.md 참조, 비배포 의도)
+│   ├── css/
+│   │   ├── reset.css                       # 손대지 않음
+│   │   ├── style.css                       # 공통 (@font-face, 타이포 유틸, 버튼, GNB, 컨테이너, 푸터)
+│   │   ├── index.css / article.css         # 페이지 전용
+│   │   ├── responsive.css                  # 공통 반응형
+│   │   ├── responsive_index.css            # index 반응형
+│   │   ├── responsive_article.css          # article 반응형 (미작성)
+│   │   └── swiper-bundle.min.css / aos.css # 라이브러리
+│   ├── js/
+│   │   ├── index.js / article.js           # 페이지 전용
+│   │   ├── aos_script.js / smooth_scroll.js  # 라이브러리 설정 (기능별)
+│   │   └── swiper-bundle.min.js / aos.js / lenis.min.js  # 라이브러리
+│   ├── fonts/                 # 자체 호스팅 웹폰트 woff/woff2 7종 (TYPOGRAPHY.md)
+│   └── images/                # 공용 에셋 루트 + images/{page}/ 페이지 전용 (ASSETS.md)
+├── archive/                   # 이전 AI 생성본 (리팩토링 참조용 / 배포 X)
+├── designs/                   # Figma 원본 디자인 캡쳐 (배포 X)
+└── skeleton/                  # 사용자 구조도 캡쳐 (현재 리팩토링 입력 / 배포 X)
 ```
 
-`archive/`는 자체 하위 구조(`css/`, `js/`, `fonts/`, `images/`, `index.html`)가 루트와 거의 동일 — 섹션별 마크업·스타일 의도 참고용이며 그대로 복사 금지.
+`archive/`는 자체 하위 구조(`css/`, `js/`, `fonts/`, `images/`, `index.html`)가 배포 루트와 거의 동일 — 섹션별 마크업·스타일 의도 참고용이며 그대로 복사 금지.
 
 ---
 
@@ -62,7 +62,7 @@ VS Code Live Server 확장도 가능.
 |---------------------|-------------|
 | 새 페이지 CSS       | `css/{page}.css` |
 | 새 페이지 반응형    | `css/responsive_{page}.css` |
-| 새 페이지 JS        | 분리 방식 사용자 확인 (`js/{page}.js` vs 기능별 분리) |
+| 새 페이지 JS        | `js/{page}.js` (페이지 전용) / 라이브러리 설정은 기능별 파일 |
 | 새 이미지           | 공용은 `images/`, 페이지 전용은 `images/{page}/` |
-| 새 `@font-face`     | **무조건** `style.css` 상단에 추가 (페이지 CSS에 분산 금지) |
+| 새 `@font-face`     | **무조건** `style.css` 상단에 추가 (페이지 CSS에 분산 금지), 용도 주석 그룹에 맞춰 배치 |
 | 새 미디어쿼리       | `responsive*.css`로만 — 베이스 CSS에 섞지 않음 |

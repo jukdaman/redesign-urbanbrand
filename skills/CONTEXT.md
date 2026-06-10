@@ -86,3 +86,31 @@ print(c.count(b'\xe2\x80\x9c')+c.count(b'\xe2\x80\x9d'))
 - 라이브러리를 추가하면 **실제 호출처가 있는지** 확인한다. 연동 글루 코드만 있고 기능 사용이 없으면 제거한다.
 - 같은 대상(예: `lenis.raf`)을 구동하는 루프·ticker는 하나만 둔다.
 - 병합 시 GSAP 3종을 제거하고 Lenis 단독 rAF 루프로 정리, Lenis는 자체 호스팅으로 전환.
+
+---
+
+## 7. 2026-06 전체 코드 평가 — 잔여 맥락
+
+평가 백로그 문서(HANDOFF.md·ARTICLE_HANDOFF.md)는 처리 후 폐기됨(일회성 인수인계 문서). 보존 가치가 있는 맥락만 여기로 이관.
+
+**비문제 판정 (재지적 금지)**
+- stories 3개 Swiper가 공유하는 `.stories_scrollbar` 셀렉터 문자열 — Swiper `uniqueNavElements`(기본 true)가 셀렉터를 각 컨테이너 내부로 스코핑하므로 정상 동작
+- 팔레트 외 색상(`#666`, `#737373` 등 다수) — STYLE.md 색 목록은 스냅샷, 위반 아님 (사용자 확정)
+- `line-height`·`letter-spacing`의 `em` 단위 — font-size 연동 목적이면 허용 (사용자 확정)
+- `portfolio_upper`의 `swiper-wrapper`에 붙은 `data-aos`, hero `data-aos`의 첫 화면 FOUC — DEPENDENCIES.md에 문서화된 승인 사항
+- `--swiper-navigation-color` — Swiper 자체 테마 API라 CSS 변수 자제 원칙과 무관
+- index hero의 `min-height: 1080px`가 `max-height: 100vh`를 스펙상 이김 (낮은 화면에서 hero가 뷰포트 초과) — **현행 유지로 사용자 결정** (2026-06-11)
+
+**미결 백로그 (착수 전 사용자 확인)**
+- `@font-face` 7종에 `font-display` 미지정 (현재 FOIT) — swap 도입 여부 결정 대기
+- 폴드 아래 `<img>`에 `loading="lazy"` 미적용 (article 카드 이미지 다수)
+- `logo_test.html`이 배포 폴더(`vom16_urbanbrand/`) 안 — 이동 시 LOGO.md 경로도 함께 수정
+- brunch 표지 블러 배경 7개가 HTML 인라인 `style` (index는 클래스로 옮긴 관행과 불일치) — 처리 방식 결정 대기
+
+**article 콘텐츠 placeholder 현황 (실데이터 제공 시 교체)**
+- BRUNCH: 2~7권 포스트 본문 전체 + 1권 포스트 2·3이 placeholder (실카피 미확보)
+- BRUNCH 넘버링: '일에 대한 생각'이 1·2·4·5·6 — **3 공백이 캡쳐 오독인지 의도인지 미확인**
+- VIDEOS: 2~5편 desc가 placeholder ("여기 요약본 적어주십시오…")
+- `responsive_article.css` 미작성 (데스크탑 확정 후 작성)
+- GNB의 WORK/SERVICE/CONTACT는 index 내 대응 앵커 미계획 — `index.html`로만 연결
+- Figma 원본: fileKey `Apt9K76JOiMZYgJkpr0ra2` (텍스트 스타일·카드 콘텐츠 검증용)

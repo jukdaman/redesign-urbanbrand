@@ -15,11 +15,10 @@
 
 - **Pretendard만 CDN 허용** — jsDelivr (`cdn.jsdelivr.net/gh/orioncactus/pretendard/...`)
   - 자체 호스팅으로 전환 시 사용자 승인
-- 장식 폰트는 **자체 호스팅 TTF** (`fonts/`):
-  - 정림사지 (Jeonglimsaji)
-  - 영월 (Yeongwol)
-  - 창원단감 (Changwon Dangam)
-  - 신동엽손글씨 (ShinDongYupHandwriting)
+- 장식·체험 폰트는 **자체 호스팅** (`fonts/`, woff/woff2 7종). 용도는 3유형이며 `style.css` @font-face 구역에 주석 그룹으로 구분돼 있다:
+  1. **본문 전역** — Pretendard (CDN, @font-face 선언 없음)
+  2. **rich text 장식** (solution·portfolio_lower의 `rich_*` 클래스) — 영월 (Yeongwol), 정림사지 (Jeonglimsaji)
+  3. **font_try 체험 전용** (index.js `fontFamilyMap` 참조) — 문경감홍사과 (MungyeongGamhong), 마포나루 (MapoMaponaru), 신동엽손글씨 (ShinDongYup), 창원단감둥근/아삭 (ChangwonDangamRound/Asac)
 - **신규 웹폰트 (Google Fonts, Noto 등) → 사용자 승인 필요**
 
 ---

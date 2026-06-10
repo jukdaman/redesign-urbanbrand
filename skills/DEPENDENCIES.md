@@ -10,7 +10,7 @@
 - **AOS 2.3.2** (`js/aos.js` + `css/aos.css`, 자체 호스팅) — 스크롤 진입 애니메이션. 초기화는 `js/aos_script.js`
 - **Lenis 1.2.3** (`js/lenis.min.js`, 자체 호스팅) — 스무스 스크롤. 구동은 `js/smooth_scroll.js`
 - **Pretendard Variable** (jsDelivr CDN)
-- **로컬 TTF**: 정림사지, 영월, 창원단감, 신동엽손글씨
+- **로컬 웹폰트** (woff/woff2 7종, `fonts/`): 영월, 정림사지, 문경감홍사과, 마포나루, 신동엽손글씨, 창원단감둥근/아삭 — 용도 구분은 [TYPOGRAPHY.md](TYPOGRAPHY.md)
 
 ---
 
