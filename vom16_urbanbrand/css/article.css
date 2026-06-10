@@ -43,15 +43,15 @@
 
 
 /* ========== YEONGWOL ========== */
-.yeongwol { padding-top: 90px; padding-bottom: 180px; }
+.featured { padding-top: 90px; padding-bottom: 180px; }
 
-.yeongwol_quote {
+.featured_quote {
     position: relative;
     max-width: 1160px; min-height: 335px; margin: 0 auto 132px;
     text-align: center;
 }
-.yeongwol_quote p { font-weight: 300; font-size: 56px; line-height: 140%; letter-spacing: -1px; }
-.yeongwol_quote b { font-weight: 700; }
+.featured_quote p { font-weight: 300; font-size: 56px; line-height: 140%; letter-spacing: -1px; }
+.featured_quote b { font-weight: 700; }
 
 .quote_mark {
     position: absolute; width: 44px; height: 44px;
@@ -59,26 +59,26 @@
 .quote_mark_left { top: -16px; left: 0; }
 .quote_mark_right { bottom: 0; right: 0; }
 
-.yeongwol_person {
+.featured_person {
     position: absolute; right: 96px; bottom: 4px;
     width: 118px; height: 170px;
-    background: url(../images/article/img_yeongwol_02.png) no-repeat 50% 50% / auto;
+    background: url(../images/article/img_featured_02.png) no-repeat 50% 50% / auto;
 }
 
-.yeongwol_feature { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-.yeongwol_feature_img {
+.featured_article { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.featured_article_img {
     width: 40%; height: 672px;
     object-fit: cover;
 }
 
-.yeongwol_feature_content {
+.featured_article_content {
     display: flex; flex-direction: column; align-items: flex-start;
     width: 50%;
 }
-.yeongwol_meta { margin-bottom: 26px; color: #737373; }
-.yeongwol_feature_content p.title_small { margin-bottom: 56px; line-height: 130%; }
-.yeongwol_feature_content .article_xlarge { margin-bottom: 20px; color: #737373; }
-.yeongwol_feature_content .button_small { margin-top: 58px; }
+.featured_meta { margin-bottom: 26px; color: #737373; }
+.featured_article_content p.title_small { margin-bottom: 56px; line-height: 130%; }
+.featured_article_content .article_xlarge { margin-bottom: 20px; color: #737373; }
+.featured_article_content .button_small { margin-top: 58px; }
 
 
 
@@ -197,10 +197,11 @@
     background: #ddd;
 }
 .news_card_wrap .swiper-scrollbar-drag { height: 2px; background: #000; }
-.news_source { margin-bottom: 20px; color: #737373; }
-.news_card p.article_medium_m { margin-bottom: 28px; }
-.news_card .article_small { margin-bottom: 36px; color: #737373; }
-.news_card .button_small { margin-top: auto; }
+.news_source { color: #737373; }
+.news_card .article_small { 
+    width: 100%; height: 52px;
+    color: #737373;
+    text-overflow: ellipsis; overflow: hidden; }
 
 
 
@@ -209,9 +210,13 @@
 .videos { padding-bottom: 190px; }
 .videos .section_title_wrap { margin-bottom: 90px; }
 
-.video_feature { display: flex; align-items: flex-end; gap: 180px; }
-.video_thumbs { flex: 1; min-width: 0; }
-.video_thumbs .swiper-slide img { width: 100%; height: 480px; object-fit: cover; display: block; }
+.video_feature { display: flex; align-items: center; gap: var(--container-pad); }
+.video_thumbs { width: 68%; height: 622px; background: #000; }
+.video_thumbs .swiper-slide { 
+    display: flex; align-items: center;
+    width: 100%; background: #000;
+}
+.video_thumbs .swiper-slide img { object-fit: contain; }
 
 .video_feature_content { display: flex; flex-direction: column; align-items: flex-start; width: 400px; }
 .video_pager { display: flex; gap: 10px; margin-bottom: 48px; }
@@ -232,10 +237,9 @@
 .video_panel p { color: #404040; }
 
 /* 본문: 접힘 상태 88px 제한, 펼치면 해방 */
-.video_desc_wrap { display: flex; flex-direction: column; gap: 12px; }
+.video_desc_wrap { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 42px; }
 .video_desc { max-height: 88px; overflow: hidden; }
 .video_desc.is-open { max-height: none; }
-.video_desc p + p { margin-top: 16px; }
 
 .video_desc_more {
     padding: 0; border: 0;
