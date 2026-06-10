@@ -30,6 +30,21 @@ HTML 또는 CSS 코드를 쓸 때마다 적용. 폰트/타이포 유틸은 [TYPO
   - 섹션 내 큰 블록 간 (upper/lower, 주요 div 등): 빈 줄 2개
   - 블록 내 형제 요소 간: 빈 줄 1개
   - 의미적으로 강하게 묶인 짝 (nav 버튼들, title+category 등): 빈 줄 없음
+  ```
+- p태그 줄바꿈 규칙 — 깊이가 아닌 **요소의 시각적 무게** 기준:
+  - 짧은 텍스트 (title/짧은 캡션 등): <p>this is caption.</p>
+  - 긴 텍스트 (article/본문 등):
+  <p>
+    Minim pariatur sit ex labore non ad tempor quis dolore est aute et. <br>
+    Aute est do ullamco proident. Dolor incididunt fugiat sint dolor consectetur <br>
+    Amet in aliquip est duis cillum officia do. <br>
+    Consequat sint eiusmod amet mollit sunt dolore occaecat.
+  </p>
+  - DOM이 너무 깊거나 클래스 이름 때문에 텍스트가 짧아도 열고 닫는 태그를 한 줄에 담기 너무 긴 경우:
+  <p class="article_medium_r section_wrapper_box_btn_article">
+      창원에 창원만의 고유한 글꼴이 필요하지 않을까
+  </p>
+  ```
 
 ---
 

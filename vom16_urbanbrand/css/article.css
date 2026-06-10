@@ -1,17 +1,13 @@
 /* ========== PAGE COMMON (article 전 섹션에서 재사용) ========== */
 .section_icon { width: 40px; height: 40px; color: #000; }
 .section_icon .logo_face { stroke-width: 2; }
-
-.section_title_wrap p {
-    display: flex; flex-direction: column; gap: 10px;
-}
-
+.section_title_wrap { display: flex; flex-direction: column; gap: 10px; }
 
 
 
 
 /* ========== HERO ========== */
-.hero { padding-top: 180px; }
+.hero { padding-top: 180px; padding-bottom: 110px; }
 
 .hero_headline {
     /* ARTICLE (흰 배경 + screen으로 글씨 바깥만 가림) */
@@ -35,22 +31,19 @@
 }
 
 .hero_title_wrap {
-    display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
     padding-top: 80px; padding-bottom: 150px;
     text-align: right;
 }
-.hero_inline_logo {
-    width: 68px; height: 68px; margin: 0 8px -2px 12px;
-    color: #000;
-}
-.hero_inline_logo .logo_face { stroke-width: 2; }
+.hero_logo { width: 68px; height: 68px; color: #000; }
+.hero_logo .logo_face { stroke-width: 2; }
 .hero_desc { color: #404040; }
 
 
 
 
 /* ========== YEONGWOL ========== */
-.yeongwol { padding-bottom: 170px; }
+.yeongwol { padding-top: 90px; padding-bottom: 180px; }
 
 .yeongwol_quote {
     position: relative;
@@ -92,14 +85,12 @@
 
 /* ========== BRUNCH ========== */
 .brunch {
-    margin-bottom: 170px;
-    border-bottom: 1px solid #000;
+    padding-top: 80px; padding-bottom: 120px;
 }
 
 .brunch_top {
     display: flex; justify-content: space-between; align-items: flex-end;
     padding-bottom: 52px;
-    border-bottom: 1px solid #000;
 }
 
 .brunch_more_btn {
@@ -114,9 +105,11 @@
 .brunch_book {
     position: relative;
     padding: 76px 0 40px;
+    border-top: 1px solid #000; border-bottom: 1px solid #000;
 }
 .brunch_book .brunch_slide {
-    display: flex; justify-content: space-between; align-items: stretch; gap: 130px;
+    display: flex; justify-content: space-between; align-items: stretch; gap: var(--container-pad);
+    padding: var(--container-pad);
 }
 
 .brunch_book_cover {
@@ -135,31 +128,34 @@
     display: flex; flex-direction: column; gap: 12px;
     padding: 40px 0;
 }
-.brunch_book_post_wrap {
+.brunch_post_wrap {
     display: flex; flex-direction: column;
 }
-.brunch_book_post_wrap li { 
+.brunch_post_wrap li { 
     display: flex; gap: 54px;
     padding: 20px 0; border-top: 1px solid #ddd;
 }
-.brunch_book_post {
+.brunch_post {
     display: flex; flex-direction: column; gap: 8px;
+    width: 100%;
 }
-.brunch_book_post_title { color: #666; }
-.brunch_book_post_article {
+.brunch_post .article_medium_r { color: #666; }
+.brunch_post_article {
     width: 100%; height: 66px;
     color: #808080;
     text-overflow: ellipsis; overflow: hidden;
 }
-.brunch_book_post a { align-self: flex-end; color: #ccc; }
+.brunch_post a {
+    align-self: flex-end; color: #ccc;
+    text-decoration: underline; text-underline-offset: 0.2em;
+}
 
 .brunch_arrow {
     position: absolute; top: calc(50% - 44px);
     display: flex; align-items: center; justify-content: center;
     z-index: 2;
-    width: 44px; height: 88px;
+    width: auto; height: 88px;
     border: 0;
-    background: transparent;
     cursor: pointer;
 }
 .brunch_arrow img { width: 100%; height: 100%; object-fit: contain; }
@@ -167,9 +163,9 @@
 .brunch_arrow_next { right: 10px; }
 .brunch_arrow.swiper-button-disabled { opacity: 0.3; cursor: default; }
 
-.brunch_dots { display: flex; justify-content: center; gap: 14px; padding-bottom: 80px; }
+.brunch_dots { display: flex; justify-content: center; gap: 10px; }
 .brunch_dots button {
-    width: 12px; height: 12px;
+    width: 10px; height: 10px;
     border: 0; border-radius: 50%;
     background: #d8d8d8;
     cursor: pointer;

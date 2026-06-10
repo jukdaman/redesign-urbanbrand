@@ -43,7 +43,7 @@
 /* ========== SOLUTION ========== */
 .solution {
     display: flex; flex-direction: column; gap: 228px;
-    padding: 200px 0;
+    padding-top: 200px; padding-bottom: 200px;
     background: #fff;
     overflow: hidden;
 }
@@ -191,7 +191,7 @@
 /* ========== PORTFOLIO ========== */
 .portfolio {
     display: flex; flex-direction: column; align-items: center; gap: 80px;
-    padding: 200px 0;
+    padding-top: 200px; padding-bottom: 200px;
 }
 
 
@@ -490,7 +490,7 @@
 .ceo {
     display: flex; justify-content: stretch; align-items: flex-end;
     position: relative;
-    padding: 200px 0 160px;
+    padding-top: 200px; padding-bottom: 160px;
     overflow: hidden;
 }
 
