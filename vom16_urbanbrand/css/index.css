@@ -16,6 +16,10 @@
     height: 100%;
     background-size: cover; background-position: center;
 }
+.hero_slide_01 { background-image: url(../images/index/img_hero_01.jpg); }
+.hero_slide_02 { background-image: url(../images/index/img_hero_02.jpg); }
+.hero_slide_03 { background-image: url(../images/index/img_hero_03.jpg); }
+.hero_slide_04 { background-image: url(../images/index/img_hero_04.jpg); }
 
 .hero_overlay {
     position: absolute; inset: 0;

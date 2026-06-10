@@ -32,6 +32,19 @@
 
 ---
 
+## 이미지 처리 방식
+
+| 상황 | 방식 |
+|------|------|
+| 의미 있는 이미지 (콘텐츠, 접근성 필요) | `<img src="..." alt="...">` + object-fit |
+| 순수 장식·배경 (alt 없음) | CSS `background` |
+| JS가 배경을 동적으로 교체해야 할 때 | `data-bg` 속성 + JS 할당 (예: index portfolio 슬라이드 크로스페이드) |
+
+- `role="img"` + 빈 div는 `<img>`로 전환한다.
+- 장식 배경 div에는 `aria-hidden="true"` 부여.
+
+---
+
 ## 로고·아이콘 우선순위
 
 새 로고/아이콘은 가급적 `logo_urbanbrand.svg` 스프라이트의 `<symbol>`로 추가 → [LOGO.md](LOGO.md) 참고.
