@@ -348,8 +348,8 @@
 }
 
 
-/* font_try_sidebar */
-.font_try_sidebar {
+/* font_try_side */
+.font_try_side {
     display: flex; flex-direction: column; justify-content: space-between;
     width: 50%; max-width: 960px; padding: clamp(0px, 12.5vh - 100px, 80px) 0;
 }

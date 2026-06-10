@@ -119,12 +119,25 @@
 
 .brunch_book_cover {
     display: flex; flex-direction: column; justify-content: center; align-items: center;
+    position: relative;
     width: 40%; min-height: 480px;
     background-color: #000;
     overflow: hidden;
 }
-.brunch_book_cover img { width: 320px; }
-.brunch_book_cover span { color: #fff; }
+.brunch_book_cover_bg {
+    /* 표지 이미지의 블러 사본 배경 (portfolio_upper_bg와 같은 기법, 슬라이드별 정적) */
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    filter: blur(10px) brightness(0.4);
+    transform: scale(1.05);
+}
+.brunch_book_cover img { position: relative; width: 320px; }
+.brunch_book_cover span {
+    position: relative;
+    width: 320px;
+    color: #fff;
+    text-align: right;
+}
 
 .brunch_book_content {
     display: flex; flex-direction: column;
@@ -219,10 +232,10 @@
 .videos { padding-bottom: 190px; }
 .videos .section_title_wrap { margin-bottom: 90px; }
 
-.video_feature { display: flex; align-items: center; gap: calc(100% / 12); }
+.video_content { display: flex; align-items: stretch; gap: var(--container-pad); }
 
 /* 썸네일: 첫 img가 normal flow로 박스 높이 결정(종횡비 유지), 나머지는 absolute로 겹쳐 crossfade */
-.video_thumbs { flex: 8; position: relative; background: #000; }
+.video_thumbs { flex: 1; position: relative; background: #000; }
 .video_thumbs img {
     display: block; width: 100%;
     opacity: 0;
@@ -231,9 +244,9 @@
 .video_thumbs img + img { position: absolute; top: 0; left: 0; }
 .video_thumbs img.is-active { opacity: 1; }
 
-.video_feature_content {
+.video_side {
     display: flex; flex-direction: column; align-items: flex-start;
-    flex: 3; padding-top: 80px;
+    width: 415px; height: 100%; padding-top: 80px;
 }
 .video_pager { display: flex; gap: 10px; margin-bottom: 48px; }
 .video_pager button {
@@ -246,9 +259,9 @@
 }
 .video_pager .is-active { border-color: #000; background: #000; color: #fff; }
 
-.video_panel { display: none; width: 100%; }
-.video_panel.is-active { display: block; }
-.video_panel p { color: #404040; }
+.video_side_wrap { display: none; width: 100%; }
+.video_side_wrap.is-active { display: block; }
+.video_side_wrap p { color: #404040; }
 
 .video_title_wrap { display: flex; flex-direction: column; gap: 16px; margin-bottom: 58px; }
 

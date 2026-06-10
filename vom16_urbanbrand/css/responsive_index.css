@@ -2,7 +2,7 @@
 
     /* ========== font_try ========== */
     .font_try { flex-wrap: wrap; height: auto; }
-    .font_try_sidebar { display: contents; gap: clamp(20px, 2vw + 10px, 40px); }
+    .font_try_side { display: contents; gap: clamp(20px, 2vw + 10px, 40px); }
     .font_try_title_wrap { order: 1; width: 100%; padding-bottom: clamp(20px, 2vw + 10px, 40px); }
     .font_try_preview { order: 2; flex: none; width: 100%; height: clamp(300px, 27.27vw + 190.9px, 600px); }
     .font_try_result { position: relative; inset: auto; height: 100%; }
