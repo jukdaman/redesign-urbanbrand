@@ -122,10 +122,7 @@
     pointer-events: none;
     transition: opacity .5s ease-out;
 }
-.breakpoint_overlay.is-visible {
-    opacity: 1;
-    pointer-events: none;
-}
+.breakpoint_overlay.is-visible { opacity: 1; }
 
 
 

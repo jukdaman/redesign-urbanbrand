@@ -441,10 +441,10 @@
 }
 
 .font_try_size_label {
+    /* 가운데 정렬 보정은 JS(updateLabelPosition)가 left 계산 시 라벨 절반 너비를 빼서 처리 */
     position: absolute;
     bottom: calc(16.5px + 5px);
     color: #fff;
-    transform: translateX(-50%);
     white-space: nowrap;
 }
 

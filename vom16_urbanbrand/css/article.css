@@ -160,9 +160,11 @@
 }
 .brunch_post .article_medium_r { color: #666; }
 .brunch_post_article {
-    width: 100%; height: 66px;
+    /* 다중행 말줄임: 3줄(22.4px x 3 = 67.2px) 초과분 클램프 — height는 3줄에 정합 */
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+    width: 100%; height: 68px;
     color: #808080;
-    text-overflow: ellipsis; overflow: hidden;
+    overflow: hidden;
 }
 .brunch_post a {
     align-self: flex-end;
@@ -220,9 +222,11 @@
 .news_scrollbar .swiper-scrollbar-drag { height: 2px; background: #000; }
 .news_source { color: #737373; }
 .news_card .article_small {
+    /* 다중행 말줄임: 2줄(25.6px x 2 = 51.2px) 초과분 클램프 */
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
     width: 100%; height: 52px;
     color: #737373;
-    text-overflow: ellipsis; overflow: hidden;
+    overflow: hidden;
 }
 
 

@@ -67,22 +67,25 @@
 // 스크롤이 hero 섹션을 벗어나면 GNB 배경이 흰색으로 바뀝니다.
 // 건드릴 것 없음.
 
-var gnb  = document.querySelector('.gnb');
-var hero = document.querySelector('.hero');
+(function () {
+    var gnb  = document.querySelector('.gnb');
+    var hero = document.querySelector('.hero');
+    if (!gnb || !hero) return;
 
-function updateGnb() {
-    var heroBottom = hero.getBoundingClientRect().bottom;
-    var gnbHeight  = gnb.offsetHeight;
+    function updateGnb() {
+        var heroBottom = hero.getBoundingClientRect().bottom;
+        var gnbHeight  = gnb.offsetHeight;
 
-    if (heroBottom <= gnbHeight) {
-        gnb.classList.add('is-solid');
-    } else {
-        gnb.classList.remove('is-solid');
+        if (heroBottom <= gnbHeight) {
+            gnb.classList.add('is-solid');
+        } else {
+            gnb.classList.remove('is-solid');
+        }
     }
-}
 
-window.addEventListener('scroll', updateGnb);
-updateGnb();
+    window.addEventListener('scroll', updateGnb);
+    updateGnb();
+}());
 
 
 
@@ -92,14 +95,18 @@ updateGnb();
 // 이미지 추가/제거: index.html에 hero_slide_NN 요소 추가/삭제 + index.css에 배경 클래스 추가/삭제.
 // 속도 조절: speed(전환 속도 ms), autoplay.delay(머무는 시간 ms)
 
-new Swiper('.hero_slides', {
-    loop: true,
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
-    speed: 800,
-    autoplay: { delay: 5000, disableOnInteraction: false },
-    allowTouchMove: false,
-});
+(function () {
+    if (!document.querySelector('.hero_slides') || !window.Swiper) return;
+
+    new Swiper('.hero_slides', {
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 800,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        allowTouchMove: false,
+    });
+}());
 
 
 
@@ -225,69 +232,79 @@ if (logos.length && Element.prototype.animate) {
 // 슬라이드 추가/제거: index.html의 swiper-slide 요소와 data-bg 이미지 경로를 수정하면 됩니다.
 // 속도 조절: speed(전환 속도 ms), autoplay.delay(머무는 시간 ms)
 
-var bgWrap = document.querySelector('.portfolio_upper');
-var bgLayer = bgWrap.querySelector('.portfolio_upper_bg');
+(function () {
+    var bgWrap = document.querySelector('.portfolio_upper');
+    if (!bgWrap || !window.Swiper) return;
 
-var bgLayerB = bgLayer.cloneNode(false);
-bgWrap.insertBefore(bgLayerB, bgLayer);
+    var bgLayer = bgWrap.querySelector('.portfolio_upper_bg');
+    var slides  = document.querySelectorAll('.portfolio_upper .swiper-slide[data-bg]');
+    if (!bgLayer || !slides.length) return;
 
-var slides = document.querySelectorAll('.portfolio_upper .swiper-slide[data-bg]');
+    var bgLayerB = bgLayer.cloneNode(false);
+    bgWrap.insertBefore(bgLayerB, bgLayer);
 
-slides.forEach(function (slide) {
-    var img = slide.querySelector('.portfolio_upper_img');
-    if (img) img.style.backgroundImage = "url('" + slide.dataset.bg + "')";
-});
+    slides.forEach(function (slide) {
+        var img = slide.querySelector('.portfolio_upper_img');
+        if (img) img.style.backgroundImage = "url('" + slide.dataset.bg + "')";
+    });
 
-function setBg(index) {
-    var realCount = slides.length;
-    var realIndex = ((index % realCount) + realCount) % realCount;
-    var url = "url('" + slides[realIndex].dataset.bg + "')";
+    /* prev/next 연타 시 이전 호출의 타이머가 새 crossfade에 끼어들지 않게 핸들을 저장해 정리 */
+    var bgTimer, bgRestoreTimer;
 
-    bgLayerB.style.backgroundImage = url;
-    bgLayer.style.opacity = '0';
+    function setBg(index) {
+        var realCount = slides.length;
+        var realIndex = ((index % realCount) + realCount) % realCount;
+        var url = "url('" + slides[realIndex].dataset.bg + "')";
 
-    setTimeout(function () {
-        bgLayer.style.transition = 'none';
-        bgLayer.style.backgroundImage = url;
-        bgLayer.style.opacity = '1';
-        setTimeout(function () {
-            bgLayer.style.transition = '';
-        }, 20);
-    }, 600);
-}
+        clearTimeout(bgTimer); clearTimeout(bgRestoreTimer);
+        bgLayer.style.transition = '';
 
-bgLayer.style.transition = 'none';
-bgLayer.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
-bgLayerB.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
-setTimeout(function () { bgLayer.style.transition = ''; }, 20);
+        bgLayerB.style.backgroundImage = url;
+        bgLayer.style.opacity = '0';
 
-var portfolioSwiper = new Swiper('.portfolio_upper', {
-    loop: true,
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
-    speed: 600,
-    allowTouchMove: false,
-    autoplay: { delay: 4400, disableOnInteraction: false },
-    pagination: {
-        el: '.portfolio_upper .swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        prevEl: '.portfolio_upper .swiper-button-prev',
-        nextEl: '.portfolio_upper .swiper-button-next',
-    },
-    on: {
-        slideChange: function () {
-            setBg(this.realIndex);
+        bgTimer = setTimeout(function () {
+            bgLayer.style.transition = 'none';
+            bgLayer.style.backgroundImage = url;
+            bgLayer.style.opacity = '1';
+            bgRestoreTimer = setTimeout(function () {
+                bgLayer.style.transition = '';
+            }, 20);
+        }, 600);
+    }
 
-            var active = document.querySelector('.portfolio_upper .swiper-pagination-bullet-active');
-            if (!active) return;
-            active.classList.remove('swiper-pagination-bullet-active');
-            void active.offsetWidth;
-            active.classList.add('swiper-pagination-bullet-active');
+    bgLayer.style.transition = 'none';
+    bgLayer.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
+    bgLayerB.style.backgroundImage = "url('" + slides[0].dataset.bg + "')";
+    setTimeout(function () { bgLayer.style.transition = ''; }, 20);
+
+    new Swiper('.portfolio_upper', {
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 600,
+        allowTouchMove: false,
+        autoplay: { delay: 4400, disableOnInteraction: false },
+        pagination: {
+            el: '.portfolio_upper .swiper-pagination',
+            clickable: true,
         },
-    },
-});
+        navigation: {
+            prevEl: '.portfolio_upper .swiper-button-prev',
+            nextEl: '.portfolio_upper .swiper-button-next',
+        },
+        on: {
+            slideChange: function () {
+                setBg(this.realIndex);
+
+                var active = document.querySelector('.portfolio_upper .swiper-pagination-bullet-active');
+                if (!active) return;
+                active.classList.remove('swiper-pagination-bullet-active');
+                void active.offsetWidth;
+                active.classList.add('swiper-pagination-bullet-active');
+            },
+        },
+    });
+}());
 
 
 
@@ -369,7 +386,7 @@ var portfolioSwiper = new Swiper('.portfolio_upper', {
         var thumbR  = 16.5;
         var pos     = thumbR + ratio * (slider.offsetWidth - thumbR * 2);
         var wrapLeft = slider.getBoundingClientRect().left - slider.closest('.font_try_size_selector').getBoundingClientRect().left;
-        sizeLabel.style.left = (wrapLeft + pos) + 'px';
+        sizeLabel.style.left = (wrapLeft + pos - sizeLabel.offsetWidth / 2) + 'px';
     }
 
     slider.addEventListener('input', function () {
