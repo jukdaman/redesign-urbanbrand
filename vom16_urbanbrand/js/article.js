@@ -44,7 +44,7 @@
 // 언론 보도 9건 드래그 캐러셀(스크롤바). 카드 콘텐츠는 HTML에 9개 모두 정적 작성됨.
 
 (function () {
-    var root = document.querySelector('.news_box_wrap');
+    var root = document.querySelector('.news_card_wrap');
     if (!root || !window.Swiper) return;
 
     new Swiper(root, {
@@ -121,8 +121,8 @@
 
 // ========== STORIES ==========
 // 탭(Instagram/Facebook/Blog) + 드래그 카드 캐러셀(스크롤바). 채널별 9개 카드.
-// 콘텐츠는 HTML에 채널별 독립 stories_boxes로 명시됨.
-// 탭 전환 시 해당 data-tab stories_boxes만 표시(display 토글). 각 채널 Swiper는 최초 표시 시 초기화.
+// 콘텐츠는 HTML에 채널별 독립 stories_cards로 명시됨.
+// 탭 전환 시 해당 data-tab stories_cards만 표시(display 토글). 각 채널 Swiper는 최초 표시 시 초기화.
 
 (function () {
     if (!window.Swiper) return;
@@ -135,7 +135,7 @@
         scrollbar: { el: '.stories_scrollbar', draggable: true },
     };
 
-    var cardEls = document.querySelectorAll('.stories_boxes');
+    var cardEls = document.querySelectorAll('.stories_cards');
     var initialized = {};
 
     function initSwiper(el) {
@@ -145,7 +145,7 @@
     }
 
     // 기본 활성 탭(instagram) 초기화
-    var defaultEl = document.querySelector('.stories_boxes[data-tab="instagram"]');
+    var defaultEl = document.querySelector('.stories_cards[data-tab="instagram"]');
     if (defaultEl) initSwiper(defaultEl);
 
     var tabs = document.querySelectorAll('.stories_tab button');
