@@ -271,9 +271,15 @@
 }
 .videos_pager .is-active { border-color: #000; background: #000; color: #fff; }
 
+/* display는 transition 불가 → 표시되는 순간 fade-in 애니메이션. 유튜브 crossfade와 같은 500ms */
 .videos_text_wrap { display: none; width: 100%; }
-.videos_text_wrap.is-active { display: block; }
+.videos_text_wrap.is-active { display: block; animation: videos_text_fade 500ms ease; }
 .videos_text_wrap p { color: #404040; }
+
+@keyframes videos_text_fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
 .videos_title_wrap { display: flex; flex-direction: column; gap: 16px; margin-bottom: 58px; }
 
