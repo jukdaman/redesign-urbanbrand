@@ -60,20 +60,26 @@
 
 
 // ========== VIDEO ==========
-// 영상 5편 페이저(1~5) 전용 전환. Swiper 미사용 — 썸네일 img·video_side_wrap을 is-active로
-// 동기 토글하고, 썸네일 페이드는 CSS opacity transition이 담당. 자동재생 없음.
+// 영상 5편 페이저(1~5) 전용 전환. Swiper 미사용 — 유튜브 embed iframe·video_text_wrap을 is-active로
+// 동기 토글하고, 영상 페이드는 CSS opacity transition이 담당. 자동재생 없음.
+// 전환 시 이전 영상은 postMessage(IFrame API)로 일시정지 — embed URL에 enablejsapi=1 필요.
 // video_article_wrap 내 video_article 88px 접힘 → video_article_more로 펼침(→ close 토글).
 
 (function () {
     var root = document.querySelector('.video_thumbs');
     if (!root) return;
 
-    var thumbs    = root.querySelectorAll('img');
-    var panels    = document.querySelectorAll('.video_side_wrap');
+    var videos    = root.querySelectorAll('iframe');
+    var panels    = document.querySelectorAll('.video_text_wrap');
     var pagerBtns = document.querySelectorAll('.video_pager button');
 
     function activate(idx) {
-        thumbs.forEach(function (img, i) { img.classList.toggle('is-active', i === idx); });
+        videos.forEach(function (iframe, i) {
+            iframe.classList.toggle('is-active', i === idx);
+            if (i !== idx && iframe.contentWindow) {
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            }
+        });
         pagerBtns.forEach(function (btn, i) { btn.classList.toggle('is-active', i === idx); });
         panels.forEach(function (panel, i) { panel.classList.toggle('is-active', i === idx); });
 

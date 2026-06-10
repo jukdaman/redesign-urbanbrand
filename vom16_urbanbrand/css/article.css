@@ -238,15 +238,19 @@
 
 .video_content { display: flex; align-items: stretch; gap: var(--container-pad); }
 
-/* 썸네일: 첫 img가 normal flow로 박스 높이 결정(종횡비 유지), 나머지는 absolute로 겹쳐 crossfade */
+/* 유튜브 embed: 첫 iframe이 normal flow로 박스 높이 결정(16:9), 나머지는 absolute로 겹쳐 crossfade.
+   비활성 iframe은 투명해도 클릭을 가로채므로 pointer-events 차단 */
 .video_thumbs { flex: 1; position: relative; background: #000; }
-.video_thumbs img {
+.video_thumbs iframe {
     display: block; width: 100%;
+    border: 0;
+    aspect-ratio: 16 / 9;
     opacity: 0;
     transition: opacity 500ms ease;
+    pointer-events: none;
 }
-.video_thumbs img + img { position: absolute; top: 0; left: 0; }
-.video_thumbs img.is-active { opacity: 1; }
+.video_thumbs iframe + iframe { position: absolute; top: 0; left: 0; height: 100%; }
+.video_thumbs iframe.is-active { opacity: 1; pointer-events: auto; }
 
 .video_side {
     display: flex; flex-direction: column; align-items: flex-start;
@@ -263,9 +267,9 @@
 }
 .video_pager .is-active { border-color: #000; background: #000; color: #fff; }
 
-.video_side_wrap { display: none; width: 100%; }
-.video_side_wrap.is-active { display: block; }
-.video_side_wrap p { color: #404040; }
+.video_text_wrap { display: none; width: 100%; }
+.video_text_wrap.is-active { display: block; }
+.video_text_wrap p { color: #404040; }
 
 .video_title_wrap { display: flex; flex-direction: column; gap: 16px; margin-bottom: 58px; }
 
