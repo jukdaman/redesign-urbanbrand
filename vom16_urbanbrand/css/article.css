@@ -1,20 +1,10 @@
-/* ========== COMMON ========== */
+/* ========== PAGE COMMON (article 전 섹션에서 재사용) ========== */
 .section_icon { width: 40px; height: 40px; color: #000; }
 .section_icon .logo_face { stroke-width: 2; }
 
 .section_title_wrap p {
     display: flex; flex-direction: column; gap: 10px;
 }
-
-.more_btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 12px 20px;
-    border: 1px solid #000;
-    color: #000;
-    font-weight: 500; font-size: 18px; line-height: 120%; letter-spacing: -0.25px;
-    transition: background .3s, color .3s;
-}
-.more_btn:hover { background: #000; color: #fff; }
 
 
 
@@ -85,7 +75,7 @@
 .yeongwol_feature { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .yeongwol_feature_img {
     width: 40%; height: 672px;
-    background: url(../images/article/img_yeongwol_01.jpg) no-repeat 50% 50% / cover;
+    object-fit: cover;
 }
 
 .yeongwol_feature_content {
@@ -95,14 +85,16 @@
 .yeongwol_meta { margin-bottom: 26px; color: #737373; }
 .yeongwol_feature_content p.title_small { margin-bottom: 56px; line-height: 130%; }
 .yeongwol_feature_content .article_xlarge { margin-bottom: 20px; color: #737373; }
-.yeongwol_feature_content .more_btn { margin-top: 58px; }
+.yeongwol_feature_content .button_small { margin-top: 58px; }
 
 
 
 
 /* ========== BRUNCH ========== */
-.brunch { padding: 0 0 170px; }
-.brunch > .container { border-bottom: 1px solid #000; }
+.brunch {
+    margin-bottom: 170px;
+    border-bottom: 1px solid #000;
+}
 
 .brunch_top {
     display: flex; justify-content: space-between; align-items: flex-end;
@@ -123,7 +115,7 @@
     position: relative;
     padding: 76px 0 40px;
 }
-.brunch_slide {
+.brunch_book .brunch_slide {
     display: flex; justify-content: space-between; align-items: stretch; gap: 130px;
 }
 
@@ -175,17 +167,24 @@
 .brunch_arrow_next { right: 10px; }
 .brunch_arrow.swiper-button-disabled { opacity: 0.3; cursor: default; }
 
-.dots { display: flex; justify-content: center; gap: 14px; padding-bottom: 80px; }
-.dots span { width: 12px; height: 12px; border-radius: 50%; background: #d8d8d8; cursor: pointer; }
-.dots .is-active { background: #666; }
+.brunch_dots { display: flex; justify-content: center; gap: 14px; padding-bottom: 80px; }
+.brunch_dots button {
+    width: 12px; height: 12px;
+    border: 0; border-radius: 50%;
+    background: #d8d8d8;
+    cursor: pointer;
+}
+.brunch_dots .is-active { background: #666; }
 
 
 
 
 /* ========== NEWS ========== */
-.news { padding: 70px 0 180px; overflow: hidden; }
-.media_layout { display: flex; align-items: flex-start; gap: 130px; }
-.media_layout > .section_title_wrap { flex: 0 0 390px; }
+.news {
+    display: flex; align-items: flex-start; gap: 130px;
+    padding-top: 70px; padding-bottom: 180px;
+}
+.news > .section_title_wrap { flex: 0 0 390px; }
 
 .news_card_wrap { position: relative; flex: 1; min-width: 0; padding-bottom: 54px; }
 .news_card {
@@ -205,13 +204,13 @@
 .news_source { margin-bottom: 20px; color: #737373; }
 .news_card p.article_medium_m { margin-bottom: 28px; }
 .news_card .article_small { margin-bottom: 36px; color: #737373; }
-.news_card .more_btn { margin-top: auto; }
+.news_card .button_small { margin-top: auto; }
 
 
 
 
 /* ========== VIDEOS ========== */
-.videos { padding: 0 0 190px; }
+.videos { padding-bottom: 190px; }
 .videos .section_title_wrap { margin-bottom: 90px; }
 
 .video_feature { display: flex; align-items: flex-end; gap: 180px; }
@@ -222,25 +221,27 @@
 .video_pager { display: flex; gap: 10px; margin-bottom: 48px; }
 .video_pager button {
     display: inline-flex; justify-content: center; align-items: center;
-    width: 48px; height: 34px;
-    border: 1px solid #888; border-radius: 50%;
+    padding: 6px 16px;
+    border: 1px solid #888; border-radius: 33px;
     background: transparent; color: #888;
     font-weight: 500; font-size: 18px;
     cursor: pointer;
 }
 .video_pager .is-active { border-color: #000; background: #000; color: #fff; }
 
-.video_feature_content p.title_small { margin-bottom: 36px; }
+.video_panel { display: none; width: 100%; }
+.video_panel.is-active { display: block; }
+.video_panel p.title_small { margin-bottom: 36px; }
 .video_meta { margin-bottom: 58px; }
-.video_feature_content p { color: #404040; }
+.video_panel p { color: #404040; }
 
 /* 본문: 접힘 상태 88px 제한, 펼치면 해방 */
+.video_desc_wrap { display: flex; flex-direction: column; gap: 12px; }
 .video_desc { max-height: 88px; overflow: hidden; }
 .video_desc.is-open { max-height: none; }
 .video_desc p + p { margin-top: 16px; }
 
-.video_more {
-    margin-top: 38px;
+.video_desc_more {
     padding: 0; border: 0;
     background: transparent; color: #888;
     text-decoration: underline;
@@ -251,9 +252,11 @@
 
 
 /* ========== STORIES ========== */
-.stories { padding: 120px 0; }
-.stories_layout { display: flex; align-items: flex-start; gap: 140px; }
-.stories_layout > .section_title_wrap { flex: 0 0 340px; }
+.stories {
+    display: flex; align-items: flex-start; gap: 140px;
+    padding-top: 120px; padding-bottom: 120px;
+}
+.stories > .section_title_wrap { flex: 0 0 340px; }
 
 .stories_content { min-width: 1420px; }
 .stories_content p.title_small { margin-bottom: 46px; }

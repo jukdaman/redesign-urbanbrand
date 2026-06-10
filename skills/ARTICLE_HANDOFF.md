@@ -46,8 +46,9 @@
 2. **BRUNCH 포스트 본문** — 2~7권 본문 미추출(1권도 포스트 2·3은 짧은 placeholder). `stories_NN.png`처럼 **포스트 단위 캡쳐 추가**나 텍스트 제공 시 `books` 배열을 본문 포함 데이터로 확장(현재는 HTML 1슬라이드를 JS 복제하므로, 슬라이드별 본문을 넣으려면 복제 방식을 데이터 렌더로 바꾸거나 HTML에 7권 명시).
 3. **BRUNCH 넘버링 확인** — 캡쳐상 `일에 대한 생각`이 1·2·4·5·6으로 읽혀 **3이 비어 있음**. 의도인지 오독인지 확인 필요(`books` 배열 수정).
 4. **VIDEOS desc 2~5편** — 사용자가 별도 제공 예정. 현재 placeholder("여기 요약본 적어주십시오…")로 `videos` 배열에 들어가 있음.
-5. **STORIES 레이아웃** — 사용자가 `.stories { padding: 120px 0 }`로 수정(기존 `overflow: hidden` 제거). `.stories_content { min-width: 1420px }`라 컨테이너 초과분이 섹션에서 클립되지 않아 페이지 가로 스크롤이 생길 수 있음 — 반응형/레이아웃 정리 시 확인.
+5. **STORIES 레이아웃** — `.stories_content { min-width: 1420px }`라 컨테이너 초과분이 섹션에서 클립되지 않아 페이지 가로 스크롤이 생길 수 있음 — 반응형/레이아웃 정리 시 확인.
 6. **반응형** — `responsive_article.css` 비어 있음. 데스크탑 확정 후 작성.
+7. **A-2 콘텐츠 HTML 소유 전환** — brunch 7권·videos 5편 실카피 확보 후 HTML로 이전(JS→HTML 콘텐츠 소유 통일). 계획은 plans 파일 참조.
 
 ## 검증 기록 (이번 세션, 정적)
 
@@ -64,6 +65,16 @@
 - muted 본문 투명도 → 흰배경 기준 hex(`#404040`/`#737373`, 0.45→기존 `#888`). (팔레트 외 색은 허용 — 흩어진 값만 통일.)
 - GNB 깨진 프래그먼트 앵커 → `index.html`(work/service/contact 미계획).
 - `main.js`→`index.js` 개명.
+
+## index 대비 패턴 정비 (사용자 결정 반영)
+
+- **래퍼 최소화**: yeongwol·brunch·news·videos·stories의 `container` 래퍼 div 제거, `<section class="container {이름}">`로 직접 부여(index `cta_contact` 관행). `media_layout`/`stories_layout` 클래스 소멸 — 레이아웃 속성은 `.news`/`.stories`에 병합, 상·하 여백은 longhand로 전환(container 좌우 padding 보존). 규칙은 STYLE.md 레이아웃에 기록.
+- **`more_btn` → `button_small`**: `button_large`(style.css)에 대응하는 공용 버튼으로 개명·style.css 이관.
+- **`dots` → `brunch_dots`**: 섹션 접두 패턴으로 통일 + `aria-hidden` span → 진짜 `<button>`(aria-label 부여, article.js 생성).
+- **hero_headline 노출**: `hero_img`의 `aria-hidden` 제거 — 페이지 주제어 "ARTICLE"이 AT에 노출됨.
+- **`hero_copy` 클래스 절감**: article 쪽은 CSS/JS 참조가 없어 제거(타이포 유틸만 유지). 클래스명 최소화 원칙.
+- **index 인라인 style 제거**: hero 슬라이드 배경을 `hero_slide_01~04` 클래스로 index.css 이동(`cta_article_card_0N` 관행).
+- article.css 최상단 공용 블록 주석을 `PAGE COMMON (article 전 섹션에서 재사용)`으로 명확화 — 사이트 공용(style.css)과 페이지 공용(페이지 CSS 상단)의 구분 표시.
 
 ## 관련 변경 파일 (이번 세션)
 

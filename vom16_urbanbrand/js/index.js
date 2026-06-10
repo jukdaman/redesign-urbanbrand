@@ -89,7 +89,7 @@ updateGnb();
 
 // ========== HERO ==========
 // hero 배경 이미지 자동 슬라이드.
-// 이미지 추가/제거: index.html의 hero_slide 요소를 추가하거나 지우면 됩니다.
+// 이미지 추가/제거: index.html에 hero_slide_NN 요소 추가/삭제 + index.css에 배경 클래스 추가/삭제.
 // 속도 조절: speed(전환 속도 ms), autoplay.delay(머무는 시간 ms)
 
 new Swiper('.hero_slides', {

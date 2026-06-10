@@ -38,3 +38,23 @@
 - 연속적으로 transform/opacity만 바꾸는 요소는 `will-change: transform`으로 레이어를 승격해 컴포지터에 묶는다 (리페인트 회피).
 - 같은 클럭으로 도는 다중 애니메이션은 rAF 루프를 하나로 합쳐 콜백 오버헤드를 줄인다.
 - rAF 복귀 점프는 `dt` 클램프(`Math.min(dt, n)`)로 막되, 이 경우 throttle 중 속도가 느려지는 트레이드오프가 있음을 인지한다.
+
+---
+
+## 4. HTML 속성값에 곡선따옴표 혼입
+
+**증상**: brunch 이미지 404. DevTools URL에 `%E2%80%9D`(`"`) 인코딩. Swiper·CSS는 정상(304).
+
+**원인**: Write 도구로 대량 HTML 블록 작성 시 속성 따옴표가 직선(`"`) 대신 곡선(`"` `"`, U+201C/201D)으로 출력됨. 이번 세션에서 추가한 404개 전부 곡선따옴표. HTML 속성은 곡선따옴표를 인식하지 못해 src 경로에 따옴표 문자가 그대로 포함됨.
+
+**재발 이력**: article.html 초기 생성 시 1회, A-2 콘텐츠 HTML 전환(brunch 7슬라이드·stories 3채널 추가) 시 1회 — 대량 HTML 블록을 Write로 작성할 때마다 재발하는 패턴.
+
+**검토 필수**: HTML 파일에 대량 마크업을 Write/Edit으로 추가한 직후, 아래 명령으로 곡선따옴표 잔여 여부를 반드시 확인한다.
+```
+python3 -c "
+with open('file.html','rb') as f: c=f.read()
+print(c.count(b'\xe2\x80\x9c')+c.count(b'\xe2\x80\x9d'))
+"
+```
+
+**치환 명령**: `python3 -c "import pathlib; p=pathlib.Path('file.html'); p.write_bytes(p.read_bytes().replace(b'\xe2\x80\x9c', b'\"').replace(b'\xe2\x80\x9d', b'\"'))"`

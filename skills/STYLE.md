@@ -126,6 +126,7 @@ background-color: rgba(255, 255, 255, 0.2); background-clip: content-box;
 - 컨테이너 표준: `.container { max-width: 1920px; margin: 0 auto; padding: 0 var(--container-pad); }`
   - `--container-pad`는 뷰포트 400px→20px, 1920px→140px 선형 보간 `clamp()` 값. `style.css` `:root`에 정의
   - 한쪽 padding만 필요한 섹션(예: `solution_upper`, `font_try_sidebar`)은 `container` 클래스 없이 해당 방향에 `var(--container-pad)` 직접 참조
+- **래퍼 최소화**: `container`를 위한 전용 래퍼 `<div>`를 만들지 말 것. 폭 제한이 필요한 요소에 직접 부여한다 — 섹션 전체가 컨테이너 폭이면 `<section class="container {이름}">`. 풀블리드 배경 등과 공존해야 해서 불가피할 때만 내부 래퍼 허용. 페이지 CSS의 상·하 여백은 longhand(`padding-top`/`padding-bottom`)로 써서 `container`의 좌우 padding을 덮어쓰지 않게 한다.
 
 ---
 
