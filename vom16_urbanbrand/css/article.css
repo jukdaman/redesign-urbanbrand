@@ -277,10 +277,14 @@
 
 .videos_title_wrap { display: flex; flex-direction: column; gap: 16px; margin-bottom: 58px; }
 
-/* 본문: 접힘 상태 88px 제한, 펼치면 해방 */
+/* 본문: 접힘 상태 88px 제한. 펼침 높이는 JS가 scrollHeight 픽셀값으로 지정 — max-height: none은
+   transition 불가하기 때문 */
 .videos_article_wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
-.videos_article { max-height: 88px; overflow: hidden; }
-.videos_article.is-open { max-height: none; }
+.videos_article {
+    max-height: 88px;
+    transition: max-height 400ms ease;
+    overflow: hidden;
+}
 
 .videos_article_more {
     padding: 0; border: 0;

@@ -64,6 +64,7 @@
 // 동기 토글하고, 영상 페이드는 CSS opacity transition이 담당. 자동재생 없음.
 // 전환 시 이전 영상은 postMessage(IFrame API)로 일시정지 — embed URL에 enablejsapi=1 필요.
 // videos_article_wrap 내 videos_article 88px 접힘 → videos_article_more로 펼침(→ close 토글).
+// 펼침은 max-height를 scrollHeight 픽셀값으로 지정해 CSS transition이 걸리게 함.
 
 (function () {
     var root = document.querySelector('.videos_youtube');
@@ -90,6 +91,7 @@
         var moreBtn = panel.querySelector('.videos_article_more');
         if (descEl && moreBtn) {
             descEl.classList.remove('is-open');
+            descEl.style.maxHeight = '';
             moreBtn.textContent = 'read more +';
             moreBtn.style.display = descEl.scrollHeight > descEl.clientHeight + 1 ? '' : 'none';
         }
@@ -102,6 +104,7 @@
         if (!descEl || !moreBtn) return;
         moreBtn.addEventListener('click', function () {
             var open = descEl.classList.toggle('is-open');
+            descEl.style.maxHeight = open ? descEl.scrollHeight + 'px' : '';
             moreBtn.textContent = open ? 'close' : 'read more +';
         });
     });
