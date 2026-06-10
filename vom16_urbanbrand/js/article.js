@@ -59,19 +59,19 @@
 
 
 
-// ========== VIDEO ==========
-// 영상 5편 페이저(1~5) 전용 전환. Swiper 미사용 — 유튜브 embed iframe·video_text_wrap을 is-active로
+// ========== VIDEOS ==========
+// 영상 5편 페이저(1~5) 전용 전환. Swiper 미사용 — 유튜브 embed iframe·videos_text_wrap을 is-active로
 // 동기 토글하고, 영상 페이드는 CSS opacity transition이 담당. 자동재생 없음.
 // 전환 시 이전 영상은 postMessage(IFrame API)로 일시정지 — embed URL에 enablejsapi=1 필요.
-// video_article_wrap 내 video_article 88px 접힘 → video_article_more로 펼침(→ close 토글).
+// videos_article_wrap 내 videos_article 88px 접힘 → videos_article_more로 펼침(→ close 토글).
 
 (function () {
-    var root = document.querySelector('.video_thumbs');
+    var root = document.querySelector('.videos_youtube');
     if (!root) return;
 
     var videos    = root.querySelectorAll('iframe');
-    var panels    = document.querySelectorAll('.video_text_wrap');
-    var pagerBtns = document.querySelectorAll('.video_pager button');
+    var panels    = document.querySelectorAll('.videos_text_wrap');
+    var pagerBtns = document.querySelectorAll('.videos_pager button');
 
     function activate(idx) {
         videos.forEach(function (iframe, i) {
@@ -86,8 +86,8 @@
         // 새 패널의 desc 초기화 및 more 버튼 가시성 설정
         var panel = panels[idx];
         if (!panel) return;
-        var descEl  = panel.querySelector('.video_article');
-        var moreBtn = panel.querySelector('.video_article_more');
+        var descEl  = panel.querySelector('.videos_article');
+        var moreBtn = panel.querySelector('.videos_article_more');
         if (descEl && moreBtn) {
             descEl.classList.remove('is-open');
             moreBtn.textContent = 'read more +';
@@ -95,10 +95,10 @@
         }
     }
 
-    // 각 패널의 video_article_more 이벤트 등록
+    // 각 패널의 videos_article_more 이벤트 등록
     panels.forEach(function (panel) {
-        var descEl  = panel.querySelector('.video_article');
-        var moreBtn = panel.querySelector('.video_article_more');
+        var descEl  = panel.querySelector('.videos_article');
+        var moreBtn = panel.querySelector('.videos_article_more');
         if (!descEl || !moreBtn) return;
         moreBtn.addEventListener('click', function () {
             var open = descEl.classList.toggle('is-open');
