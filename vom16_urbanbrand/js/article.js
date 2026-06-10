@@ -6,7 +6,7 @@
 
 
 // ========== BRUNCH ==========
-// 브런치북 7권 캐러셀. prev/next 버튼·하단 dots·드래그로 전환.
+// 브런치북 7권 캐러셀. prev/next 버튼·하단 dots로 전환하며 드래그 전환은 막는다.
 // 슬라이드 콘텐츠는 HTML에 7슬라이드 명시. 표지·제목·부제는 HTML에서 직접 수정.
 
 (function () {
@@ -24,7 +24,7 @@
     new Swiper(root, {
         slidesPerView: 1,
         speed: 500,
-        grabCursor: true,
+        allowTouchMove: false,
         navigation: {
             prevEl: root.querySelector('.brunch_arrow_prev'),
             nextEl: root.querySelector('.brunch_arrow_next'),

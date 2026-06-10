@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+    .featured_quote { min-height: 0; font-size: 44px; line-height: 145%; letter-spacing: -1.5px; }
+
+    .quote_mark { width: 34px; height: 34px; }
+    .quote_mark_left { top: -18px; left: 0; }
+    .quote_mark_right { top: auto; right: 0; bottom: -2px; }
+
+    .featured_person {
+        right: 72px; bottom: 20px;
+        width: 128px; height: 132px;
+        background-size: auto 100%;
+    }
+}
