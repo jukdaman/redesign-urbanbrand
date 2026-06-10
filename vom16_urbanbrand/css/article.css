@@ -236,11 +236,15 @@
 .videos { padding-bottom: 190px; }
 .videos .section_title_wrap { margin-bottom: 90px; }
 
-.videos_content { display: flex; align-items: stretch; gap: var(--container-pad); }
+.videos_content { display: flex; align-items: stretch; height: 622px; gap: var(--container-pad); }
 
-/* 유튜브 embed: 첫 iframe이 normal flow로 박스 높이 결정(16:9), 나머지는 absolute로 겹쳐 crossfade.
-   비활성 iframe은 투명해도 클릭을 가로채므로 pointer-events 차단 */
-.videos_youtube { flex: 1; position: relative; background: #000; }
+/* 유튜브 embed: 첫 iframe(normal flow, 16:9)을 flex로 세로 중앙 정렬하고, 나머지는 absolute +
+   상하 margin auto로 같은 위치에 겹쳐 crossfade. 비활성 iframe은 투명해도 클릭을 가로채므로
+   pointer-events 차단 */
+.videos_youtube {
+    display: flex; align-items: center; flex: 1;
+    position: relative;
+}
 .videos_youtube iframe {
     display: block; width: 100%;
     border: 0;
@@ -249,7 +253,7 @@
     transition: opacity 500ms ease;
     pointer-events: none;
 }
-.videos_youtube iframe + iframe { position: absolute; top: 0; left: 0; height: 100%; }
+.videos_youtube iframe + iframe { position: absolute; top: 0; bottom: 0; left: 0; margin: auto 0; }
 .videos_youtube iframe.is-active { opacity: 1; pointer-events: auto; }
 
 .videos_side {
