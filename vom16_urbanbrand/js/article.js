@@ -13,19 +13,7 @@
     var root = document.querySelector('.brunch_book');
     if (!root || !window.Swiper) return;
 
-    var dots   = document.querySelector('.brunch_dots');
-    var slides = root.querySelectorAll('.swiper-slide');
-    if (!dots || !slides.length) return;
-
-    slides.forEach(function (_, i) {
-        var dot = document.createElement('button');
-        dot.type = 'button';
-        dot.setAttribute('aria-label', (i + 1) + '번째 브런치북');
-        if (i === 0) dot.className = 'is-active';
-        dots.appendChild(dot);
-    });
-
-    var swiper = new Swiper(root, {
+    new Swiper(root, {
         slidesPerView: 1,
         speed: 500,
         grabCursor: true,
@@ -33,17 +21,11 @@
             prevEl: root.querySelector('.brunch_arrow_prev'),
             nextEl: root.querySelector('.brunch_arrow_next'),
         },
-    });
-
-    var dotEls = dots.querySelectorAll('button');
-    dotEls.forEach(function (dot, idx) {
-        dot.addEventListener('click', function () { swiper.slideTo(idx); });
-    });
-
-    swiper.on('slideChange', function () {
-        dotEls.forEach(function (dot, idx) {
-            dot.classList.toggle('is-active', idx === swiper.activeIndex);
-        });
+        pagination: {
+            el: root.querySelector('.swiper-pagination'),
+            type: 'bullets',
+            clickable: true,
+        },
     });
 }());
 
@@ -70,26 +52,28 @@
 
 
 // ========== VIDEO ==========
-// 영상 5편 썸네일 캐러셀. 페이저(1~5)·드래그로 전환. 자동재생 없음.
-// 전환 시 해당 video_panel을 is-active로 교체.
-// video_desc_wrap 내 video_desc 88px 접힘 → video_desc_more로 펼침(→ close 토글).
+// 영상 5편 페이저(1~5) 전용 전환. Swiper 미사용 — 썸네일 img·video_panel을 is-active로
+// 동기 토글하고, 썸네일 페이드는 CSS opacity transition이 담당. 자동재생 없음.
+// video_article_wrap 내 video_article 88px 접힘 → video_article_more로 펼침(→ close 토글).
 
 (function () {
     var root = document.querySelector('.video_thumbs');
-    if (!root || !window.Swiper) return;
+    if (!root) return;
 
-    var panels   = document.querySelectorAll('.video_panel');
+    var thumbs    = root.querySelectorAll('img');
+    var panels    = document.querySelectorAll('.video_panel');
     var pagerBtns = document.querySelectorAll('.video_pager button');
 
-    function activatePanel(idx) {
-        panels.forEach(function (panel) { panel.classList.remove('is-active'); });
-        if (panels[idx]) panels[idx].classList.add('is-active');
+    function activate(idx) {
+        thumbs.forEach(function (img, i) { img.classList.toggle('is-active', i === idx); });
+        pagerBtns.forEach(function (btn, i) { btn.classList.toggle('is-active', i === idx); });
+        panels.forEach(function (panel, i) { panel.classList.toggle('is-active', i === idx); });
 
         // 새 패널의 desc 초기화 및 more 버튼 가시성 설정
         var panel = panels[idx];
         if (!panel) return;
-        var descEl  = panel.querySelector('.video_desc');
-        var moreBtn = panel.querySelector('.video_desc_more');
+        var descEl  = panel.querySelector('.video_article');
+        var moreBtn = panel.querySelector('.video_article_more');
         if (descEl && moreBtn) {
             descEl.classList.remove('is-open');
             moreBtn.textContent = 'read more +';
@@ -97,10 +81,10 @@
         }
     }
 
-    // 각 패널의 video_desc_more 이벤트 등록
+    // 각 패널의 video_article_more 이벤트 등록
     panels.forEach(function (panel) {
-        var descEl  = panel.querySelector('.video_desc');
-        var moreBtn = panel.querySelector('.video_desc_more');
+        var descEl  = panel.querySelector('.video_article');
+        var moreBtn = panel.querySelector('.video_article_more');
         if (!descEl || !moreBtn) return;
         moreBtn.addEventListener('click', function () {
             var open = descEl.classList.toggle('is-open');
@@ -108,24 +92,11 @@
         });
     });
 
-    var swiper = new Swiper(root, {
-        slidesPerView: 1,
-        speed: 500,
-        grabCursor: true,
-    });
-
     pagerBtns.forEach(function (btn, idx) {
-        btn.addEventListener('click', function () { swiper.slideTo(idx); });
+        btn.addEventListener('click', function () { activate(idx); });
     });
 
-    swiper.on('slideChange', function () {
-        pagerBtns.forEach(function (btn, idx) {
-            btn.classList.toggle('is-active', idx === swiper.activeIndex);
-        });
-        activatePanel(swiper.activeIndex);
-    });
-
-    activatePanel(0);
+    activate(0);
 }());
 
 

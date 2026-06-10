@@ -58,3 +58,31 @@ print(c.count(b'\xe2\x80\x9c')+c.count(b'\xe2\x80\x9d'))
 ```
 
 **치환 명령**: `python3 -c "import pathlib; p=pathlib.Path('file.html'); p.write_bytes(p.read_bytes().replace(b'\xe2\x80\x9c', b'\"').replace(b'\xe2\x80\x9d', b'\"'))"`
+
+---
+
+## 5. hero_subject 1920 초과 위치 고정 미해결
+
+**맥락**: `article.html` hero 섹션. `hero_bg`(width: 100%) 위에 인물 이미지(`hero_subject`)를 absolute로 올림. 뷰포트 1920 초과에서 이미지 위치를 고정하고 싶음.
+
+**시도한 방법들**:
+- `background-image` + `background-position: clamp(min, vw, max)` — 1920에서 max로 고정되지만, 요소(`width: 100%`) 자체가 뷰포트를 따라 늘어나므로 이미지가 왼쪽에 붙어버림.
+- `max-width: 1920px; margin: 0 auto` — absolute 요소에는 효과 없음. 1920 초과 시 오른쪽이 잘림.
+- `background-image`는 `overflow: visible`과 무관하게 요소 경계 밖으로 나오지 않음.
+
+**미해결 원인**: `background-image`는 요소 박스 안에서만 렌더링되므로, 요소 너비 = 이미지 표시 영역. 요소를 1920으로 고정하면서 동시에 부모(hero_bg) 안에서 중앙정렬하는 것이 CSS만으로 어려움.
+
+**유력한 해결 방향**: `hero_subject`를 `hero_bg` 밖으로 꺼내 `hero` 섹션(position: relative) 기준으로 absolute 배치. 구조 변경이 필요해 현재는 보류.
+
+---
+
+## 6. AOS + Lenis 도입 시 GSAP 죽은 코드 (테스트본)
+
+**맥락**: AOS + 스무스 스크롤 테스트본(`aos/` 사본)을 메인에 병합하며 검토.
+
+**발견**: 테스트본은 GSAP·ScrollTrigger·ScrollToPlugin 3개를 CDN으로 로드했지만 어떤 애니메이션에도 사용하지 않았다. 유일한 역할은 `gsap.ticker`로 `lenis.raf`를 호출하는 것 — 이미 자체 rAF 루프가 같은 일을 하고 있어 **이중 구동**(매 프레임 2회, 서로 다른 시간 단위) 상태였다. 튜토리얼 코드를 복사하면 이런 미사용 의존성이 따라오기 쉽다.
+
+**원칙**:
+- 라이브러리를 추가하면 **실제 호출처가 있는지** 확인한다. 연동 글루 코드만 있고 기능 사용이 없으면 제거한다.
+- 같은 대상(예: `lenis.raf`)을 구동하는 루프·ticker는 하나만 둔다.
+- 병합 시 GSAP 3종을 제거하고 Lenis 단독 rAF 루프로 정리, Lenis는 자체 호스팅으로 전환.
