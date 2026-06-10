@@ -7,6 +7,10 @@
 
 
 /* ========== @FONT-FACE ========== */
+/* 본문 전역 폰트 Pretendard는 HTML <link>(CDN)로 로드 — 여기 선언 없음.
+   용도 구분은 TYPOGRAPHY.md 참고. */
+
+/* rich text 장식 (solution·portfolio_lower) + font_try 체험 겸용 */
 @font-face {
     font-family: 'Yeongwol';
     src: url('../fonts/YeongwolTTF.woff2') format('woff2');
@@ -17,6 +21,8 @@
     src: url('../fonts/Jeongnimsaji-M.woff2') format('woff2');
     font-weight: normal;
 }
+
+/* font_try 체험 전용 (index의 font_try 버튼·미리보기에서만 사용 — index.js fontFamilyMap 참조) */
 @font-face {
     font-family: 'MapoMaponaru';
     src: url('../fonts/MapoMaponaru.woff') format('woff');

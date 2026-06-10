@@ -48,7 +48,7 @@
 
 
     /* ========== portfolio_lower ========== */
-    .portfolio_lower > p br { display: block; }
+    .portfolio_lower > .title_small br { display: block; }
     
     .portfolio_lower_box { flex: 0 0 calc(50% - 10px); }
 

@@ -303,8 +303,8 @@
 /* portfolio_lower */
 .portfolio_lower { display: flex; flex-direction: column; align-items: center; gap: 40px; }
 
-.portfolio_lower > p br { display: none; }
-.portfolio_lower > p .rich_yeongwol {
+.portfolio_lower > .title_small br { display: none; }
+.portfolio_lower > .title_small .rich_yeongwol {
     padding: 0 12px;
     font-size: clamp(70px, 2.2vw + 47px, 90px); font-weight: 400; letter-spacing: -0.08em; line-height: 100%;
     transform: translateX(-16px) rotate(-1.14deg);
@@ -321,15 +321,8 @@
 
 .portfolio_lower_box_img {
     width: 100%; aspect-ratio: 3 / 2;
-    background-size: cover; background-position: center;
+    object-fit: cover;
 }
-
-.portfolio_lower_box:nth-child(1) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_01.jpg); }
-.portfolio_lower_box:nth-child(2) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_02.jpg); }
-.portfolio_lower_box:nth-child(3) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_03.jpg); }
-.portfolio_lower_box:nth-child(4) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_04.jpg); }
-.portfolio_lower_box:nth-child(5) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_05.jpg); }
-.portfolio_lower_box:nth-child(6) .portfolio_lower_box_img { background-image: url(../images/index/img_portfolio_lower_06.jpg); }
 
 .portfolio_lower_box_textwrap   { display: flex; flex-direction: column; gap: 16px; }
 .portfolio_lower_box_title_wrap { display: flex; flex-direction: column; }
