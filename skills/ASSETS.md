@@ -39,6 +39,7 @@
 | 의미 있는 이미지 (콘텐츠, 접근성 필요) | `<img src="..." alt="...">` + object-fit |
 | 순수 장식·배경 (alt 없음) | CSS `background` |
 | JS가 배경을 동적으로 교체해야 할 때 | `data-bg` 속성 + JS 할당 (예: index portfolio 슬라이드 크로스페이드) |
+| 인접 콘텐츠 이미지의 파생 장식 (블러 사본 등) | URL을 중복 기재하지 말고 JS가 `<img>`의 src를 읽어 배경에 복사 (예: article brunch 표지 블러 배경) — URL의 단일 출처는 항상 콘텐츠 `<img>` |
 
 - `role="img"` + 빈 div는 `<img>`로 전환한다.
 - 장식 배경 div에는 `aria-hidden="true"` 부여.

@@ -102,10 +102,8 @@ print(c.count(b'\xe2\x80\x9c')+c.count(b'\xe2\x80\x9d'))
 - index hero의 `min-height: 1080px`가 `max-height: 100vh`를 스펙상 이김 (낮은 화면에서 hero가 뷰포트 초과) — **현행 유지로 사용자 결정** (2026-06-11)
 
 **미결 백로그 (착수 전 사용자 확인)**
-- `@font-face` 7종에 `font-display` 미지정 (현재 FOIT) — swap 도입 여부 결정 대기
 - 폴드 아래 `<img>`에 `loading="lazy"` 미적용 (article 카드 이미지 다수)
 - `logo_test.html`이 배포 폴더(`vom16_urbanbrand/`) 안 — 이동 시 LOGO.md 경로도 함께 수정
-- brunch 표지 블러 배경 7개가 HTML 인라인 `style` (index는 클래스로 옮긴 관행과 불일치) — 처리 방식 결정 대기
 
 **article 콘텐츠 placeholder 현황 (실데이터 제공 시 교체)**
 - BRUNCH: 2~7권 포스트 본문 전체 + 1권 포스트 2·3이 placeholder (실카피 미확보)
