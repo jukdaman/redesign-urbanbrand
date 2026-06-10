@@ -111,7 +111,7 @@ background-color: rgba(255, 255, 255, 0.2); background-clip: content-box;
 - 부모-자식 선택자로 표현하면 선택자가 지나치게 길어지거나 깨지기 쉬울 때
 
 **붙이지 않아도 되는 경우**
-- 부모 클래스 + 유틸 클래스 조합(`portfolio_lower_box .article_medium_r`)으로 충분히 특정 가능할 때
+- 부모 클래스 + 유틸 클래스 조합(`portfolio_lower_card .article_medium_r`)으로 충분히 특정 가능할 때
 - 형제 간 구분이 필요하면 `:first-child`, `:last-child`, `> .유틸클래스` 등으로 대체 가능할 때
 - 클래스명이 유틸 클래스(`.article_medium_r`, `.title_xsmall` 등)와 동일한 역할을 중복 설명할 뿐일 때
 
