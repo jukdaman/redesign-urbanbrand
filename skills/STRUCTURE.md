@@ -32,12 +32,11 @@ redesign-urbanbrand/
 │   │   └── swiper-bundle.min.js / aos.js / lenis.min.js  # 라이브러리
 │   ├── fonts/                 # 자체 호스팅 웹폰트 woff/woff2 7종 (TYPOGRAPHY.md)
 │   └── images/                # 공용 에셋 루트 + images/{page}/ 페이지 전용 (ASSETS.md)
-├── archive/                   # 이전 AI 생성본 (리팩토링 참조용 / 배포 X)
 ├── designs/                   # Figma 원본 디자인 캡쳐 (배포 X)
 └── skeleton/                  # 사용자 구조도 캡쳐 (현재 리팩토링 입력 / 배포 X)
 ```
 
-`archive/`는 자체 하위 구조(`css/`, `js/`, `fonts/`, `images/`, `index.html`)가 배포 루트와 거의 동일 — 섹션별 마크업·스타일 의도 참고용이며 그대로 복사 금지.
+`archive/`(이전 AI 생성본)는 2026-06-11 폐기 — 필요 시 git 이력에서 조회.
 
 ---
 

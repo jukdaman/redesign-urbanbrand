@@ -14,13 +14,12 @@
 섹션 단위 리팩토링 진행 중.
 
 - **입력**: 사용자가 대화 중 제공하거나 `skeleton/`에 있는 구조도 캡쳐본 (한 섹션씩 제작)
-- **참조**: `archive/` — 이전 AI 생성본. 지침 미준수이므로 그대로 복사 금지. 마크업·스타일 의도 참고용
 - **출력**: [vom16_urbanbrand/index.html](vom16_urbanbrand/index.html), [vom16_urbanbrand/css/](vom16_urbanbrand/css/), [vom16_urbanbrand/js/](vom16_urbanbrand/js/)
 - **흐름**: 구조도 수신 → 초안 작성 → 사용자 검토 → 완성
 - 새 구조도에 결함이 있어 예상되는 의도를 충분히 반영하지 못하거나, 기존 코드와 충돌할 우려가 있으면 작업을 진행하지 말고 사용자에게 보고 후 결정한다.
 - 우선순위: 일관성 + 체계성 + 명료성
 
-`designs/`는 archive 생성 당시의 Figma 원본. 현재 작업의 직접 입력은 아니지만 시각적 의도 참고 가능.
+`designs/`는 초기 AI 생성본(`archive/`, 2026-06-11 폐기) 당시의 Figma 원본. 현재 작업의 직접 입력은 아니지만 시각적 의도 참고 가능.
 
 ---
 

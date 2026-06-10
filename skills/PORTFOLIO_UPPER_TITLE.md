@@ -23,7 +23,7 @@
 ```
 
 
-## 시행착오 (archive: `vom16_urbanbrand_portfolio_title_screen`)
+## 시행착오 (이전 AI 생성본 `vom16_urbanbrand_portfolio_title_screen` — archive 폐기됨, git 이력 참조)
 
 ### 시도한 방식
 
