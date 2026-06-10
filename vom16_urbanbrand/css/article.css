@@ -211,14 +211,14 @@
 .videos .section_title_wrap { margin-bottom: 90px; }
 
 .video_feature { display: flex; align-items: center; gap: var(--container-pad); }
-.video_thumbs { width: 68%; height: 622px; background: #000; }
+.video_thumbs { flex: 1; height: 622px; background: #000; }
 .video_thumbs .swiper-slide { 
     display: flex; align-items: center;
     width: 100%; background: #000;
 }
 .video_thumbs .swiper-slide img { object-fit: contain; }
 
-.video_feature_content { display: flex; flex-direction: column; align-items: flex-start; width: 400px; }
+.video_feature_content { display: flex; flex-direction: column; align-items: flex-start; width: 400px; padding-top: 80px; }
 .video_pager { display: flex; gap: 10px; margin-bottom: 48px; }
 .video_pager button {
     display: inline-flex; justify-content: center; align-items: center;
@@ -237,7 +237,7 @@
 .video_panel p { color: #404040; }
 
 /* 본문: 접힘 상태 88px 제한, 펼치면 해방 */
-.video_desc_wrap { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 42px; }
+.video_desc_wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .video_desc { max-height: 88px; overflow: hidden; }
 .video_desc.is-open { max-height: none; }
 
