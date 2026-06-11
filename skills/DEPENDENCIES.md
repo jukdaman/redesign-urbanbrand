@@ -27,8 +27,9 @@ Lenis는 후보군(2020년 전후 통용) 밖의 모던 라이브러리지만, �
 ## AOS·Lenis 사용 규칙
 
 - **`data-aos`를 플러그인 관리 노드에 붙이지 않는다.** Swiper가 인라인 `transform`을 제어하는 `swiper-wrapper`·`swiper-slide`에 붙이면 AOS의 transform 애니메이션이 무시되거나 충돌한다 (CLAUDE.md transform 충돌 원칙의 적용). 섹션 컨테이너 등 플러그인 비관리 요소에 붙인다.
-  - 예외: `portfolio_upper`의 `swiper-wrapper`에 `fade-down`이 붙어 있음 — Swiper 인라인 transform이 이동을 무력화해 사실상 opacity 페이드만 동작하는 상태로 테스트·승인됨. 구조 변경 시 재검토.
+  - 예외: `portfolio_upper`의 `swiper-wrapper`는 opacity만 쓰는 `fade`로 한정해 허용 — transform 기반 이름(`fade-down` 등)은 Swiper 인라인 transform이 무력화하므로 금지 (2026-06-11 `fade-down`→`fade` 정리). 구조 변경 시 재검토.
 - **AOS 애니메이션명은 공식 명칭만** 사용한다 (`fade`, `fade-up` 등). `fade-in` 같은 비표준명은 `[data-aos^=fade]` 접두 매칭으로 우연히 동작할 뿐이다.
+- **전역 `once: true`** (2026-06-11 사용자 확정) — 모든 AOS는 최초 1회만 재생, 스크롤 재진입 시 재생 없음. init 시점에 숨겨진(`display:none`) 요소는 위치 계산 없이 즉시 소진되므로, 나중에 드러나도 애니메이션이 보이지 않는다 — 숨김 영역의 `data-aos`는 효과 없음.
 - **Lenis rAF 루프는 하나만** 둔다. 다른 라이브러리 ticker(GSAP 등)와 이중 구동하면 시간 델타가 어긋난다.
 - 첫 화면(hero)에 `data-aos`가 있으면 `window load`(AOS init)까지 해당 요소가 `opacity: 0` — 저속 환경에서 첫 화면 공백으로 보일 수 있음을 인지한다.
 - 스크롤 위치 의존 JS(마퀴, 패럴랙스 등)를 새로 만들 때는 Lenis 보간 후의 `scroll` 이벤트·`window.scrollY` 기준으로 동작하는지 확인한다.

@@ -100,6 +100,7 @@ print(c.count(b'\xe2\x80\x9c')+c.count(b'\xe2\x80\x9d'))
 - `portfolio_upper`의 `swiper-wrapper`에 붙은 `data-aos`, hero `data-aos`의 첫 화면 FOUC — DEPENDENCIES.md에 문서화된 승인 사항
 - `--swiper-navigation-color` — Swiper 자체 테마 API라 CSS 변수 자제 원칙과 무관
 - index hero의 `min-height: 1080px`가 `max-height: 100vh`를 스펙상 이김 (낮은 화면에서 hero가 뷰포트 초과) — **현행 유지로 사용자 결정** (2026-06-11)
+- AOS 스태거 방식 혼재(duration 차등 / delay 차등)와 부모+자식 중첩 AOS — **의도된 연출** (사용자 확정 2026-06-11). 통일·정리 제안 불필요
 
 **미결 백로그 (착수 전 사용자 확인)**
 - 폴드 아래 `<img>`에 `loading="lazy"` 미적용 (article 카드 이미지 다수)
