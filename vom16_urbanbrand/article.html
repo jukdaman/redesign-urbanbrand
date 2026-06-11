@@ -67,21 +67,38 @@
 
 
         <!-- ========== HERO ========== -->
-        <section class="hero">
+        <section class="hero" data-aos="fade" data-aos-duration="800">
             <div class="hero_bg">
                 <p class="hero_headline">ARTICLE</p>
-                <div class="hero_subject"></div>
+                <img src="images/article/img_hero_subject.webp" class="hero_subject" alt="" aria-hidden="true" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
             </div>
 
 
-            <div class="container hero_title_wrap">
+            <div class="container hero_title_wrap" data-aos="fade" data-aos-duration="1000" data-aos-delay="700">
                 <p class="title_xlarge_m">
                     강병호 디자이너와<br>
                     도시브랜드
-                    <svg class="logo_urbanbrand hero_logo" viewBox="0 0 240 240" aria-hidden="true">
-                        <use class="logo_face face_a" href="images/logo_urbanbrand.svg#face_a"></use>
-                        <use class="logo_face face_b" href="images/logo_urbanbrand.svg#face_b"></use>
-                        <use class="logo_face face_c" href="images/logo_urbanbrand.svg#face_c"></use>
+                    <svg class="logo_urbanbrand logo_anim hero_logo" viewBox="0 0 240 240" overflow="visible" aria-hidden="true">
+                        <g class="logo_face face_a" stroke-linecap="round" stroke-miterlimit="1.5">
+                            <path class="logo_stroke"
+                                  d="M80,0 L160,0 L160,80 L80,160 L0,160 L0,80 Z"
+                                  fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+                        </g>
+
+                        <g class="logo_face face_c" stroke-linecap="round" stroke-miterlimit="1.5">
+                            <path class="logo_stroke"
+                                  d="M240,80 L160,160 L80,160"
+                                  fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+                            <path class="logo_stroke"
+                                  d="M160,80 L240,80 L240,160 L160,240 L80,240 L80,160 Z"
+                                  fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+                        </g>
+
+                        <g class="logo_face face_b" stroke-linecap="round" stroke-miterlimit="1.5">
+                            <path class="logo_stroke"
+                                  d="M80,240 L80,80 L160,0 L240,0 L240,160 L160,240 Z"
+                                  fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+                        </g>
                     </svg>
                     연구소의 이야기
                 </p>
@@ -95,7 +112,7 @@
 
         <!-- ========== FEATURED ========== -->
         <section class="container featured">
-            <p class="featured_quote">
+            <p class="featured_quote" data-aos="fade-up" data-aos-duration="1000">
                 <img src="images/article/icon_quotation_left.svg" class="quote_mark quote_mark_left" alt="" aria-hidden="true">
 
                 도시브랜드연구소는 그 땅의 자연과 역사를 <br>
@@ -109,9 +126,9 @@
 
 
             <article class="featured_content">
-                <img src="images/article/img_featured_01.jpg" class="featured_article_img" alt="영월체 제작 자료 사진">
+                <img src="images/article/img_featured_01.jpg" class="featured_article_img" alt="영월체 제작 자료 사진" data-aos="fade" data-aos-duration="1000">
 
-                <div class="featured_text_wrap">
+                <div class="featured_text_wrap" data-aos="fade" data-aos-duration="1000" data-aos-delay="400">
                     <div class="featured_title_wrap">
                         <p class="article_medium_m featured_date">조선일보 특집 · 2025.07.21</p>
                         <p class="title_small">
@@ -129,7 +146,7 @@
                             <br><br>
                             영월체는 영월의 산수와 하늘, 물길을 닮았다. 곡선은 동강과 서강처럼 느리고 완만하며, 직선은 선돌의 거친 절벽을 연상시킨다. 여백은 때로는 탁 트인 읍내 하늘을, 때로는 해넘이 진 산골 마을의 좁은 하늘을 닮았다. 서체의 곡선과 직선, 여백 하나하나에 영월의 풍광과 정서가 녹아 있다.
                         </p>
-                        <a href="https://www.chosun.com/special/special_section/2025/07/21/E6JM7BCX2ZAFRD2MY46NUDZMHI/" class="button_small">read more +</a>
+                        <a href="https://www.chosun.com/special/special_section/2025/07/21/E6JM7BCX2ZAFRD2MY46NUDZMHI/" class="button_small" data-aos="fade-up" data-aos-duration="800">read more +</a>
                     </div><!-- featured_article_wrap -->
                 </div><!-- featured_text_wrap -->
             </article>
@@ -171,7 +188,7 @@
                 <div class="swiper-wrapper">
 
                     <!-- 1권: 서체기행 -->
-                    <div class="swiper-slide brunch_slide">
+                    <div class="swiper-slide brunch_slide" data-aos="fade-up" data-aos-duration="1000">
                         <div class="brunch_book_cover">
                             <div class="brunch_book_cover_bg"></div>
                             <a href="https://brunch.co.kr/brunchbook/cityfont" class="brunch_book_cover_link">
@@ -190,7 +207,7 @@
                             <ol class="brunch_post_wrap">
                                 <li>
                                     <p class="title_xsmall">01</p>
-                                    <div class="brunch_post">
+                                    <div class="brunch_post" data-aos="fade-up" data-aos-duration="800">
                                         <p class="article_medium_r">창원에 창원만의 고유한 글꼴이 필요하지 않을까</p>
                                         <p class="article_xsmall brunch_post_article">
                                             2012년부터 2022년까지 지난 10년간, 같은 이야기를 반복해서 해왔다. ‘창원에 창원만의 고유한 글꼴이 필요하지 않을까.’ 글씨(캘리그래피), 글자(레터링), 글꼴(폰트)은 서로 다르지만, 어린 시절 친구에게 “네 손글씨가 참 예쁘다. 부러워. 나도 너처럼 쓸 수 있으면 좋겠어.”라는 이야기가 내 가슴을 설레게 했고, 2007년에 서울에서 만든 서
@@ -201,7 +218,7 @@
 
                                 <li>
                                     <p class="title_xsmall">02</p>
-                                    <div class="brunch_post">
+                                    <div class="brunch_post" data-aos="fade-up" data-aos-duration="800">
                                         <p class="article_medium_r">도시마다 고유한 서체를 가진 나라</p>
                                         <p class="article_xsmall brunch_post_article">
                                             #서체기행 도시마다 고유한 서체를 가진 나라 도시 브랜드 서체에 대한 생각을 갖고 2013년에 서체 회사에 입사했었다. 3,650일 전에는 서체를 개발한 도시가 11곳이었고, 10년이 지난 지금은 60곳으로 늘어나게 됐다. 올해도 강원특별자치도가 서체를 개발했고, 오늘도 새로운 도시가 서체를 개발한다고 1억이 넘는 비용의 공고를 올렸다. 매해 개발되는
@@ -212,7 +229,7 @@
 
                                 <li>
                                     <p class="title_xsmall">03</p>
-                                    <div class="brunch_post">
+                                    <div class="brunch_post" data-aos="fade-up" data-aos-duration="800">
                                         <p class="article_medium_r">매력적인 도시를 만드는 일, 도시 브랜드 서체</p>
                                         <p class="article_xsmall brunch_post_article">
                                             지방정부 (https://www.thevoiceofus.co.kr/) 양태석 수석기자 - 대표님 먼저 짧게 자기소개를 부탁드립니다. 핵심적 비즈니스로는 캘리그래피, 도시 브랜드 디자인 개발(CI/BI, 캐릭터, 서체, 그래픽 패턴, 굿즈), 주민 참여형 마을 브랜드 교육 및 개발 분야로 일을 하고 있는 강병호입니다. - 서체가 갖고 있는 중요성에 대해 공
@@ -580,7 +597,7 @@
                     <div class="news_scrollbar swiper-scrollbar" aria-hidden="true"></div>
 
                     <div class="swiper-wrapper">
-                        <article class="news_card swiper-slide">
+                        <article class="news_card swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
                             <img src="images/article/img_news_04.jpg" alt="새우젓축제 일러스트">
                             <div class="news_text_wrap">
                                 <p class="article_xsmall news_source">성대신문</p>
@@ -593,7 +610,7 @@
                         </article>
 
 
-                        <article class="news_card swiper-slide">
+                        <article class="news_card swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                             <img src="images/article/img_news_05.jpg" alt="온 세상 한글로 비추다 행사 무대">
                             <div class="news_text_wrap">
                                 <p class="article_xsmall news_source">경남도민일보</p>
@@ -606,7 +623,7 @@
                         </article>
 
 
-                        <article class="news_card swiper-slide">
+                        <article class="news_card swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                             <img src="images/article/img_news_06.jpg" alt="강병호 대표 강연 사진">
                             <div class="news_text_wrap">
                                 <p class="article_xsmall news_source">지방정부 tvU(티비유)</p>
@@ -716,18 +733,33 @@
             </div><!-- section_title_wrap -->
 
 
-            <div class="videos_content">
+            <div class="videos_content" data-aos="fade-up" data-aos-duration="1000">
                 <div class="videos_youtube">
-                    <iframe src="https://www.youtube.com/embed/us8SIxaAgqI?enablejsapi=1" class="is-active" title="영월군 서체 제작 다큐멘터리" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-                    <iframe src="https://www.youtube.com/embed/0PYlIFQNENY?enablejsapi=1" title="부여군 서체 제작 다큐멘터리" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-                    <iframe src="https://www.youtube.com/embed/QDpx1h6yLpI?enablejsapi=1" title="서체디자이너 강병호 강연" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-                    <iframe src="https://www.youtube.com/embed/jC1fc52XiN0?enablejsapi=1" title="도시브랜드 서체 전시관" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-                    <iframe src="https://www.youtube.com/embed/bkxN7yM5k2k?enablejsapi=1" title="강병호 인터뷰" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video_facade is-active" data-src="https://www.youtube.com/embed/us8SIxaAgqI?enablejsapi=1&autoplay=1" data-title="영월군 서체 제작 다큐멘터리">
+                        <img src="images/article/img_video_01.jpg" alt="영월군 서체 제작 다큐멘터리 썸네일">
+                        <button class="video_play_btn" type="button" aria-label="영월군 서체 제작 다큐멘터리 재생"></button>
+                    </div>
+                    <div class="video_facade" data-src="https://www.youtube.com/embed/0PYlIFQNENY?enablejsapi=1&autoplay=1" data-title="부여군 서체 제작 다큐멘터리">
+                        <img src="images/article/img_video_02.jpg" alt="부여군 서체 제작 다큐멘터리 썸네일" loading="lazy">
+                        <button class="video_play_btn" type="button" aria-label="부여군 서체 제작 다큐멘터리 재생"></button>
+                    </div>
+                    <div class="video_facade" data-src="https://www.youtube.com/embed/QDpx1h6yLpI?enablejsapi=1&autoplay=1" data-title="서체디자이너 강병호 강연">
+                        <img src="images/article/img_video_03.jpg" alt="서체디자이너 강병호 강연 썸네일" loading="lazy">
+                        <button class="video_play_btn" type="button" aria-label="서체디자이너 강병호 강연 재생"></button>
+                    </div>
+                    <div class="video_facade" data-src="https://www.youtube.com/embed/jC1fc52XiN0?enablejsapi=1&autoplay=1" data-title="도시브랜드 서체 전시관">
+                        <img src="images/article/img_video_04.jpg" alt="도시브랜드 서체 전시관 썸네일" loading="lazy">
+                        <button class="video_play_btn" type="button" aria-label="도시브랜드 서체 전시관 재생"></button>
+                    </div>
+                    <div class="video_facade" data-src="https://www.youtube.com/embed/bkxN7yM5k2k?enablejsapi=1&autoplay=1" data-title="강병호 인터뷰">
+                        <img src="images/article/img_video_05.jpg" alt="강병호 인터뷰 썸네일" loading="lazy">
+                        <button class="video_play_btn" type="button" aria-label="강병호 인터뷰 재생"></button>
+                    </div>
                 </div><!-- videos_youtube -->
 
 
-                <div class="videos_side">
-                    <div class="videos_pager">
+                <div class="videos_side" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="videos_pager" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                         <button class="is-active" type="button" aria-label="1번 영상">1</button>
                         <button type="button" aria-label="2번 영상">2</button>
                         <button type="button" aria-label="3번 영상">3</button>
@@ -846,7 +878,7 @@
 
             <!-- 탭 전환 시 해당 채널 stories_cards만 표시, 나머지는 display:none(article.js).
                  각 채널이 독립 Swiper — 전환 시 처음부터 다시 드래그 가능. -->
-            <div class="stories_content">
+            <div class="stories_content" data-aos="fade-up" data-aos-duration="1200">
                 <p class="title_small">강병호 디자이너가 직접 이야기하는<br>도시 브랜딩 작업과 서체 이야기</p>
 
                 <div class="stories_tab">
@@ -861,17 +893,17 @@
                     <div class="stories_scrollbar swiper-scrollbar" aria-hidden="true"></div>
 
                     <ul class="stories_card_wrap swiper-wrapper">
-                        <li class="swiper-slide">
+                        <li class="swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
                             <img src="images/article/img_stories_instagram_01.jpg" class="stories_thumb" alt="K-Design Award 2025 수상 사진">
                             <p class="article_medium_r">K-Design Award 2025</p>
                         </li>
 
-                        <li class="swiper-slide">
+                        <li class="swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                             <img src="images/article/img_stories_instagram_02.jpg" class="stories_thumb" alt="강원도 영월체 소개 이미지">
                             <p class="article_medium_r">강원도 영월체</p>
                         </li>
 
-                        <li class="swiper-slide">
+                        <li class="swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                             <img src="images/article/img_stories_instagram_03.jpg" class="stories_thumb" alt="광복절 기념 추천 글꼴 이미지">
                             <p class="article_medium_r">광복절 기념, 아름다운 필기체 글꼴</p>
                         </li>
@@ -914,12 +946,12 @@
                     <div class="stories_scrollbar swiper-scrollbar" aria-hidden="true"></div>
 
                     <ul class="stories_card_wrap swiper-wrapper">
-                        <li class="swiper-slide">
+                        <li class="swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
                             <img src="images/article/img_stories_facebook_01.jpg" class="stories_thumb" alt="2026 단종문화제에서">
                             <p class="article_medium_r">2026 단종문화제에서</p>
                         </li>
 
-                        <li class="swiper-slide">
+                        <li class="swiper-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                             <img src="images/article/img_stories_facebook_02.jpg" class="stories_thumb" alt="서울, 강원, 광주 등 다양한 곳에서">
                             <p class="article_medium_r">서울, 강원, 광주 등 다양한 곳에서</p>
                         </li>

@@ -5,6 +5,97 @@
 
 
 
+// ========== HERO LOGO DRAW-ON ==========
+// hero_logo 인라인 SVG를 선이 그려지는 애니메이션으로 재생한다.
+// index의 logo_anim 루프와 달리 화면 첫 진입 시 1회만 그려지고, 페이드아웃 없이 유지된다.
+// face별 타이밍·이징은 index.js LOGO DRAW-ON과 동일한 곡선을 사용.
+//
+// 타이밍 조절:
+//   DRAW_DELAY   : 화면 진입 후 애니메이션 시작까지 대기 시간 (ms)
+//   DRAW_DURATION: 선이 그려지는 데 걸리는 시간 (ms)
+
+(function () {
+    var svg = document.querySelector('.hero_logo.logo_anim');
+    if (!svg || !Element.prototype.animate) return;
+
+    var DRAW_DELAY = 1000;
+    var DRAW_DURATION = 2400;
+
+    var faceDurations = [900,  2200, 1500];
+    var faceStarts    = [0,    200,  400];
+
+    function eased(t) { var u = 1 - t; return 1 - u * u * u * u; }
+
+    function startDraw() {
+        /* non-scaling-stroke에서는 dash가 화면 좌표 기준으로 적용되지만 getTotalLength()는
+         * viewBox 좌표 길이를 반환하므로, 렌더 크기 비율로 보정해야 그리는 속도가 맞는다.
+         * (service_logo는 244px ≈ viewBox 240이라 1:1이어서 보정 없이도 티가 안 났던 것) */
+        var scale = svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
+
+        var faceGroups = [
+            svg.querySelectorAll('.face_a .logo_stroke'),
+            svg.querySelectorAll('.face_b .logo_stroke'),
+            svg.querySelectorAll('.face_c .logo_stroke')
+        ];
+
+        faceGroups.forEach(function (group, faceIdx) {
+            if (!group.length) return;
+            var faceStartMs = faceStarts[faceIdx];
+            var faceEndMs   = faceStartMs + faceDurations[faceIdx];
+
+            /* 전역 ease-out 곡선을 face 구간만큼 잘라 0~1로 정규화한 샘플 */
+            var SAMPLES = 12;
+            var startEased = eased(faceStartMs / DRAW_DURATION);
+            var endEased   = eased(faceEndMs / DRAW_DURATION);
+            var samples = [];
+            for (var s = 0; s <= SAMPLES; s++) {
+                var globalT = (faceStartMs + (faceEndMs - faceStartMs) * (s / SAMPLES)) / DRAW_DURATION;
+                samples.push((eased(globalT) - startEased) / (endEased - startEased));
+            }
+
+            group.forEach(function (path) {
+                var len = path.getTotalLength() * scale;
+                path.style.strokeDasharray = len;
+                path.style.strokeDashoffset = len;
+
+                var keyframes = [
+                    { strokeDashoffset: len, offset: 0 },
+                    { strokeDashoffset: len, offset: faceStartMs / DRAW_DURATION }
+                ];
+                for (var s = 1; s <= SAMPLES; s++) {
+                    keyframes.push({
+                        strokeDashoffset: len * (1 - samples[s]),
+                        offset: (faceStartMs + (faceEndMs - faceStartMs) * (s / SAMPLES)) / DRAW_DURATION
+                    });
+                }
+                keyframes.push({ strokeDashoffset: 0, offset: 1 });
+
+                var anim = path.animate(keyframes, {
+                    duration: DRAW_DURATION, delay: DRAW_DELAY, fill: 'forwards'
+                });
+                /* fill: forwards에만 의존하지 않고 완료 시점에 최종값을 인라인으로 고정 */
+                anim.onfinish = function () { path.style.strokeDashoffset = '0'; };
+            });
+        });
+
+        /* 모든 선이 dashoffset으로 숨겨진 뒤에 .logo_anim의 opacity: 0 해제 */
+        svg.style.opacity = '1';
+    }
+
+    var logoObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            logoObserver.unobserve(entry.target);
+            startDraw();
+        });
+    }, { threshold: 0.1 });
+
+    logoObserver.observe(svg);
+}());
+
+
+
+
 // ========== BRUNCH ==========
 // 브런치북 7권 캐러셀. prev/next 버튼·하단 dots로 전환하며 드래그 전환은 막는다.
 // 슬라이드 콘텐츠는 HTML에 7슬라이드 명시. 표지·제목·부제는 HTML에서 직접 수정.
@@ -60,9 +151,10 @@
 
 
 // ========== VIDEOS ==========
-// 영상 5편 페이저(1~5) 전용 전환. Swiper 미사용 — 유튜브 embed iframe·videos_text_wrap을 is-active로
-// 동기 토글하고, 영상 페이드는 CSS opacity transition이 담당. 자동재생 없음.
-// 전환 시 이전 영상은 postMessage(IFrame API)로 일시정지 — embed URL에 enablejsapi=1 필요.
+// 영상 5편 페이저(1~5) 전용 전환. Swiper 미사용.
+// 초기에는 video_facade(썸네일+플레이버튼)만 렌더링 — 페이지 로드 시 유튜브 연결 없음.
+// facade 클릭 시 해당 자리를 autoplay iframe으로 교체. 이후 iframe은 DOM에 유지.
+// 페이저 전환 시: 재생 중인 iframe은 postMessage로 정지 후 숨김(facade 복원 없음).
 // videos_article_wrap 내 videos_article 88px 접힘 → videos_article_more로 펼침(→ close 토글).
 // 펼침은 max-height를 scrollHeight 픽셀값으로 지정해 CSS transition이 걸리게 함.
 
@@ -70,21 +162,35 @@
     var root = document.querySelector('.videos_youtube');
     if (!root) return;
 
-    var videos    = root.querySelectorAll('iframe');
     var panels    = document.querySelectorAll('.videos_text_wrap');
     var pagerBtns = document.querySelectorAll('.videos_pager button');
 
+    // facade를 autoplay iframe으로 교체. 이후 DOM에 유지.
+    function loadVideo(facade) {
+        var src   = facade.getAttribute('data-src');
+        var title = facade.getAttribute('data-title');
+        var iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.title = title;
+        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        facade.parentNode.replaceChild(iframe, facade);
+        return iframe;
+    }
+
     function activate(idx) {
-        videos.forEach(function (iframe, i) {
-            iframe.classList.toggle('is-active', i === idx);
-            if (i !== idx && iframe.contentWindow) {
-                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        var slots = root.querySelectorAll('.video_facade, iframe');
+        slots.forEach(function (el, i) {
+            var isTarget = i === idx;
+            el.classList.toggle('is-active', isTarget);
+            if (!isTarget && el.tagName === 'IFRAME' && el.contentWindow) {
+                el.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
             }
         });
+
         pagerBtns.forEach(function (btn, i) { btn.classList.toggle('is-active', i === idx); });
         panels.forEach(function (panel, i) { panel.classList.toggle('is-active', i === idx); });
 
-        // 새 패널의 desc 초기화 및 more 버튼 가시성 설정
         var panel = panels[idx];
         if (!panel) return;
         var descEl  = panel.querySelector('.videos_article');
@@ -96,6 +202,16 @@
             moreBtn.style.display = descEl.scrollHeight > descEl.clientHeight + 1 ? '' : 'none';
         }
     }
+
+    // facade 클릭: iframe으로 교체 후 해당 인덱스 활성화
+    root.querySelectorAll('.video_facade').forEach(function (facade) {
+        facade.addEventListener('click', function () {
+            var slots = root.querySelectorAll('.video_facade, iframe');
+            var idx = Array.prototype.indexOf.call(slots, facade);
+            loadVideo(facade);
+            activate(idx);
+        });
+    });
 
     // 각 패널의 videos_article_more 이벤트 등록
     panels.forEach(function (panel) {

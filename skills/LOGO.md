@@ -127,6 +127,10 @@ stroke draw-on 애니메이션이나 WAAPI 제어가 필요하면 경로를 HTML
 - `overflow="visible"` 필수 (symbol의 기본값이었던 것과 동일하게)
 - `stroke-dasharray` / `stroke-dashoffset`은 `vector-effect="non-scaling-stroke"` 환경에서
   브라우저 간 좌표계 차이가 있을 수 있으므로 JS의 `path.getTotalLength()`로 런타임 측정 권장
+- **렌더 크기 ≠ viewBox 크기일 때 dash 길이 보정 필수** — non-scaling-stroke에서는 dash가
+  화면 좌표 기준으로 적용되지만 `getTotalLength()`는 viewBox 좌표 길이를 반환한다.
+  `렌더 폭 / viewBox 폭` 비율을 곱해 보정하지 않으면 작은 로고일수록 그리기가 일찍 끝나 보인다.
+  (`article.js` HERO LOGO DRAW-ON 참고. index의 `service_logo`는 244px ≈ 240이라 증상이 안 보였을 뿐)
 
 실험 파일: `vom16_urbanbrand/logo_test.html`
 
